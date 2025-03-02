@@ -1,0 +1,46 @@
+
+<section>
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-md-6  text-form">
+                <div>
+                    <h1 class="logo"><span>Stay</span>cation.</h1>
+                </div>
+              <form class="w-75 mx-auto   my-5">
+                <div class="title-form  ">
+                    <h2>Sign in</h2>
+                    <p>If you don’t have an account register <br>You can <a routerLink="/Auth/register">Register here !</a></p>
+                </div>
+
+
+                <mat-form-field appearance="outline" class="w-100 my-2">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Enter your email">
+                  </mat-form-field>
+
+
+
+              <div class="position-relative ">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Password</mat-label>
+                    <input [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your password">
+                  </mat-form-field>
+                  <i (click)="toggleSee()" class="fa-solid gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
+              </div>
+
+                  <a class="forgot-pass text-dark " routerLink=""> Forgot Password ?</a>
+
+                  <button type="submit" class="btn btn-primary d-block">Login</button>
+
+              </form>
+            </div>
+
+            <div class="col-md-6 image-form rounded-5 ">
+                <div class="text-image">
+                    <h3 >Sign in to Roamhome</h3>
+                    <p >Homes as unique as you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
