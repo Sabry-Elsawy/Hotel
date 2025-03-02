@@ -8,7 +8,8 @@ import { NotfoundComponent } from '../shared/notfound/notfound.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+  
 @NgModule({
   declarations: [
     LoginComponent,
@@ -20,8 +21,9 @@ import {MatInputModule} from '@angular/material/input';
     AuthRoutingModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
-    
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule    
   ]
 })
 export class AuthModule { }

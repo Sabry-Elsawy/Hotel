@@ -8,7 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
- 
+import { HttpClientModule } from '@angular/common/http';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    HttpClientModule
     
   ],
   providers: [
