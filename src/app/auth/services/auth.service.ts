@@ -15,4 +15,8 @@ onLogin(data:object):Observable<any>{
 
 }
 
+onRegister(data:any):Observable<any>{
+  return this._HttpClient.post("https://upskilling-egypt.com:3000/api/v0/portal/users",data)
+}
+
 }

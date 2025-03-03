@@ -12,7 +12,7 @@
                 <div>
                     <h1 class="logo"><span>Stay</span>cation.</h1>
                 </div>
-              <form        class="w-75 mx-auto  my-5">
+              <form  [formGroup]="registerForm"  (ngSubmit)="onRegister(registerForm)"     class="w-75 mx-auto  my-5">
                 <div class="title-form  ">
                     <h2>Sign up</h2>
                     <p>Already have an account<br>You can <a routerLink="/Auth/login">Login here !</a></p>
@@ -33,7 +33,7 @@
                     </ng-template>
                   
                  
-                    <input id="profile" class="d-none" type="file" accept="image/*" (change)="onFileSelected($event)">
+                    <input   id="profile" class="d-none" type="file" accept="image/*" (change)="onFileSelected($event)">
                   </label>
                   
 
@@ -42,12 +42,12 @@
 
                   <mat-form-field appearance="outline" class="w-100 ">
                     <mat-label>User name</mat-label>
-                    <input  type="email" matInput placeholder="Enter your user name">
+                    <input formControlName="userName"  type="email" matInput placeholder="Enter your user name">
                   </mat-form-field>
 
                   <mat-form-field appearance="outline" class="w-100 ">
                     <mat-label>Email</mat-label>
-                    <input  type="email" matInput placeholder="Enter your email">
+                    <input formControlName="email"  type="email" matInput placeholder="Enter your email">
                   </mat-form-field>
 
 
@@ -55,13 +55,13 @@
                     <div class="col-sm-6">
                         <mat-form-field appearance="outline" class="w-100 ">
                             <mat-label>Phone number</mat-label>
-                            <input  type="email" matInput placeholder="Enter your phone number">
+                            <input formControlName="phoneNumber" type="email" matInput placeholder="Enter your phone number">
                           </mat-form-field>
                     </div>
                     <div class="col-sm-6">
                         <mat-form-field appearance="outline" class="w-100 ">
                             <mat-label>Country</mat-label>
-                            <input  type="email" matInput placeholder="Enter your country">
+                            <input formControlName="country"  type="email" matInput placeholder="Enter your country">
                           </mat-form-field>
                     </div>
                   </div>
@@ -70,7 +70,7 @@
                   <div class="position-relative ">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Password</mat-label>
-                        <input formControlName="password" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your password">
+                        <input formControlName="password" formControlName="password" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your password">
                       </mat-form-field>
                       <i (click)="toggleSee()" class="fa-solid see-pass gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
                   </div>
@@ -79,7 +79,7 @@
                   <div class="position-relative ">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Confirm Password</mat-label>
-                        <input formControlName="password" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your confirm password">
+                        <input formControlName="confirmPassword" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your confirm password">
                       </mat-form-field>
                       <i (click)="toggleSee()" class="fa-solid see-pass gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
                   </div>
