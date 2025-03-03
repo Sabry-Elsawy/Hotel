@@ -18,8 +18,8 @@ constructor(private _AuthService:AuthService){
 
 
 loginForm = new FormGroup({
-  email: new FormControl('',[Validators.required,Validators.email]),
-  password: new FormControl('',[Validators.required,Validators.pattern(RegxPassword)]),
+  email: new FormControl(null,[Validators.required,Validators.email]),
+  password: new FormControl(null,[Validators.required,Validators.pattern(RegxPassword)]),
 });
 
 handleForm(data:FormGroup):void{

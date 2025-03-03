@@ -4,7 +4,7 @@
   .row {
     padding: 20px;
   }
-  .col-md-6 {
+  .col-lg-6 {
     min-height: calc(100vh - 40px);
   }
 
@@ -30,14 +30,7 @@
         }
       }
     }
-    input[type="password"]::-ms-reveal,
-input[type="password"]::-ms-clear,
-input[type="password"]::-webkit-clear-button,
-input[type="password"]::-webkit-inner-spin-button,
-input[type="password"]::-webkit-outer-spin-button,
-input[type="password"]::-webkit-password-toggle-button {
-  display: none !important;
-}
+ 
 
  .fa-solid{
   position: absolute;
