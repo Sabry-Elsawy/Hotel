@@ -40,4 +40,5 @@ import { globalInterceptor } from './core/service/interceptor/global.interceptor
   bootstrap: [AppComponent]
  
 })
+ 
 export class AppModule { }

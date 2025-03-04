@@ -7,11 +7,9 @@ export const adminGuard: CanActivateFn = (route, state) => {
     return true;
   }
   else{
-    if (localStorage.getItem('token') !==null && localStorage.getItem('role') == 'user' ) {
-      _Router.navigate(['/landing-page'])
-    }else{
+    
       _Router.navigate(['/Auth/login'])
-    }
+ 
 
 
     return false;

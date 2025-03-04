@@ -7,13 +7,7 @@ export const userGuard: CanActivateFn = (route, state) => {
     return true;
   }else
   {
-    if (localStorage.getItem('token') !==null && localStorage.getItem('role') == 'admin' ) {
-      _Router.navigate(['/admin'])
-    }else{
       _Router.navigate(['/Auth/login'])
-    }
-
-
     return false;
   }
   

@@ -70,7 +70,7 @@
                   <div class="position-relative ">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Password</mat-label>
-                        <input formControlName="password" formControlName="password" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your password">
+                        <input  formControlName="password" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your password">
                       </mat-form-field>
                       <i (click)="toggleSee()" class="fa-solid see-pass gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
                   </div>
