@@ -16,7 +16,7 @@ hidepass:boolean = true;
 errorMessage:string = '';
 roleUser:string='';
 constructor(private _AuthService:AuthService, private _Router:Router){
-
+ 
 }
 
 
@@ -31,9 +31,9 @@ handleForm(data:FormGroup):void{
     next:(responce)=>{
       console.log(responce);
       this.roleUser=responce.data.user.role
-      localStorage.setItem('token', JSON.stringify(responce.data.token));
-      localStorage.setItem('userName', JSON.stringify(responce.data.user.userName));
-      localStorage.setItem('role', JSON.stringify(responce.data.user.role));
+      localStorage.setItem('token',  responce.data.token);
+      localStorage.setItem('userName',  responce.data.user.userName);
+      localStorage.setItem('role',  responce.data.user.role);
 
     },
     error:(err)=>{
