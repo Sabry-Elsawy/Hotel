@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+ 
 export const RegxPassword: RegExp = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 @Component({
@@ -12,7 +14,8 @@ export const RegxPassword: RegExp = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\
 export class LoginComponent {
 hidepass:boolean = true;
 errorMessage:string = '';
-constructor(private _AuthService:AuthService){
+roleUser:string='';
+constructor(private _AuthService:AuthService, private _Router:Router){
 
 }
 
@@ -27,6 +30,7 @@ handleForm(data:FormGroup):void{
   this._AuthService.onLogin(data.value).subscribe({
     next:(responce)=>{
       console.log(responce);
+      this.roleUser=responce.data.user.role
       localStorage.setItem('token', JSON.stringify(responce.data.token));
       localStorage.setItem('userName', JSON.stringify(responce.data.user.userName));
       localStorage.setItem('role', JSON.stringify(responce.data.user.role));
@@ -38,6 +42,13 @@ handleForm(data:FormGroup):void{
     },
     complete:()=>{
       console.log('complete');
+    if (this.roleUser == 'admin') {
+      this._Router.navigate(['/admin'])
+    }
+    else
+    {
+      this._Router.navigate(['/landing-page'])
+    }
     }
   })
    

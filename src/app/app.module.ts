@@ -1,4 +1,5 @@
 import {   NgModule } from '@angular/core';
+ 
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,8 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { globalInterceptor } from './core/service/interceptor/global.interceptor';
   
+    
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:globalInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
  

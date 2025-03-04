@@ -11,12 +11,12 @@ export class AuthService {
   constructor(private _HttpClient:HttpClient) { }
 
 onLogin(data:object):Observable<any>{
-  return this._HttpClient.post('https://upskilling-egypt.com:3000/api/v0/admin/users/login',data)
+  return this._HttpClient.post('/admin/users/login',data)
 
 }
 
 onRegister(data:any):Observable<any>{
-  return this._HttpClient.post("https://upskilling-egypt.com:3000/api/v0/portal/users",data)
+  return this._HttpClient.post("/portal/users",data)
 }
 
 }
