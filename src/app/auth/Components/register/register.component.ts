@@ -14,6 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class RegisterComponent {
   hidepass:boolean = true;
+  hidePassword:boolean = true;
   selectedFile: File | null = null; 
   profileImage = signal<string | null>(null);
   constructor(private _AuthService:AuthService , private _Router:Router , private _Spinner:NgxSpinnerService){}
@@ -93,6 +94,9 @@ export class RegisterComponent {
   // }
   toggleSee(){
     this.hidepass = !this.hidepass;
+  }
+  toggleSeeConfirm(){
+    this.hidePassword = !this.hidePassword;
   }
 
 }

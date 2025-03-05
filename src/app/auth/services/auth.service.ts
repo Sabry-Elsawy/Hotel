@@ -24,6 +24,10 @@ onForgotPassword(data:FormGroup):Observable<any>{
   return this._HttpClient.post('/portal/users/forgot-password',data)
 }
 
+onResetPassword(data:FormGroup):Observable<any>{
+  return this._HttpClient.post('/portal/users/reset-password',data)
+}
+
 myLogOut(){
   localStorage.clear();
   this._Router.navigate(['/Auth/login'])

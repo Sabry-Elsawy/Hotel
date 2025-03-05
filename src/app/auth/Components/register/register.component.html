@@ -86,9 +86,9 @@
                   <div class="position-relative ">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Confirm Password</mat-label>
-                        <input formControlName="confirmPassword" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your confirm password">
+                        <input formControlName="confirmPassword" [type]="hidePassword? 'password' : 'text'" matInput placeholder="Enter your confirm password">
                       </mat-form-field>
-                      <i (click)="toggleSee()" class="fa-solid see-pass gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
+                      <i (click)="toggleSeeConfirm()" class="fa-solid see-pass gray" [class]="hidePassword?'fa-eye-slash':'fa-eye'"></i>
                   </div>
                   <div class="error" *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched">
                     <p *ngIf="registerForm.get('confirmPassword')?.getError('required')">*Password is required</p>
