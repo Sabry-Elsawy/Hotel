@@ -119,6 +119,10 @@
       }
     }
   }
+  .error p{
+    color: red;
+    margin-top: -15px;
+  }
   @media (max-width:992px) {
       .image-form {
           display: none;

@@ -1,10 +1,4 @@
 
-
-
-
-
-
-  
 <section>
     <div class="container-fluid">
         <div class="row padding-x ">
@@ -34,21 +28,25 @@
                   
                  
                     <input   id="profile" class="d-none" type="file" accept="image/*" (change)="onFileSelected($event)">
-                  </label>
-                  
-
-
-                
+                  </label>            
 
                   <mat-form-field appearance="outline" class="w-100 ">
                     <mat-label>User name</mat-label>
                     <input formControlName="userName"  type="email" matInput placeholder="Enter your user name">
                   </mat-form-field>
+                  <div class="error" *ngIf="registerForm.get('userName')?.errors && registerForm.get('userName')?.touched">
+                    <p *ngIf="registerForm.get('userName')?.getError('required')">*User name is required</p>
+                    <p *ngIf="registerForm.get('userName')?.getError('minlength')">*User name minlength is 4</p>
+                    <p *ngIf="registerForm.get('userName')?.getError('maxlength')">*User name maxlength is 15</p>
+                  </div>
 
                   <mat-form-field appearance="outline" class="w-100 ">
                     <mat-label>Email</mat-label>
                     <input formControlName="email"  type="email" matInput placeholder="Enter your email">
                   </mat-form-field>
+                  <div class="error" *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+                    <p *ngIf="registerForm.get('email')?.getError('required')">*Email is required</p>
+                  </div>
 
 
                   <div class="row">
@@ -57,12 +55,19 @@
                             <mat-label>Phone number</mat-label>
                             <input formControlName="phoneNumber" type="email" matInput placeholder="Enter your phone number">
                           </mat-form-field>
+                          <div class="error" *ngIf="registerForm.get('phoneNumber')?.errors && registerForm.get('phoneNumber')?.touched">
+                            <p *ngIf="registerForm.get('phoneNumber')?.getError('required')">*phoneNumber is required</p>
+                            <p *ngIf="registerForm.get('phoneNumber')?.getError('pattern')">*phoneNumber is invalid</p>
+                          </div>
                     </div>
                     <div class="col-sm-6">
                         <mat-form-field appearance="outline" class="w-100 ">
                             <mat-label>Country</mat-label>
                             <input formControlName="country"  type="email" matInput placeholder="Enter your country">
                           </mat-form-field>
+                          <div class="error" *ngIf="registerForm.get('country')?.errors && registerForm.get('country')?.touched">
+                            <p *ngIf="registerForm.get('country')?.getError('required')">*Country is required</p>
+                          </div>
                     </div>
                   </div>
 
@@ -74,8 +79,10 @@
                       </mat-form-field>
                       <i (click)="toggleSee()" class="fa-solid see-pass gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
                   </div>
-
-
+                  <div class="error" *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+                    <p *ngIf="registerForm.get('password')?.getError('required')">*Password is required</p>
+                    <p *ngIf="registerForm.get('password')?.getError('pattern')">*must include at least one lowercase letter, one uppercase letter, one digit, one special character</p>
+                  </div>
                   <div class="position-relative ">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Confirm Password</mat-label>
@@ -83,16 +90,14 @@
                       </mat-form-field>
                       <i (click)="toggleSee()" class="fa-solid see-pass gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
                   </div>
-
-
-              
- 
-
+                  <div class="error" *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched">
+                    <p *ngIf="registerForm.get('confirmPassword')?.getError('required')">*Password is required</p>
+                    <p *ngIf="registerForm.get('confirmPassword')?.getError('passwordMatch')">*Confirm password does not match password</p>
+                    <p *ngIf="registerForm.get('confirmPassword')?.getError('pattern')">*must include at least one lowercase letter, one uppercase letter, one digit, one special character</p>
+                  </div>
                   <button type="submit" class="btn btn-primary d-block">Sign up</button>
-
               </form>
             </div>
-
             <div class="col-lg-6 image-form rounded-5 ">
                 <div class="text-image">
                     <h3 >Sign up to Roamhome</h3>

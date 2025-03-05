@@ -32,13 +32,13 @@ export class RegisterComponent {
   registerForm =new FormGroup({
     userName:new FormControl(null,[Validators.required,Validators.minLength(4),Validators.maxLength(15),Validators.pattern(RegxUserName)]),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    country: new FormControl(null, [Validators.required,Validators.minLength(4),Validators.maxLength(15)],),
+    country: new FormControl(null, [Validators.required ],),
     phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(RegxPhoneNumber)]),
     password: new FormControl(null, [Validators.required,Validators.pattern(RegxPassword)]),
     confirmPassword: new FormControl(null, [Validators.required,Validators.pattern(RegxPassword)]),
     role: new FormControl('user', [Validators.required]),
     profileImage: new FormControl('',),
-  });
+  },{validators : this.confirmPassword});
 
   onRegister(data: FormGroup){
     console.log(data);
@@ -69,6 +69,18 @@ export class RegisterComponent {
       }
     })
     
+  }
+
+  confirmPassword(registerForm:any){
+      let passwordControl= registerForm.get('password')
+      let confirmPasswordControl= registerForm.get('confirmPassword')
+      if (passwordControl?.value == confirmPasswordControl?.value) {
+        return null;
+      }
+      else{
+         confirmPasswordControl?.setErrors({passwordMatch: 'password and confirm password not match'})
+         return {passwordMatch: 'password and confirm password not match'};
+      }
   }
 
   // removeProfileImage(event : Event){

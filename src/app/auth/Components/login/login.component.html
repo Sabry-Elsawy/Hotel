@@ -18,6 +18,10 @@
                     <input formControlName="email" type="email" matInput placeholder="Enter your email">
                   </mat-form-field>
 
+                  <div class="error" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+                    <p *ngIf="loginForm.get('email')?.getError('required')">*Email is required</p>
+                  </div>
+
 
 
               <div class="position-relative ">
@@ -26,6 +30,10 @@
                     <input formControlName="password" [type]="hidepass? 'password' : 'text'" matInput placeholder="Enter your password">
                   </mat-form-field>
                   <i (click)="toggleSee()" class="fa-solid gray" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
+              </div>
+              <div class="error" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+                <p *ngIf="loginForm.get('password')?.getError('required')">*Password is required</p>
+                <p *ngIf="loginForm.get('password')?.getError('pattern')">*must include at least one lowercase letter, one uppercase letter, one digit, one special character</p>
               </div>
 
                   <a class="forgot-pass text-dark " routerLink="/Auth/forgot-password"> Forgot Password ?</a>
