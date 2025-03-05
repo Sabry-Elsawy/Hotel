@@ -1,0 +1,65 @@
+ 
+   
+<nav class="navbar   py-2  " [ngClass]="{'scrolled': isScrolled}">
+    <div class="container">
+      <a class="navbar-brand small-screen"  > 
+         <h1><span>Stay</span>action.</h1>
+      </a>
+      <div class="overlay" [ngClass]="{'show-overlay': isOpen}" (click)="toggleNavbar()"></div>
+      <div class="links" [ngClass]="{'show  ': isOpen }">
+   
+        <a class="navbar-brand Big-screen"  > 
+            <h1><span>Stay</span>action.</h1>
+        </a>
+        <ul class="navbar-nav  ">
+       
+          <li (click)="toggleNavbar()" class="nav-item">
+            <a   class="nav-link" routerLink="/landing-page/home" routerLinkActive="active">HOME</a>
+          </li>
+        
+          <li (click)="toggleNavbar()" class="nav-item">
+            <a  class="nav-link" routerLink="/landing-page/explore" routerLinkActive="active" >Explore</a>
+          </li>
+          
+          
+          <li (click)="toggleNavbar()" class="nav-item">
+            <a routerLink="/landing-page"  class="nav-link" routerLinkActive="active">Favorites</a>
+          </li>       
+         
+        
+      
+        
+        </ul>
+  
+        <ul class="info  mb-0">
+            <li   class="nav-item">
+<div class="d-flex align-items-center me-4">
+    <img src="../../../assets/images/InFrame_1708111423300.jpg" alt="">
+    <h6 class="mx-3">Sabry43</h6>
+    <button class="caret-down" type="button" mat-button [matMenuTriggerFor]="userMenu" title="Open menu"><i class="fa-solid fa-caret-down"></i></button>
+</div>
+                <mat-menu class="mt-3 " #userMenu="matMenu">
+                  <button (click)="toggleNavbar()" mat-menu-item><i class="fa-solid fa-lock-open mx-2"></i> Change password</button>
+                  <button (click)="toggleNavbar()" mat-menu-item><i class="fa-solid fa-arrow-right-from-bracket mx-2"></i> Logout</button>
+                </mat-menu>
+              </li>
+          <li   class="nav-item">
+            <button class="select-lang" mat-button [matMenuTriggerFor]="menu">English</button>
+            <mat-menu class="mt-3" #menu="matMenu">
+              <button (click)="toggleNavbar()" mat-menu-item>English</button>
+              <button (click)="toggleNavbar()" mat-menu-item>Arabic</button>
+            </mat-menu>
+          </li>
+      </ul>
+   
+   
+      </div>
+      <button (click)="toggleNavbar()" class="navbar-btn "  type="button" title="navbar-collapse" >
+        <span><i class="fa-solid fa-bars"></i></span>
+      </button>
+  
+    </div>
+  </nav>
+
+
+ 
