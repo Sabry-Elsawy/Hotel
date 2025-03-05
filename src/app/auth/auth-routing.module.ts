@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
-import { NotfoundComponent } from '../shared/notfound/notfound.component';
+ 
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { NotfoundComponent } from '../shared/notfound/notfound.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent, title:'Register'},
   {path:'forgot-password', component:ForgotPasswordComponent , title:'forgot-password'},
   {path:'reset-password' , component:ResetPasswordComponent , title:'reset-password'},
-  {path:'**', component:NotfoundComponent}
+  {path:'**' , component:NotfoundComponent , title:'Not Found'}
 ];
 
 @NgModule({

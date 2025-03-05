@@ -11,8 +11,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { globalInterceptor } from './core/service/interceptor/global.interceptor';
-  
-    
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,9 @@ import { globalInterceptor } from './core/service/interceptor/global.interceptor
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
     
   ],
   providers: [

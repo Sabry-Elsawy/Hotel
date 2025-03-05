@@ -4,7 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegxPassword } from '../login/login.component';
 import { RegxPhoneNumber, RegxUserName } from '../../../core/service/helper.service';
 import { Router } from '@angular/router';
-  
+import { NgxSpinnerService } from 'ngx-spinner';
+ 
   
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent {
   hidepass:boolean = true;
   selectedFile: File | null = null; 
   profileImage = signal<string | null>(null);
-  constructor(private _AuthService:AuthService , private _Router:Router){}
+  constructor(private _AuthService:AuthService , private _Router:Router , private _Spinner:NgxSpinnerService){}
   onFileSelected(e: Event) {
     const file = (e.target as HTMLInputElement).files?.[0];
 
@@ -41,6 +42,7 @@ export class RegisterComponent {
   },{validators : this.confirmPassword});
 
   onRegister(data: FormGroup){
+    this._Spinner.show();
     console.log(data);
   const registerFormData = new FormData();
   registerFormData.append('userName',data.value.userName);
@@ -61,9 +63,10 @@ export class RegisterComponent {
       },
       error:(err)=>{
         console.log(err);
-        
+        this._Spinner.hide();
       },
       complete:()=>{
+        this._Spinner.hide();
         console.log("Done");
         this._Router.navigate(["/Auth/login"])
       }

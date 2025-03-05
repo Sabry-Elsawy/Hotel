@@ -32,7 +32,7 @@
 
                   <mat-form-field appearance="outline" class="w-100 ">
                     <mat-label>User name</mat-label>
-                    <input formControlName="userName"  type="email" matInput placeholder="Enter your user name">
+                    <input formControlName="userName"  type="text" matInput placeholder="Enter your user name">
                   </mat-form-field>
                   <div class="error" *ngIf="registerForm.get('userName')?.errors && registerForm.get('userName')?.touched">
                     <p *ngIf="registerForm.get('userName')?.getError('required')">*User name is required</p>
@@ -53,7 +53,7 @@
                     <div class="col-sm-6">
                         <mat-form-field appearance="outline" class="w-100 ">
                             <mat-label>Phone number</mat-label>
-                            <input formControlName="phoneNumber" type="email" matInput placeholder="Enter your phone number">
+                            <input formControlName="phoneNumber" type="tel" matInput placeholder="Enter your phone number">
                           </mat-form-field>
                           <div class="error" *ngIf="registerForm.get('phoneNumber')?.errors && registerForm.get('phoneNumber')?.touched">
                             <p *ngIf="registerForm.get('phoneNumber')?.getError('required')">*phoneNumber is required</p>
@@ -63,7 +63,7 @@
                     <div class="col-sm-6">
                         <mat-form-field appearance="outline" class="w-100 ">
                             <mat-label>Country</mat-label>
-                            <input formControlName="country"  type="email" matInput placeholder="Enter your country">
+                            <input formControlName="country"  type="text" matInput placeholder="Enter your country">
                           </mat-form-field>
                           <div class="error" *ngIf="registerForm.get('country')?.errors && registerForm.get('country')?.touched">
                             <p *ngIf="registerForm.get('country')?.getError('required')">*Country is required</p>
