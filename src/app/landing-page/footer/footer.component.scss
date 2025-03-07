@@ -1,0 +1,32 @@
+h3{
+    color: var(--title-color);
+    font-family: Poppins;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+h4
+{
+    margin-bottom: 15px;
+ span{
+    color: var(--main-text-color);
+ 
+}
+} 
+ 
+ 
+p , li a{
+    color: #bdbdbdd7;
+    font-family: Poppins;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 12px !important;
+}
+
+ul{
+ 
+    padding-left: 0;
+    li{
+        margin-bottom: 12px !important;
+    }
+}

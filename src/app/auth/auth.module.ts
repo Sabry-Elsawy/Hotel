@@ -12,8 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { NotfoundComponent } from '../shared/notfound/notfound.component';
+import { SharedModule } from '../shared/shared.module';
   
-  
+   
 @NgModule({
   declarations: [
     LoginComponent,
@@ -21,8 +22,7 @@ import { NotfoundComponent } from '../shared/notfound/notfound.component';
  
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    NotfoundComponent
- 
+  
   ],
   imports: [
     CommonModule,
@@ -31,7 +31,8 @@ import { NotfoundComponent } from '../shared/notfound/notfound.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule    
+    FormsModule  ,
+    SharedModule  
   ]
 })
 export class AuthModule { }

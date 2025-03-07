@@ -19,7 +19,6 @@ import { NotfoundComponent } from './notfound/notfound.component';
  
   ],
   exports: [
-    SharedComponent,  
     NotfoundComponent
   ]
 })
