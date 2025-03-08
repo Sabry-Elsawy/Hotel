@@ -14,4 +14,8 @@ export class AdsUserService {
   {
     return this._HttpClient.get('/portal/ads');
   }
+  getAllRooms(data:any):Observable<any>
+  {
+    return this._HttpClient.get('/portal/rooms/available' , data);
+  }
 }
