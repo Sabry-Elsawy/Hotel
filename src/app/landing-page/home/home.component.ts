@@ -14,10 +14,17 @@ capacity:number=0;
 tableData: any;
 tableUserAds: IAds[] = [];
 tableDataRomms:IRoom[] = [];
+ 
 constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService) { }
 ngOnInit(): void {
  this.getAllAds(this.tableUserAds)
  this.getAllRomms(this.tableDataRomms)
+ 
+
+ 
+ 
+ 
+ 
 }
 increasementCapacity(){
   this.capacity++;  
@@ -33,7 +40,11 @@ getAllAds(data:any){
   this._AdsUserService.getAllAds(data).subscribe({
     next: (response) => {
       this.tableData = response;
+      console.log(response);
+      
       this.tableUserAds = response.data.ads.slice(0,5);
+      console.log(this.tableUserAds);
+      
     },
     error: (err) => {
       this._NgxSpinnerService.hide();
@@ -64,5 +75,8 @@ getAllRomms(data:any){
     }
   })
 }
+
+// ============================================================================
+ 
 
 }

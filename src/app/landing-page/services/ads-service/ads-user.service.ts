@@ -12,7 +12,7 @@ export class AdsUserService {
 
   getAllAds(data:any):Observable<any>
   {
-    return this._HttpClient.get('/portal/ads');
+    return this._HttpClient.get('/portal/ads' ,data );
   }
   getAllRooms(data:any):Observable<any>
   {

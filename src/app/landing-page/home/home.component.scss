@@ -1,5 +1,6 @@
+ 
 .hero {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,18 +71,13 @@
       width: 100%;
       z-index: -1;
       border: rgba(56, 56, 56, 0.2) solid 2px;
-      border-radius: 5rem 1.5rem 1.5rem 1.5rem; /* نفس شكل الصورة */
+      border-radius: 5rem 1.5rem 1.5rem 1.5rem;  
     }
   }
 }
 
 
-@media (max-width: 992px) {
- .hero{
-  margin: 7rem 0;
- }
-  
-}
+ 
 
 
 
@@ -95,10 +91,10 @@
 .ads{
 
   .card1{
-    height: 85vh;
+    height: 38rem;
   }
   .card2{
-    height: 40vh;
+    height: 18rem;
   }
   .room{
     overflow: hidden;
@@ -170,7 +166,7 @@
   position: relative;
   .image{
   width: 100%;
-  height: 35vh;
+  height: 16rem;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -206,3 +202,6 @@ img:hover{
   }
 }
 }
+
+ 
+ 
