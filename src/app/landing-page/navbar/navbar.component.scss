@@ -74,6 +74,9 @@ cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    .select-lang {
+      color: #fff !important;
+    }
      
  }
 
@@ -118,6 +121,7 @@ cursor: pointer;
  }
  .info li{
     margin: 10px 0;
+   
  }
  .navbar-nav{
     flex-direction: column;

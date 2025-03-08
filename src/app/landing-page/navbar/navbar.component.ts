@@ -1,12 +1,13 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
-
+import { AuthService } from '../../auth/services/auth.service';
+ 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef , private _AuthService:AuthService) {}
 isOpen:boolean=false;
 isScrolled: boolean = false; // حالة التمرير
 toggleNavbar(){
@@ -37,5 +38,10 @@ toggleNavbar(){
       } else {
         this.isScrolled = false;
       }
+    }
+
+
+    onLogout(){
+      this._AuthService.myLogOut();
     }
 }

@@ -1,1 +1,57 @@
-<p class=" pt-5 mt-5 h-100">home works!</p>
+ 
+<section class="hero">
+    <div class="container ">
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="caption">
+                    <h2>Forget Busy Work, <br>
+                        Start Next Vacation</h2>
+                        <p>We provide what you need to enjoy your holiday with family. <br>
+                            Time to make another memorable moments.</p>
+                            <h6>Start booking</h6>
+                            <span class="title-input">Pick a date</span>
+                            <div class="date w-75">
+                                <mat-form-field class="example-form-field w-100"  appearance="outline">
+                                    <mat-label color="primary" class="dark-blue ">Enter a date range</mat-label>
+                                    <mat-date-range-input [rangePicker]="rangePicker" class="dark-blue"> 
+                                      <input matStartDate placeholder="Start date" color="primary" class="dark-blue w-100" />
+                                      <input matEndDate placeholder="End date" color="primary" class="dark-blue w-100" />
+                                    </mat-date-range-input>
+                                  
+                                    <mat-datepicker-toggle matIconSuffix [for]="rangePicker" color="primary"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #rangePicker>
+                                      <mat-date-range-picker-actions  color="primary" class="dark-blue">
+                                        <button mat-button matDateRangePickerCancel  class="btn btn-outline-danger me-2">Cancel</button>
+                                        <button mat-raised-button matDateRangePickerApply    class="btn btn-outline-main ">Apply</button>
+                                      </mat-date-range-picker-actions>
+                                    </mat-date-range-picker>
+                                  </mat-form-field>
+                            </div>
+                            <span class="title-input">Capacity</span>
+                            <div class="input-group mb-3 w-75">
+                                <div class="input-group-prepend">
+                                  <span (click)="decreasementCapacity()" class="btn-minus p-3 px-4 input-group-text     rounded-end-0 bg-danger  "
+                                     id="basic-addon1"><i class="fa-solid fa-minus text-white"></i></span>
+                                </div>
+                      
+                                <input type="number" class="py-2 form-control text-center border border-end-0 border-start-0"
+                                   aria-label="number of person" placeholder="number of person" aria-describedby="basic-addon1" [(ngModel)]="capacity" >
+                                 
+                      
+                                <div class="input-group-prepend">
+                                  <span (click)="increasementCapacity()" class="btn-plus p-3 px-4 input-group-text  rounded-start-0 bg-success  "
+                                     id="basic-addon1"><i class="fa-solid fa-plus text-white"></i></span>
+                                </div>
+                              </div>
+                              <button class="w-50 py-2 light-blue add-button mt-3">Explore</button>
+                </div>
+            </div>
+
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="image w-75  ">
+                    <img src="../../../assets/images/home.png" alt="homeImg">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

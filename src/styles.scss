@@ -41,6 +41,7 @@ $Hotel-theme: mat.define-light-theme((
     padding: 0;
     box-sizing: border-box;
 }
+
 :root{
     --primary-color: #1c3a76;
     --secondary-color: #ff498b;
@@ -52,7 +53,7 @@ $Hotel-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
+ 
 
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear,
@@ -62,7 +63,19 @@ input[type="password"]::-webkit-outer-spin-button,
 input[type="password"]::-webkit-password-toggle-button {
   display: none !important;
 }
+/* إخفاء الأزرار في متصفحات WebKit (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
+/* إخفاء الأزرار في متصفح Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+ 
 li{
     list-style: none;
 }

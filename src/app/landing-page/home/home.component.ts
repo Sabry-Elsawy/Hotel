@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+capacity:number=0;
+
+increasementCapacity(){
+  this.capacity++;  
+}
+decreasementCapacity(){
+   if (this.capacity>0){
+     this.capacity--;
+    
+   }
+}
 
 }

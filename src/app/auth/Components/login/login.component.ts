@@ -27,7 +27,7 @@ loginForm = new FormGroup({
 });
 
 handleForm(data:FormGroup):void{
-//  this._Spinner.show();
+ this._Spinner.show();
   console.log(data.value);
   this._AuthService.onLogin(data.value).subscribe({
     next:(responce)=>{
@@ -40,11 +40,11 @@ handleForm(data:FormGroup):void{
     },
     error:(err)=>{
       console.log(err);
-   //   this._Spinner.hide();
+       this._Spinner.hide();
       this.errorMessage=err.error.message;
     },
     complete:()=>{
-   //   this._Spinner.hide();
+    this._Spinner.hide();
       console.log('complete');
     if (this.roleUser == 'admin') {
       this._Router.navigate(['/admin'])
