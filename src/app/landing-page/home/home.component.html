@@ -70,79 +70,45 @@
 <div class="cards row  gy-3">
   <div class="row col-lg-4  gy-3">
     <div class="col-lg-12  ">
-      <div class="card1 room ">
+      <div *ngFor="let room of tableUserAds.slice(0,1)" class="card1 room ">
         <div class="image ">
-          <img src="../../../assets/images/home.png" alt="room1">
+          <img [src]="room.room.images" alt="room1">
         </div>
         <div class="card-icon">
          <a > <i class="fa-solid fa-heart"></i></a>
          <a > <i class="fa-solid fa-eye"></i></a>
         </div>
         <div class="card-caption">
-          <h4>55</h4>
-          <h5>Lorem, ipsum dolor.</h5>
+          <h4>{{room.room.roomNumber}}</h4>
+        <h5>{{room.createdBy.userName}}</h5>
         </div>
          <div class="card-price">
-          <p><span>466</span> Lorem, ipsum.</p>
+          <p><span>{{room.room.price | currency}}</span> per night</p>
          </div>
       </div>
     </div>
   </div>
   <div class="row col-lg-8    gy-3">
-    <div class=" col-md-6 ">
+    <div *ngFor="let room of tableUserAds.slice(1,5)" class=" col-md-6 ">
       <div class="room card2">
         <div class="image">
-          <img src="../../../assets/images/home.png" alt="room1">
+          <img [src]="room.room.images" alt="room1">
         </div>
         <div class="card-icon">
          <a > <i class="fa-solid fa-heart"></i></a>
          <a > <i class="fa-solid fa-eye"></i></a>
         </div>
         <div class="card-caption">
-          <h4>55</h4>
-          <h5>Lorem, ipsum dolor.</h5>
+          <h4>{{room.room.roomNumber}}</h4>
+          <h5>{{room.createdBy.userName}}</h5>
         </div>
          <div class="card-price">
-          <p><span>466</span> Lorem, ipsum.</p>
+          <p><span>{{room.room.price | currency}}</span> per night</p>
          </div>
       </div>
     </div>
-    <div class=" col-md-6">
-      <div class="room card2">
-        <div class="image">
-          <img src="../../../assets/images/home.png" alt="room1">
-        </div>
-        <div class="card-icon">
-         <a > <i class="fa-solid fa-heart"></i></a>
-         <a > <i class="fa-solid fa-eye"></i></a>
-        </div>
-        <div class="card-caption">
-          <h4>55</h4>
-          <h5>Lorem, ipsum dolor.</h5>
-        </div>
-         <div class="card-price">
-          <p><span>466</span> Lorem, ipsum.</p>
-         </div>
-      </div>
-    </div>
-    <div class=" col-md-6">
-      <div class="room card2">
-        <div class="image">
-          <img src="../../../assets/images/home.png" alt="room1">
-        </div>
-        <div class="card-icon">
-         <a > <i class="fa-solid fa-heart"></i></a>
-         <a > <i class="fa-solid fa-eye"></i></a>
-        </div>
-        <div class="card-caption">
-          <h4>55</h4>
-          <h5>Lorem, ipsum dolor.</h5>
-        </div>
-         <div class="card-price">
-          <p><span>466</span> Lorem, ipsum.</p>
-         </div>
-      </div>
-    </div>
+ 
+  
   </div>
 </div>
   </div>
