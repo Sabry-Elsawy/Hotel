@@ -72,7 +72,7 @@
     <div class="col-lg-12  ">
       <div *ngFor="let room of tableUserAds.slice(0,1)" class="card1 room ">
         <div class="image ">
-          <img [src]="room.room.images" alt="roomImg">
+          <img [src]="room.room.images[0]" alt="roomImg">
         </div>
         <div class="card-icon">
          <a > <i class="fa-solid fa-heart"></i></a>
@@ -92,7 +92,7 @@
     <div *ngFor="let room of tableUserAds.slice(1,5)" class=" col-md-6 ">
       <div class="room card2">
         <div class="image">
-          <img [src]="room.room.images" alt="roomImg">
+          <img [src]="room.room.images[0]" alt="roomImg">
         </div>
         <div class="card-icon">
          <a > <i class="fa-solid fa-heart"></i></a>
@@ -127,7 +127,7 @@
     <div *ngFor="let room of tableDataRomms" class="col-lg-3 col-md-6">
        <div class="living-room w-100">
         <div  class="image">
-          <img class="w-100" [src]="room.images" alt="roomImg">
+          <img class="w-100" [src]="room.images[0]" alt="roomImg">
         </div>
         <div class="heading-image">
           <p>Popular Choice</p>
@@ -159,7 +159,7 @@
     <div *ngFor="let room of tableUserAds.slice(1,5)" class="col-lg-3 col-md-6">
        <div class="living-room w-100">
         <div  class="image">
-          <img class="w-100" [src]="room.room.images" alt="roomImg">
+          <img class="w-100" [src]="room.room.images[0]" alt="roomImg">
         </div>
         <div class="heading-image">
           <p><span>{{room.room.price | currency}}</span> Per night</p>
@@ -180,3 +180,28 @@
  <!-- ==================================================================== -->
 
 
+<div class="container">
+  <div class="heading">
+    <h5 class="mb-4">All Ads </h5>
+  </div>
+  <owl-carousel-o  [options]="customOptions">
+    <ng-template carouselSlide    *ngFor="let room of tableAllAds" >
+ <div class="card-ads p-2">
+  <div class="living-room  w-100">
+    <div  class="image">
+      <img class="w-100" [src]="room.room.images[0]" alt="roomImg">
+    </div>
+    <div class="heading-image">
+      <p><span>{{room.room.price | currency}}</span> Per night</p>
+    </div>
+    <div class="caption">
+      <p>{{room.room.roomNumber}}</p>
+      <h6><i class="fa-solid fa-user me-2"></i>{{room.room.capacity}} Person</h6>
+    </div>
+   </div>
+ </div>
+
+    </ng-template>  
+ 
+  </owl-carousel-o>
+</div>
