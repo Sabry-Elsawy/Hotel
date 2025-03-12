@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AdsUserService } from '../services/ads-service/ads-user.service';
 import { IAds } from '../../core/model/ads';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IRoom } from '../../core/model/room';
 import { OwlOptions } from 'ngx-owl-carousel-o';
- 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -80,7 +79,7 @@ getAllRomms(data:any){
 }
 
 // ============================================================================
-customOptions: OwlOptions = {
+firstCarouselOptions: OwlOptions = {
   loop: true,
   mouseDrag: true,
   touchDrag: true,
@@ -109,6 +108,28 @@ customOptions: OwlOptions = {
   autoplayHoverPause: true ,
 }
 
+ 
+secondCarouselOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: false,
+  dots: false,
+ 
+  navSpeed: 500,
+  nav: true,
+  navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'],
+
+  responsive: {
+    0: { items: 1 }
+  },
+
+  autoplay: false,
+  autoplayTimeout: 5000, 
+  autoplayHoverPause: true ,
+ 
+}
+ 
 // ==============================================
 
 }
