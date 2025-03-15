@@ -28,7 +28,7 @@ loginForm = new FormGroup({
 
 handleForm(data:FormGroup):void{
  this._Spinner.show();
-  console.log(data.value);
+  //console.log(data.value);
   this._AuthService.onLogin(data.value).subscribe({
     next:(responce)=>{
    //   console.log(responce);

@@ -43,9 +43,11 @@
    .room-image{
     position: relative;
     height: 15rem;
+    overflow: hidden;
     img{
         height: 100%;
         object-fit: cover;
+        transition: transform .6s ease;
     }
     a{
         display: block;
@@ -113,5 +115,8 @@
             font-weight: bold;
         }
     }
+}
+&:hover img{
+    transform: scale(1.1);
 }
 }

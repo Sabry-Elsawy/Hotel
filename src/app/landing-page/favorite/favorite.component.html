@@ -24,21 +24,21 @@
             <h4>Your Rooms</h4>
         </div>
         <div class="row g-3">
-            <div class="col-md-6 col-lg-4 col-xl-3">
+            <div *ngFor="let room of allRoomFav" class="col-md-6 col-lg-4 col-xl-3">
                 <div class="card w-100">
                     <div class="room-image w-100">
-                        <img class="w-100" src="../../../assets/images/home.png" alt="">
+                        <img class="w-100" [src]="room.images[0]" alt="roomImg">
                         <a  class="remove-fav"><i class="fa-solid fa-heart"></i></a>
                         <a class="room-details"><i class="fa-solid fa-eye"></i></a>
-                        <span class="room-number">456</span>
+                        <span class="room-number">{{room.roomNumber}}</span>
                     </div>
                     <div class="details">
-                        <h6 class="mb-1">Room 112</h6>
+                        <h6 class="mb-1">Room {{room.roomNumber}}</h6>
                         <div class="capacity">
-                            <i class="fa-solid fa-users me-2"></i>35 Persons
+                            <i class="fa-solid fa-users me-2"></i>{{room.capacity}} Persons
                         </div>
                         <div class="price">
-                            <p class="mb-0"><span>$456</span>/night</p>
+                            <p class="mb-0"><span>{{room.price | currency }}</span>/night</p>
                         </div>
                     </div>
                 </div>
