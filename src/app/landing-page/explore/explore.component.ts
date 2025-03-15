@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AdsUserService } from '../services/ads-service/ads-user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IRoom } from '../../core/model/room';
- 
+import { Location } from '@angular/common';
+  
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
@@ -11,7 +12,7 @@ import { IRoom } from '../../core/model/room';
 export class ExploreComponent implements OnInit {
 tableData: any;
 tableDataRomms:IRoom[] = [];
-constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService){}
+constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService , private _Location:Location){}
 
 ngOnInit(): void {
   this.getAllRooms(this.tableData);
@@ -40,6 +41,10 @@ this._AdsUserService.getAllRooms(data).subscribe({
   // Calculate the discounted price of a room
   calculateDiscountedPrice(price: number, discount: number): number {
     return price - (price * discount / 100);
+  }
+
+  goBack(){
+    this._Location.back()
   }
 
 }

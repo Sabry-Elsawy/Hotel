@@ -10,8 +10,10 @@ const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path:'home' , component:HomeComponent,title:'Home'},
     {path:'explore' ,  loadChildren:()=>import('./explore/explore.module').then(m=>m.ExploreModule)},
+    { path: 'favorite', loadChildren: () => import('./favorite/favorite.module').then(m => m.FavoriteModule) },
     {path:'**' , component: NotfoundComponent}
-  ]}
+  ]},
+
 ];
 
 @NgModule({
