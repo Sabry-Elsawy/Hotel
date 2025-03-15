@@ -5,9 +5,15 @@ export interface IRoom {
       userName: string;
     };
     discount: number;
-    images: string[0];
+    images: string[];
     price: number;
     roomNumber: string;
     updatedAt: string;
     _id: string;
+    isBooked?:boolean;
+    facilities: IFacility[];
+}
+export interface IFacility {
+  _id: string;
+  name: string;
 }

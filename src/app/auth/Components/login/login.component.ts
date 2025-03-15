@@ -31,7 +31,7 @@ handleForm(data:FormGroup):void{
   console.log(data.value);
   this._AuthService.onLogin(data.value).subscribe({
     next:(responce)=>{
-      console.log(responce);
+   //   console.log(responce);
       this.roleUser=responce.data.user.role
       localStorage.setItem('token',  responce.data.token);
       localStorage.setItem('userName',  responce.data.user.userName);
@@ -45,7 +45,7 @@ handleForm(data:FormGroup):void{
     },
     complete:()=>{
     this._Spinner.hide();
-      console.log('complete');
+    //  console.log('complete');
     if (this.roleUser == 'admin') {
       this._Router.navigate(['/admin'])
     }

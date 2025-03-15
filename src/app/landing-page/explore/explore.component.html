@@ -33,3 +33,53 @@
 
         </div>
 </section>
+
+<!-- ================================================== -->
+
+
+<section class="rooms mb-5">
+    <div class="container">
+        <div class="row g-3">
+            <div *ngFor="let room of tableDataRomms" class="col-md-6 col-lg-4 col-xl-3">
+                <div class="card w-100 ">
+                    <div class="room-image w-100">
+                        <img class="w-100" [src]="room.images[0]" alt="">
+                        <span class="discount">{{room.discount}}% OFF</span>
+                        <span class="room-status" [class.booked]="room.isBooked">{{room.isBooked? 'Booked' : 'Available'}}</span>
+                        <span class="room-number">{{room.roomNumber}}</span>
+
+                        <div class="hover-layer">
+                            <div class="icon-wrapper">
+                                <a class="icon-btn"  >
+                                    <i class="fa-regular fa-heart"></i>
+                                </a>
+                                <a class="icon-btn" >
+                                    <i class="fa-regular fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="room-details">
+                     <div class="facility">
+                        <span *ngFor="let facility of room.facilities">{{facility.name}}</span>
+                     
+                   
+                     </div>
+                     <div class="details mt-2 d-flex      align-items-center  justify-content-between">
+                        <div class="price">
+                            <p class="mb-0"> <span class="original-price me-2">{{calculateDiscountedPrice(room.price , room.discount) | currency }}</span> <span class="current-price">{{room.price |currency}}</span> /night</p>
+                        </div>
+                        <div class="capacity">
+                            <i class="fa-solid fa-user me-2"></i>
+                            <span>{{room.capacity}} Person</span>
+                        </div>
+                     </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

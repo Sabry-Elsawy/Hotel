@@ -13,10 +13,10 @@ isScrolled: boolean = false; // حالة التمرير
 toggleNavbar(){
   this.isOpen=!this.isOpen;
   if (this.isOpen) {
-    document.body.style.overflow = 'hidden'; // تعطيل التمرير
+  //  document.body.style.overflow = 'hidden'; // تعطيل التمرير
   }
   else {
-    document.body.style.overflow = ''; // تمكين التمرير
+  //  document.body.style.overflow = ''; // تمكين التمرير
   }
 }
   // // الاستماع إلى حدث النقر في الصفحة

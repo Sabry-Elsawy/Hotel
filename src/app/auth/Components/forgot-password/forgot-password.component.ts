@@ -25,7 +25,7 @@ errorMassage:string='';
      this._Spinner.show();
      this._AuthService.onForgotPassword(data.value).subscribe({
       next:(res)=>{
-        console.log(res);
+       // console.log(res);
         this._Router.navigate(['/Auth/reset-password']);
       },
       error:(err)=>{
@@ -39,7 +39,7 @@ errorMassage:string='';
       },
       complete:()=>{
         this._Spinner.hide();
-        console.log('complete');
+       // console.log('complete');
       }
         
      });

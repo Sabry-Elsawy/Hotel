@@ -44,7 +44,7 @@ getAllAds(data:any){
       this.tableData = response;
       this.tableAllAds=response.data.ads
       this.tableUserAds = response.data.ads.slice(0,5);
-      console.log(this.tableUserAds);
+   //   console.log(this.tableUserAds);
       
     },
     error: (err) => {
@@ -52,7 +52,7 @@ getAllAds(data:any){
       console.log(err);
     },
     complete: () => {
-      console.log('complete');
+    //  console.log('complete');
       this._NgxSpinnerService.hide();
     }
   });
@@ -72,7 +72,7 @@ getAllRomms(data:any){
       this._NgxSpinnerService.hide();
     },
     complete: () => {
-      console.log('complete');
+  //    console.log('complete');
       this._NgxSpinnerService.hide();
     }
   })
