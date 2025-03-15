@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'landing-page', loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule) ,canActivate:[userGuard]},
   { path: 'shared', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
  
+ 
 ];
 
 @NgModule({

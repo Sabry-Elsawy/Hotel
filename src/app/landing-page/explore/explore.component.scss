@@ -1,0 +1,127 @@
+.main-color{
+    color: var(--main-text-color);
+}
+.text-color{
+    color: var(--text-color);
+}
+.heading{
+    .Breadcrumb{
+        font-size: .875rem;
+        line-height: 1.25rem;
+        font-weight: 500;
+        i{
+            margin: 0 0.5rem;
+            font-size: 0.7rem;
+        }
+        span{
+            cursor: pointer;
+        }
+    }
+    .explore{
+        .icon{
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+        .icon:hover{
+            background-color: #a9a9a914;
+        }
+        h2{
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            animation: fadeIn .4s cubic-bezier(.16,1,.3,1);
+        }
+    }
+
+}
+
+.search-input{ 
+    color: var(--text-color) !important;
+    position: relative;
+    i{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 15px;
+    }
+    input{
+        border: 1px solid var(--text-color);
+        border-radius: 25px;
+        padding: 15px 40px;
+        width: 100%;
+    }
+    input::placeholder{
+        color: var(--text-color) !important;
+    }
+    input[type="search"]::-webkit-search-cancel-button {
+        filter: brightness(0) saturate(100%) invert(60%);
+      }
+      input:focus{
+        outline: none;
+        box-shadow: none;
+        border: 2px solid var(--primary-color);
+      }
+      
+    
+}
+@keyframes fadeIn {
+   from{
+   transform: translateY(15px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+@media (max-width:800PX) {
+    .search-input{
+        width: 100% !important;
+        margin-top: 20px;
+    }
+    .content-heading{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .heading{
+        width: 100%;
+    }
+    .main-heading{
+        width: 100%;
+    }
+  
+}
+
+.main-heading{
+    width: 50%;
+ //   background-color: tomato;
+    margin:  40px auto;
+    text-align: center;
+
+    button{
+        border: none;
+        font-weight: 500;
+        padding: .5rem 1rem;
+        border-radius: 20px;
+        color: var(--main-text-color);
+        background-color: #1c3a7625 ;
+    }
+    h1{
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 700;
+        margin: 1.2rem 0;
+        color: var(--primary-color);
+    }
+    p{
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        color: var(--text-color);
+    }
+}

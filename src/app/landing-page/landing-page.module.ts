@@ -6,7 +6,7 @@ import { LandingPageComponent } from './landing-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { ExploreComponent } from './explore/explore.component';
+ 
 import {MatMenuModule, MatMenuTrigger} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -21,7 +21,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ExploreComponent
+ 
   ],
   imports: [
     CommonModule,
