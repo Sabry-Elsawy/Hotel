@@ -34,7 +34,7 @@
         </div>
 </section>
 
-<!-- ================================================== -->
+ 
 
 
 <section class="rooms mb-5">
@@ -50,7 +50,7 @@
 
                         <div class="hover-layer">
                             <div class="icon-wrapper">
-                                <a class="icon-btn"  >
+                                <a (click)="addtoFav(room._id)" class="icon-btn"  >
                                     <i class="fa-regular fa-heart"></i>
                                 </a>
                                 <a class="icon-btn" >
@@ -81,5 +81,57 @@
                 </div>
             </div>
         </div>
+
+        <div class="pagination-container d-flex justify-content-center align-items-center mt-5 flex-wrap">
+            <div class="d-flex align-items-center flex-wrap gap-2">
+                <div class="d-flex align-items-center">
+                    <span class="me-2">Items per page:</span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="pageSizeDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ itemsPerPage }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="pageSizeDropdown">
+                            <li><a class="dropdown-item" (click)="changePageSize(5)">5</a></li>
+                            <li><a class="dropdown-item" (click)="changePageSize(10)">10</a></li>
+                            <li><a class="dropdown-item" (click)="changePageSize(20)">20</a></li>
+                            <li><a class="dropdown-item" (click)="changePageSize(50)">50</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <span class="mx-2">{{ startItem }} – {{ endItem }} of {{ totalNumOfRooms }}</span>
+                <div class="pagination-arrows">
+                    <button class="btn btn-outline-secondary me-2" [disabled]="currentPage === 1"
+                        (click)="previousPage()" title="Go to previous page">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" [disabled]="currentPage === totalPages"
+                        (click)="nextPage()" title="Go to next page">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
     </div>
+
+    
+
+
+
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -10,12 +10,12 @@ export class AdsUserService {
   constructor(private _HttpClient:HttpClient) { }
 
 
-  getAllAds(data:any):Observable<any>
+  getAllAds( ):Observable<any>
   {
-    return this._HttpClient.get('/portal/ads' ,data );
+    return this._HttpClient.get('/portal/ads'  );
   }
-  getAllRooms(data:any):Observable<any>
+  getAllRooms(params:any ):Observable<any>
   {
-    return this._HttpClient.get('/portal/rooms/available' , data);
+    return this._HttpClient.get('/portal/rooms/available',{params:params} );
   }
 }

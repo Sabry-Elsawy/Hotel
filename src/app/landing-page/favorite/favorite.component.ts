@@ -18,21 +18,42 @@ ngOnInit(): void {
 }
 
 getRoomFav(){
+  this._NgxSpinnerService.show()
   this._FavoriteService.getRoomFav().subscribe({
     next:(response)=>{
-      console.log(response);
+ //     console.log(response);
       this.allRoomFav=response.data.favoriteRooms[0].rooms
-      console.log(this.allRoomFav);
+    //  console.log(this.allRoomFav);
       
     },
     error:(err)=>{
       console.log(err);
-      
+      this._NgxSpinnerService.hide()
     },
     complete:()=>{
-      console.log("Done");
-      
+     // console.log("Done");
+     this._NgxSpinnerService.hide()
     }
   })
 }
+
+removeFromFav(roomId:string){
+  this._NgxSpinnerService.show()
+  this._FavoriteService.removeFromFav(roomId).subscribe({
+    next:(response)=>{
+      console.log(response);
+     // this.allRoomFav=response.data.favoriteRoom.rooms
+     this.getRoomFav()
+    },
+    error:(err)=>{
+      console.log(err);
+      this._NgxSpinnerService.hide()
+    },
+    complete:()=>{
+      console.log("Done");
+      this._NgxSpinnerService.hide()
+    }
+  })
+}
+
 }

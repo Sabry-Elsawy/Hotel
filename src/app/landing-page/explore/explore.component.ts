@@ -3,6 +3,7 @@ import { AdsUserService } from '../services/ads-service/ads-user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IRoom } from '../../core/model/room';
 import { Location } from '@angular/common';
+import { FavoriteService } from '../services/favorite/favorite.service';
   
 @Component({
   selector: 'app-explore',
@@ -10,22 +11,29 @@ import { Location } from '@angular/common';
   styleUrl: './explore.component.scss'
 })
 export class ExploreComponent implements OnInit {
-tableData: any;
+
 tableDataRomms:IRoom[] = [];
-constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService , private _Location:Location){}
+constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService , private _Location:Location ,private _FavoriteService:FavoriteService){}
 
 ngOnInit(): void {
-  this.getAllRooms(this.tableData);
+  this.getAllRooms();
 }
 
 
-getAllRooms(data:any){
+getAllRooms( ){
+  let params={
+    size:this.itemsPerPage,
+    page:this.currentPage
+   }
   this._NgxSpinnerService.show();
-this._AdsUserService.getAllRooms(data).subscribe({
+this._AdsUserService.getAllRooms(params).subscribe({
  next:(response)=>{
-  console.log(response);
-  this.tableData=response;
+ console.log(response);
+ 
   this.tableDataRomms=response.data.rooms;
+ this.totalNumOfRooms=response.data.totalCount
+this.clacPagination();
+this.updateItemRange();
  },
  error:(err)=>{
   console.log(err);
@@ -38,6 +46,26 @@ this._AdsUserService.getAllRooms(data).subscribe({
 })
 }
 
+// Add room to favorite
+
+addtoFav(roomId:string){
+  this._FavoriteService.addRoomToFav(roomId).subscribe({
+    next:(response)=>{
+      console.log(response);
+      
+    },
+    error:(err)=>{
+      console.log(err);
+      
+    },
+    complete:()=>{
+      console.log("Done");
+      
+    }
+  })
+}
+
+
   // Calculate the discounted price of a room
   calculateDiscountedPrice(price: number, discount: number): number {
     return price - (price * discount / 100);
@@ -47,4 +75,44 @@ this._AdsUserService.getAllRooms(data).subscribe({
     this._Location.back()
   }
 
+
+  // ===================================
+
+
+  // handle pagination in explore page
+
+  itemsPerPage:number=10;
+  startItem:number=1;
+  totalPages:number=0;
+  currentPage:number=1;
+  totalNumOfRooms:number=0;
+  endItem:number=10;
+
+  updateItemRange(){
+    this.endItem=Math.min(this.currentPage*this.itemsPerPage , this.totalNumOfRooms)
+    this.startItem=(this.currentPage - 1)*this.itemsPerPage + 1;
+  }
+
+  clacPagination(){
+    this.totalPages=this.totalNumOfRooms/this.itemsPerPage;
+  }
+  changePageSize(size:number){
+    this.itemsPerPage=size;
+    this.currentPage=1;
+    this.getAllRooms()
+  }
+  previousPage(){
+    if (this.currentPage>1) {
+      this.currentPage--;
+      this.getAllRooms()
+    }
+  }
+  nextPage(){
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getAllRooms();
+    }
+  }
+
+ 
 }

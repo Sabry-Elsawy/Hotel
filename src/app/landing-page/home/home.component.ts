@@ -12,15 +12,15 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class HomeComponent implements OnInit {
 capacity:number=0;
-tableData: any;
+ 
 tableAllAds: IAds[] = [];
 tableUserAds: IAds[] = [];
 tableDataRomms:IRoom[] = [];
  
 constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService) { }
 ngOnInit(): void {
- this.getAllAds(this.tableUserAds)
- this.getAllRomms(this.tableDataRomms)
+ this.getAllAds()
+ this.getAllRomms()
  
 
  
@@ -37,11 +37,11 @@ decreasementCapacity(){
     
    }
 }
-getAllAds(data:any){
+getAllAds( ){
   this._NgxSpinnerService.show();
-  this._AdsUserService.getAllAds(data).subscribe({
+  this._AdsUserService.getAllAds( ).subscribe({
     next: (response) => {
-      this.tableData = response;
+   
       this.tableAllAds=response.data.ads
       this.tableUserAds = response.data.ads.slice(0,5);
    //   console.log(this.tableUserAds);
@@ -59,11 +59,15 @@ getAllAds(data:any){
 
 }
 
-getAllRomms(data:any){
+getAllRomms(){
   this._NgxSpinnerService.show();
-  this._AdsUserService.getAllRooms(data).subscribe({
+  let params={
+    size:10,
+    page:1
+   }
+  this._AdsUserService.getAllRooms(params ).subscribe({
     next: (response) => {
-      this.tableData = response;
+  
       
       this.tableDataRomms = response.data.rooms.slice(0,4);
     },
