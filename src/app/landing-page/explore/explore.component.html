@@ -50,8 +50,8 @@
 
                         <div class="hover-layer">
                             <div class="icon-wrapper">
-                                <a (click)="addtoFav(room._id)" class="icon-btn"  >
-                                    <i class="fa-regular fa-heart"></i>
+                                <a (click)="toggleFavorite(room._id)" class="icon-btn"  >
+                                    <i [class.fav]="room.isFav"  class="fa-solid fa-heart"></i>
                                 </a>
                                 <a class="icon-btn" >
                                     <i class="fa-regular fa-eye"></i>

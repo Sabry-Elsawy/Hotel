@@ -18,4 +18,7 @@ export class AdsUserService {
   {
     return this._HttpClient.get('/portal/rooms/available',{params:params} );
   }
+
+
+  
 }

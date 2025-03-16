@@ -4,6 +4,8 @@ import { IAds } from '../../core/model/ads';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IRoom } from '../../core/model/room';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { FavoriteService } from '../services/favorite/favorite.service';
+ 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,12 +14,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class HomeComponent implements OnInit {
 capacity:number=0;
- 
 tableAllAds: IAds[] = [];
 tableUserAds: IAds[] = [];
 tableDataRomms:IRoom[] = [];
  
-constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService) { }
+constructor(private _AdsUserService:AdsUserService , private _NgxSpinnerService:NgxSpinnerService , private _FavoriteService:FavoriteService) { }
 ngOnInit(): void {
  this.getAllAds()
  this.getAllRomms()
@@ -81,6 +82,30 @@ getAllRomms(){
     }
   })
 }
+
+
+ 
+
+// Add room to favorite
+
+addtoFav(roomId:string){
+  this._FavoriteService.addRoomToFav(roomId).subscribe({
+    next:(response)=>{
+      console.log(response);
+      
+    },
+    error:(err)=>{
+      console.log(err);
+      
+    },
+    complete:()=>{
+      console.log("Done");
+      
+    }
+  })
+}
+
+
 
 // ============================================================================
 firstCarouselOptions: OwlOptions = {
