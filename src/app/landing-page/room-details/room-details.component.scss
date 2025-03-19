@@ -98,6 +98,11 @@
            right: 8px ;
         }
     }
+    @media (max-width:700px) {
+        .main-room-image{
+            height: 20rem !important;
+        }
+    }
       /* Updated Thumbnails Styles */
   .thumbnails-container {
     display: grid;
@@ -138,3 +143,99 @@
 
 
 
+.card-details{
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px 15px;
+    .room-title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h3{
+            letter-spacing: -0.025em;
+            font-size: 1.875rem;
+            color: var( --title-color);
+            font-weight: 500;
+        }
+        button{
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: var( --title-color);
+            color: #fff;
+            transition: transform .3s ease;
+            &:hover{
+                transform: scale(1.03);
+            }
+        }
+    }
+
+    .rating-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+        .stars {
+            color: rgb(245 158 11);
+           //font-size: 20px;
+          }
+      }
+
+      .price-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        .current-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: green;
+          }
+          
+          .original-price {
+            text-decoration: line-through;
+            color: #94a3b8;
+            font-size: 1.5rem;
+          }
+          
+          .discount-badge {
+            background: #fee2e2;
+            color: #ef4444;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+          }
+      }
+      
+   .description{
+    color: var(--text-color);
+   }
+      
+      .booking-button{
+        width: 100%;
+        padding: 15px;
+        margin-top: 10px;
+        background-color: var(--secondary-color);
+        border-radius: 8px;
+        border: none;
+        color: #fff;
+        font-weight: 500;
+        animation: 3s ease 0s infinite normal none running pulse-slow;
+
+      }
+
+  
+}
+
+@keyframes pulse-slow  {
+    0%{
+        box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 0px 0.572864px;
+    }
+    50%{
+        box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 5px  5px;
+    }
+    100%{
+        box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 0px 0.572864px;
+    }
+}

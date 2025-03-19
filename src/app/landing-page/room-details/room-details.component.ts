@@ -9,9 +9,9 @@ import { RoomDetailsService } from '../services/room-details/room-details.servic
   styleUrl: './room-details.component.scss'
 })
 export class RoomDetailsComponent implements OnInit{
-  room:IRoom[]=[];
+  room!:IRoom;
   roomImages:string[]=[];
-  roomFacilities:string='';
+  showBookingForm = false;
   selectedImageIndex = 0;
   visibleThumbnails: number[] = [];
   readonly thumbnailsToShow = 4;
@@ -19,18 +19,18 @@ export class RoomDetailsComponent implements OnInit{
   constructor(private _ActivatedRoute:ActivatedRoute , private _RoomDetailsService:RoomDetailsService){}
 
   ngOnInit(): void {
+    //extract the room ID from the route parameters
   const roomId=  this._ActivatedRoute.snapshot.params['id']
  // console.log(roomId);
   this.getRoomById(roomId);
   }
-// get room by id
+  // Function to fetch room details based on the room ID
   getRoomById(id:string){
     this._RoomDetailsService.getRoomById(id).subscribe({
       next:(response)=>{
         console.log(response);
         this.room=response.data.room
         this.roomImages=response.data.room.images
-        this.roomFacilities=response.data.room.facilities[0].name
         console.log(this.room);
         this.updateVisibleThumbnails()
       },
@@ -44,10 +44,14 @@ export class RoomDetailsComponent implements OnInit{
       }
     })
   }
- 
+   // Function to update the selected image index in the gallery
+
   setSelectedImage(index:number){
     this.selectedImageIndex=index;
+    this.updateVisibleThumbnails();
   }
+    // Function to navigate through the image gallery
+
   moveGallary(direction : 'prev' | 'next'){
     if (direction === 'next' && this.selectedImageIndex<this.roomImages.length - 1) {
       this.selectedImageIndex++;
@@ -57,6 +61,8 @@ export class RoomDetailsComponent implements OnInit{
     }
     this.updateVisibleThumbnails();
   }
+    // Function to update the array of visible thumbnail indexes
+
   updateVisibleThumbnails(){
     const start = Math.max(0 , Math.min(this.selectedImageIndex - Math.floor(this.thumbnailsToShow / 2)),this.roomImages.length -this.thumbnailsToShow);
 
@@ -65,4 +71,15 @@ export class RoomDetailsComponent implements OnInit{
 )
 
   }
+  // Function to calculate the price after applying a discount
+
+  calculateDiscountedPrice(price:number, discount:number):number{
+    return price - (price * discount / 100);
+  }
+    // Function to toggle the booking form visibility
+    toggleBookingForm() {
+      if (!this.room.isBooked) {
+        this.showBookingForm = !this.showBookingForm;
+      }
+    }
 }

@@ -21,8 +21,8 @@
 
  <section class="py-4">
     <div class="container">
-        <div class="row g-3">
-            <div class="col-md-6">
+        <div class="row g-4">
+            <div class="col-lg-6">
 
 
                 <div class="gallery-container">
@@ -33,7 +33,7 @@
                       <img [src]="roomImages[selectedImageIndex]" class="main-room-image" alt="Room image">
                       <div class="facilities-name"  >
                         <i class="fas fa-tag me-2"></i>
-                        {{roomFacilities}}
+                        {{room.facilities[0].name}}
                       </div>
                       <button (click)="moveGallary('next')" [disabled]="selectedImageIndex ===  roomImages.length - 1" class="gallery-nav next" title="Next Image">
                         <i class="fas fa-chevron-right"></i>
@@ -59,6 +59,42 @@
 
 
             </div>
+
+             <div class="col-lg-6">
+         <div class="card-details">
+          <div class="room-title">
+            <h3>{{room.facilities[0].name}}</h3>
+            <button type="button">Review & Comment </button>
+          </div>
+
+          <div class="rating-container mb-3">
+            <div class="stars">
+              @for (star of [1,2,3,4,5]; track star) {
+              <i class="fas fa-star"></i>
+              }
+            </div>
+          </div>
+
+
+
+          <div class="price-section mb-4">
+            <div class="current-price"> {{calculateDiscountedPrice(room.price , room.discount) | currency }}</div>
+            <div class="original-price">{{room.price | currency }}</div>
+            <div class="discount-badge"> {{room.discount}}%</div>
+          </div>
+
+          <p class="description mb-4">Experience luxury and comfort in our
+             spacious Deluxe Ocean View Suite. This premium accommodation offers
+              breathtaking views of the ocean, elegant furnishings, and all the 
+              amenities you need for an unforgettable stay.</p>
+
+
+              <button (click)="toggleBookingForm()" class="booking-button">
+                {{room.isBooked ? 'Room is Booked' : (showBookingForm ? 'Hide Booking Form' : 'Start Booking')}} <i class="fas fa-calendar-check ms-2"></i>
+              </button>
+
+         </div>
+             </div>
         </div>
     </div>
  </section>
