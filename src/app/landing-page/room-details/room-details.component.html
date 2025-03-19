@@ -1,0 +1,64 @@
+<section class=" mt-5 pt-5">
+    <div class="container pt-2">
+        <div class="heading">
+            <div class="main-heading text-center py-2">
+                <h1>Room Details</h1>
+            </div>
+            <div class="Breadcrumb">
+                <div class="d-flex align-items-center">
+                    <span><i class="fa-solid fa-house text-color"></i></span>
+                    <span routerLink="/landing-page/home" class="text-color"> Home</span>
+                    <span class="text-color"><i class="fa-solid fa-chevron-right"></i></span>
+                    <span class="main-color">Room Details</span>
+                </div>
+            </div>
+        </div>
+    </div>
+ </section>
+
+
+ <!-- =============================================== -->
+
+ <section class="py-4">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6">
+
+
+                <div class="gallery-container">
+                    <div class="main-image-container w-100">
+                      <button (click)="moveGallary('prev')" [disabled]="selectedImageIndex === 0" class="gallery-nav prev" title="Previous Image">
+                        <i class="fas fa-chevron-left"></i>
+                      </button>
+                      <img [src]="roomImages[selectedImageIndex]" class="main-room-image" alt="Room image">
+                      <div class="facilities-name"  >
+                        <i class="fas fa-tag me-2"></i>
+                        {{roomFacilities}}
+                      </div>
+                      <button (click)="moveGallary('next')" [disabled]="selectedImageIndex ===  roomImages.length - 1" class="gallery-nav next" title="Next Image">
+                        <i class="fas fa-chevron-right"></i>
+                      </button>
+                    </div>
+
+
+                    <div class="thumbnails-container mt-3">
+                      @for (index of visibleThumbnails; track index) {
+                        <div class="thumbnail-wrapper">
+                          <div class="thumbnail-container" 
+                               [class.active]="selectedImageIndex === index"
+                               (click)="setSelectedImage(index)">
+                            <img [src]="roomImages[index]" class="thumbnail-image" alt="Thumbnail image of the room">
+                          </div>
+                        </div>
+                      }
+                    </div>
+
+                   
+                  </div>
+
+
+
+            </div>
+        </div>
+    </div>
+ </section>

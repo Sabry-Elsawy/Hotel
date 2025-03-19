@@ -11,6 +11,7 @@ const routes: Routes = [
     {path:'home' , component:HomeComponent,title:'Home'},
     {path:'explore' ,  loadChildren:()=>import('./explore/explore.module').then(m=>m.ExploreModule)},
     { path: 'favorite', loadChildren: () => import('./favorite/favorite.module').then(m => m.FavoriteModule) },
+    {path:'room-details/:id', loadChildren:()=>import('./room-details/room-details.module').then(m=>m.RoomDetailsModule)},
     {path:'**' , component: NotfoundComponent}
   ]},
 
