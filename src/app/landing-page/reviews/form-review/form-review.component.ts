@@ -36,11 +36,11 @@ initForm():void{
 
 
 submitForm():void{
-  if (this.formReview.valid) {
+  if (this.formReview.valid) {   
     this._NgxSpinnerService.show();
      this._ReviewsService.setReview(this.formReview.value).subscribe({
       next:(response)=>{
-        console.log(response);
+     //   console.log(response);
         this.restForm()
       },
       error:(err)=>{

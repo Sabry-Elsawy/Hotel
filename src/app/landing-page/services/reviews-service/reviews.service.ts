@@ -13,4 +13,7 @@ export class ReviewsService {
   setReview(data:FormGroup):Observable<any>{
     return this._HttpClient.post<any>(`/portal/room-reviews/`, data)
   }
+  addComment(data: FormGroup): Observable<any> {
+    return this._HttpClient.post<any>(`/portal/room-comments`, data)
+  }
 }

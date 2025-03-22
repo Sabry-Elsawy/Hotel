@@ -4,13 +4,13 @@
         <h2>Leave a Comment</h2>
     </div>
     
-        <form >
+        <form (ngSubmit)="submitForm()" [formGroup]="commentForm" >
        
     
             <div class="form-group">
                 <label for="reviewText">Your Comment</label>
                 <textarea   
-                [(ngModel)]="userInput"
+                [(ngModel)]="userInput"  formControlName="comment"
                 (input)="updateCharCount()" id="reviewText" maxlength="200"  name="reviewText" placeholder="Share your thoughts..." rows="4">
                 </textarea>
               <div class="limited ">

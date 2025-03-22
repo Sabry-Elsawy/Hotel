@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReviewsService } from '../../services/reviews-service/reviews.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+  
 @Component({
   selector: 'app-form-comment',
   templateUrl: './form-comment.component.html',
   styleUrl: './form-comment.component.scss'
 })
-export class FormCommentComponent {
+export class FormCommentComponent implements OnInit{
+  constructor(private _ReviewsService:ReviewsService , private _NgxSpinnerService:NgxSpinnerService){}
+@Input() roomId:string='';
   stars:number[]=[1,2,3,4,5];
   reLoadingInput = document.querySelector('.reloading')
   userInput: string = '';  
@@ -13,7 +18,39 @@ export class FormCommentComponent {
   charCount: number = 0;  
   isLimitReached: boolean = false;
   loadingWidth:number=0;  
+  commentForm!:FormGroup;
+  ngOnInit(): void {
+    this.initForm()
+  }
+  initForm():void{
+      this.commentForm=new FormGroup({
+      roomId:new FormControl(this.roomId , [Validators.required]),
+      comment:new FormControl(null , [Validators.required , Validators.minLength(5)])
+    })
   
+  }
+ 
+  submitForm():void{
+    if (this.commentForm.valid) {
+      this._NgxSpinnerService.show()
+      this._ReviewsService.addComment(this.commentForm.value).subscribe({
+        next:(response)=>{
+       //   console.log(response);
+          
+        },
+        error:(err)=>{
+          console.log(err);
+          this._NgxSpinnerService.hide()
+        },
+        complete:()=>{
+        //  console.log("Done add comment");
+          this._NgxSpinnerService.hide()
+        }
+      })
+      
+    }
+    
+  }
    
   updateCharCount() {
     this.charCount = this.userInput.length;
