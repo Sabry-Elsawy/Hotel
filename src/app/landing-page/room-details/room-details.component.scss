@@ -146,7 +146,8 @@
 .card-details{
     background-color: #fff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    padding: 20px 15px;
+    padding: 20px ;
+    border-radius: 15px;
     .room-title{
         display: flex;
         justify-content: space-between;
@@ -228,14 +229,4 @@
   
 }
 
-@keyframes pulse-slow  {
-    0%{
-        box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 0px 0.572864px;
-    }
-    50%{
-        box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 5px  5px;
-    }
-    100%{
-        box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 0px 0.572864px;
-    }
-}
+ 

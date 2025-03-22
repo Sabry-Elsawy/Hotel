@@ -1,0 +1,35 @@
+<div class="review-form-container">
+<div class="heading ">
+    <i class="fa-regular fa-star"></i>
+    <h2>Leave a Review</h2>
+</div>
+
+    <form >
+        <div class="rating-container mb-4">
+            <label > Your Rating</label>
+          <div class="stars">
+            <span *ngFor="let star of stars">
+                ★
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reviewText">Your Review</label>
+            <textarea   
+            [(ngModel)]="userInput"
+            (input)="updateCharCount()" id="reviewText" maxlength="200"  name="reviewText" placeholder="Share your experience..." rows="4">
+            </textarea>
+          <div class="limited ">
+            <div class="loading">
+                <div class="reloading"  [style.width]="getLoadingWidth()"     [style.backgroundColor]="getBackgroundColor()" ></div>
+            </div>
+            <div [ngClass]="{'char-limit': isLimitReached}">
+                {{ charCount }} / {{ maxChars }}  
+              </div>
+          </div>
+        </div>
+
+        <button type="submit">Submit Review <i class="ms-2 fa-regular fa-paper-plane"></i> </button>
+    </form>
+</div>

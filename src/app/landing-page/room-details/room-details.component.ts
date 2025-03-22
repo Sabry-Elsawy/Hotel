@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IRoom } from '../../core/model/room';
 import { ActivatedRoute } from '@angular/router';
 import { RoomDetailsService } from '../services/room-details/room-details.service';
+import { NgxSpinnerService } from 'ngx-spinner';
  
 @Component({
   selector: 'app-room-details',
@@ -16,7 +17,7 @@ export class RoomDetailsComponent implements OnInit{
   visibleThumbnails: number[] = [];
   readonly thumbnailsToShow = 4;
 
-  constructor(private _ActivatedRoute:ActivatedRoute , private _RoomDetailsService:RoomDetailsService){}
+  constructor(private _ActivatedRoute:ActivatedRoute , private _RoomDetailsService:RoomDetailsService , private _NgxSpinnerService:NgxSpinnerService){}
 
   ngOnInit(): void {
     //extract the room ID from the route parameters
@@ -26,6 +27,7 @@ export class RoomDetailsComponent implements OnInit{
   }
   // Function to fetch room details based on the room ID
   getRoomById(id:string){
+    this._NgxSpinnerService.show()
     this._RoomDetailsService.getRoomById(id).subscribe({
       next:(response)=>{
         console.log(response);
@@ -36,11 +38,11 @@ export class RoomDetailsComponent implements OnInit{
       },
       error:(err)=>{
         console.log(err);
-        
+        this._NgxSpinnerService.hide()
       },
       complete:()=>{
         console.log('Done get room by id');
-        
+        this._NgxSpinnerService.hide()
       }
     })
   }

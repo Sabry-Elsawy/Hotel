@@ -64,7 +64,7 @@
          <div class="card-details">
           <div class="room-title">
             <h3>{{room.facilities[0].name}}</h3>
-            <button type="button">Review & Comment </button>
+            <button [routerLink]="['/landing-page/reviews/review',room._id]"  type="button">Review & Comment </button>
           </div>
 
           <div class="rating-container mb-3">
@@ -94,6 +94,11 @@
               </button>
 
          </div>
+
+         <div class="booking-form-wrapper">
+          <app-booking-form [roomData]="room"></app-booking-form>
+         </div>
+
              </div>
         </div>
     </div>

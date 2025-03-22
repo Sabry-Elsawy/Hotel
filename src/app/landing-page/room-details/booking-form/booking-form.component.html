@@ -1,0 +1,45 @@
+<div class="booking-form-container">
+    <h3 class="booking-section-title">Book Your Stay</h3>
+
+    <form   class="booking-form">
+        <div class="form-group">
+            <label for="startDate">Check-in Date</label>
+            <input type="date" id="startDate" formControlName="startDate" class="form-control">
+           
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">Check-out Date</label>
+            <input type="date" id="endDate" formControlName="endDate" class="form-control">
+         
+        </div>
+
+        
+
+        <div   class="booking-summary">
+            <div class="summary-item">
+                <span>Room Rate:</span>
+                <span> {{roomData.price}} per night</span>
+            </div>
+            <div class="summary-item">
+                <span>Nights:</span>
+                <span> 4 </span>
+            </div>
+            <div class="summary-item discount"  >
+                <span>Discount:</span>
+                <span>-{{roomData.discount}}%</span>
+            </div>
+            <div class="summary-item total">
+                <span>Total:</span>
+                <span> 3454</span>
+            </div>
+        </div>
+
+        <button type="submit" class="booking-button" >
+            <i class="fas fa-calendar-check"></i>
+            {{roomData && roomData.isBooked ? 'Room is Booked' : 'Confirm Booking'}}
+        </button>
+    </form>
+</div>
+
+

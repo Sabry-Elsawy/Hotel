@@ -81,5 +81,24 @@ li{
     list-style: none;
 }
 
+@keyframes pulse-slow  {
+  0%{
+      box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 0px 0.572864px;
+  }
+  50%{
+      box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 5px  5px;
+  }
+  100%{
+      box-shadow: rgba(255, 73, 139, 0.384) 0px 0px 0px 0.572864px;
+  }
+}
+@keyframes fadeIn {
+  0%{
+      transform: translateY(10px);
+  }
+  100%{
+      transform: translateY(0px);
+  }
+}
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';

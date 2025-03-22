@@ -1,0 +1,28 @@
+<div class="review-form-container">
+    <div class="heading ">
+        <i class="fa-regular fa-comment"></i>
+        <h2>Leave a Comment</h2>
+    </div>
+    
+        <form >
+       
+    
+            <div class="form-group">
+                <label for="reviewText">Your Comment</label>
+                <textarea   
+                [(ngModel)]="userInput"
+                (input)="updateCharCount()" id="reviewText" maxlength="200"  name="reviewText" placeholder="Share your thoughts..." rows="4">
+                </textarea>
+              <div class="limited ">
+                <div class="loading">
+                    <div class="reloading"  [style.width]="getLoadingWidth()"     [style.backgroundColor]="getBackgroundColor()" ></div>
+                </div>
+                <div [ngClass]="{'char-limit': isLimitReached}">
+                    {{ charCount }} / {{ maxChars }}  
+                  </div>
+              </div>
+            </div>
+    
+            <button type="submit">Submit Comment <i class="ms-2 fa-regular fa-paper-plane"></i> </button>
+        </form>
+    </div>

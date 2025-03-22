@@ -1,0 +1,84 @@
+.review-form-container{
+    animation: fadeIn 1s ease ;
+    .heading{
+        margin-bottom: .7rem;
+        display: flex;
+         align-items: center;
+         h2{
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--title-color);
+         }
+         i{
+            margin-right: 15px;
+            color: #fff;
+            background-color: var(--primary-color);
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 50%;
+         }
+    }
+    form{
+        background-color: #fff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 20px;
+        border-radius: 10px;
+        label{
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        .stars{
+            color: var(--text-color);
+            font-size: 2.7rem;
+        }
+        textarea{
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            color: var(--primary-color);
+            border: 1px solid var(--text-color);
+            resize: vertical;
+            &:focus{
+                box-shadow: none;
+                border: 1px solid var(--main-text-color);
+                outline: none;
+            }
+        }
+        .limited{
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            .loading{
+                margin-right: 10px;
+                display: inline-block;
+                height: 5px;
+                width: 100px;
+                border-radius: 5px;
+                background-color: rgba(28, 58, 118, 0.1);
+                position: relative;
+                .reloading{
+                    position: absolute;
+                    border-radius: 5px;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+            
+        }
+        button{
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--title-color);
+            color: #fff;
+            border-radius: 10px;
+            border: none;
+            font-size: 1.1rem;
+        }
+    }
+}
