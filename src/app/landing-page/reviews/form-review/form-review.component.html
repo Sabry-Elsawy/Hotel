@@ -4,11 +4,11 @@
     <h2>Leave a Review</h2>
 </div>
 
-    <form >
+    <form (ngSubmit)="submitForm()"  [formGroup]="formReview">
         <div class="rating-container mb-4">
             <label > Your Rating</label>
           <div class="stars">
-            <span *ngFor="let star of stars">
+            <span *ngFor="let star of stars" [class.filled]="(hoverRating || rating)>=star" (click)="setRating(star)" (mouseenter)="setHoverRating(star)" (mouseleave)="resetHoverRating()">
                 ★
             </span>
           </div>
@@ -18,7 +18,7 @@
             <label for="reviewText">Your Review</label>
             <textarea   
             [(ngModel)]="userInput"
-            (input)="updateCharCount()" id="reviewText" maxlength="200"  name="reviewText" placeholder="Share your experience..." rows="4">
+            (input)="updateCharCount()" formControlName="review" id="reviewText" maxlength="200"  name="reviewText" placeholder="Share your experience..." rows="4">
             </textarea>
           <div class="limited ">
             <div class="loading">
