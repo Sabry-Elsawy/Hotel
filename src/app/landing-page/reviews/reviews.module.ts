@@ -6,13 +6,15 @@ import { ReviewComponent } from './review/review.component';
 import { FormReviewComponent } from './form-review/form-review.component';
 import { FormCommentComponent } from './form-comment/form-comment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AllReviewComponent } from './all-review/all-review.component';
 
 
 @NgModule({
   declarations: [
     ReviewComponent,
     FormReviewComponent,
-    FormCommentComponent
+    FormCommentComponent,
+    AllReviewComponent
   ],
   imports: [
     CommonModule,

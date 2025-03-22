@@ -16,4 +16,7 @@ export class ReviewsService {
   addComment(data: FormGroup): Observable<any> {
     return this._HttpClient.post<any>(`/portal/room-comments`, data)
   }
+  getRoomReviews(roomId: string): Observable<any> {
+    return this._HttpClient.get<any>(`/portal/room-reviews/${roomId}`)
+  }
 }

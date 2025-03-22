@@ -1,0 +1,32 @@
+ 
+<div class="reviews">
+    <div class="heading">
+        <i class="fa-regular fa-comments me-2"></i>
+        <h2>Recent Reviews</h2>
+    </div>
+    <div class="row g-3 mt-4">
+        <div *ngFor="let review of roomReviews" class="col-md-4">
+            <div class="card w-100">
+          <div class="info-container w-100">
+            <div class="info ">
+                <div class="image">
+                    <img [src]="review.user.profileImage" alt="profileImage">
+                </div>
+                <div class="name">
+                    <h6>{{review.user.userName}}</h6>
+                    <div  class="rating">
+                        <i *ngFor="let item of star" [class.filled]="(review.rating)>=item" class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="date">
+                 {{review.createdAt | date }}
+            </div>
+          </div>
+          <div class="comment">
+            <p> {{review.review}} </p>
+          </div>
+            </div>
+        </div>
+    </div>
+</div>
