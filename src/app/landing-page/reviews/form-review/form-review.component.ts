@@ -50,7 +50,9 @@ submitForm():void{
       },
       complete:()=>{
        // console.log("Done set review");
-        this._NgxSpinnerService.hide()
+       
+        window.location.reload(); 
+        this._NgxSpinnerService.hide();
       }
      })
     

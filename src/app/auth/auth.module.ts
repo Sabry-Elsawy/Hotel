@@ -13,6 +13,8 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { NotfoundComponent } from '../shared/notfound/notfound.component';
 import { SharedModule } from '../shared/shared.module';
+import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+import { LandingPageModule } from "../landing-page/landing-page.module";
   
    
 @NgModule({
@@ -22,6 +24,7 @@ import { SharedModule } from '../shared/shared.module';
  
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    ChangePasswordComponent,
   
   ],
   imports: [
@@ -31,8 +34,9 @@ import { SharedModule } from '../shared/shared.module';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule  ,
-    SharedModule  
-  ]
+    FormsModule,
+    SharedModule,
+    LandingPageModule
+]
 })
 export class AuthModule { }

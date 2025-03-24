@@ -76,7 +76,7 @@
         </div>
         <div class="card-icon">
          <!-- <a  > <i class="fa-solid fa-heart"></i></a> -->
-         <a > <i class="fa-solid fa-eye"></i></a>
+         <a  > <i class="fa-solid fa-eye"></i></a>
         </div>
         <div class="card-caption">
           <h4>{{room.room.roomNumber}}</h4>
@@ -125,7 +125,7 @@
     </div>
     <div class="row g-3">
     <div *ngFor="let room of tableDataRomms" class="col-lg-3 col-md-6">
-       <div class="living-room w-100">
+       <div [routerLink]="['/landing-page/room-details',room._id]" class="living-room w-100">
         <div  class="image">
           <img class="w-100" [src]="room.images[0]" alt="roomImg">
         </div>

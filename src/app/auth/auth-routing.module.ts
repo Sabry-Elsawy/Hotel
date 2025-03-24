@@ -6,6 +6,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { NotfoundComponent } from '../shared/notfound/notfound.component';
+import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent, title:'Register'},
   {path:'forgot-password', component:ForgotPasswordComponent , title:'forgot-password'},
   {path:'reset-password' , component:ResetPasswordComponent , title:'reset-password'},
+  {path:'change-pass' , component:ChangePasswordComponent , title:'change-password'},
   {path:'**' , component:NotfoundComponent , title:'Not Found'}
 ];
 

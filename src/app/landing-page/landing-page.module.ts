@@ -37,6 +37,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
  
      
   ],
+  exports:[
+    NavbarComponent,
+    FooterComponent
+  ],
   providers: [
     provideNativeDateAdapter()
   ],
