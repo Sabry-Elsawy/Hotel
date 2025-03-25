@@ -13,6 +13,7 @@ const routes: Routes = [
     { path: 'favorite', loadChildren: () => import('./favorite/favorite.module').then(m => m.FavoriteModule),title:'favorite' },
     {path:'room-details/:id', loadChildren:()=>import('./room-details/room-details.module').then(m=>m.RoomDetailsModule)  },
     {path:'reviews', loadChildren:()=>import('./reviews/reviews.module').then(m =>m.ReviewsModule)},
+    {path:'profile' , loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
     {path:'**' , component: NotfoundComponent}
   ]},
 

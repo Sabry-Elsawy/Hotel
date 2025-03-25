@@ -36,6 +36,7 @@ handleForm(data:FormGroup):void{
       localStorage.setItem('token',  responce.data.token);
       localStorage.setItem('userName',  responce.data.user.userName);
       localStorage.setItem('role',  responce.data.user.role);
+      localStorage.setItem('id', responce.data.user._id)
 
     },
     error:(err)=>{

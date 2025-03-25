@@ -39,6 +39,7 @@
     <button class="caret-down" type="button" mat-button [matMenuTriggerFor]="userMenu" title="Open menu"><i class="fa-solid fa-caret-down"></i></button>
 </div>
                 <mat-menu class="mt-3 " #userMenu="matMenu">
+                  <button (click)="toggleNavbar()" routerLink="/landing-page/profile/info" mat-menu-item><i class="fa-solid fa-user mx-2"></i> Profile</button>
                   <button (click)="toggleNavbar()" routerLink="/Auth/change-pass" mat-menu-item><i class="fa-solid fa-lock-open mx-2"></i> Change password</button>
                   <button (click)="toggleNavbar()" (click)="onLogout()" mat-menu-item><i class="fa-solid fa-arrow-right-from-bracket mx-2"></i> Logout</button>
                 </mat-menu>

@@ -1,0 +1,63 @@
+ <section class="py-5 mt-5 ">
+    <div class="profile-container pt-5">
+        <div class="profile-header">
+            <span>User Profile</span>
+          <h1 class="header-title">Your Profile</h1>
+          <p class="header-subtitle">View and manage your personal information and account settings</p>
+        </div>
+      
+        <div class="profile-card">
+          <div class="profile-picture">
+            <img [src]="userInfo.profileImage" alt="Profile Picture" />
+            <span class="status-dot"></span>
+          </div>
+      
+          <div class="profile-details">
+            <h2 class="user-name">{{userInfo.userName}}</h2>
+            <p class="user-role">{{userInfo.role}}</p>
+      
+            <div class="info-item">
+              <span class="icon">📧</span>
+              <div class="info-text">
+                <span class="label">Email <span class="user-status"  [class.notVerified]="!userInfo.verified"  [class.verified]="userInfo.verified">{{ userInfo.verified ? 'Verified' : 'Not Verified' }}</span> </span>
+                <span class="value">{{userInfo.email}}</span>
+              </div>
+            </div>
+      
+            <div class="info-item">
+              <span class="icon">📞</span>
+              <div class="info-text">
+                <span class="label">Phone</span>
+                <span class="value">{{userInfo.phoneNumber}}</span>
+              </div>
+            </div>
+      
+            <div class="info-item">
+              <span class="icon">🌍</span>
+              <div class="info-text">
+                <span class="label">Country</span>
+                <span class="value">{{userInfo.country}}</span>
+              </div>
+            </div>
+      
+            <div class="info-item">
+              <span class="icon">🛠️</span>
+              <div class="info-text">
+                <span class="label">Role</span>
+                <span class="value">{{userInfo.role}}</span>
+              </div>
+            </div>
+      
+            <div class="dates">
+              <span class="date-item">
+                <span class="icon">⏰</span> Last Updated: {{userInfo.updatedAt| date }}
+              </span>
+              <span class="date-item">
+                <span class="icon">📅</span> Member Since: {{userInfo.createdAt| date }}
+              </span>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+ </section>
