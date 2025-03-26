@@ -1,3 +1,4 @@
+$pink: #f472b6;
 .booking-form-container {
     margin-top: 20px;
     padding: 20px;
@@ -35,7 +36,20 @@
     flex-direction: column;
     gap: 5px;
   }
+  .error-message {
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
   
+  .date-range-error {
+    text-align: center;
+    padding: 8px;
+    background: #fee2e2;
+    border-radius: 8px;
+    color: #ef4444;
+    font-size: 0.9rem;
+  }
   label {
     font-weight: 600;
     color: #4b5563;
@@ -130,6 +144,18 @@
       font-size: 1.2rem;
     }
   }
+
+  .disabled{
+    background: $pink;
+    cursor: not-allowed;
+}
+button:disabled:hover, 
+button[disabled]:hover {
+
+background-color: $pink !important;
+cursor: not-allowed;
+
+}
   
   @media (max-width: 992px) {
     .booking-section-title {

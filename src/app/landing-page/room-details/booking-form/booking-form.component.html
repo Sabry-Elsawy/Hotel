@@ -1,29 +1,40 @@
 <div class="booking-form-container">
     <h3 class="booking-section-title">Book Your Stay</h3>
 
-    <form   class="booking-form">
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()"   class="booking-form">
         <div class="form-group">
             <label for="startDate">Check-in Date</label>
-            <input type="date" id="startDate" formControlName="startDate" class="form-control">
-           
+            <input [min]="minDate.toISOString().split('T')[0]" type="date" id="startDate" formControlName="startDate" class="form-control">
+            <div *ngIf="bookingForm.get('startDate')?.invalid && bookingForm.get('startDate')?.touched"
+            class="error-message">
+            Check-in date is required
+        </div>
         </div>
 
         <div class="form-group">
             <label for="endDate">Check-out Date</label>
-            <input type="date" id="endDate" formControlName="endDate" class="form-control">
-         
+            <input    [min]="bookingForm.get('startDate')?.value || minDate.toISOString().split('T')[0]" type="date" id="endDate" formControlName="endDate" class="form-control">
+            <div *ngIf="bookingForm.get('endDate')?.invalid && bookingForm.get('endDate')?.touched"
+            class="error-message">
+            Check-out date is required
         </div>
+        </div>
+
+        <div *ngIf="bookingForm.errors?.['dateRangeInvalid'] && bookingForm.get('endDate')?.touched"
+        class="date-range-error">
+        Check-out date must be after check-in date
+    </div>
 
         
 
-        <div   class="booking-summary">
+        <div  *ngIf="calculateNights() > 0 && roomData"   class="booking-summary">
             <div class="summary-item">
                 <span>Room Rate:</span>
                 <span> {{roomData.price}} per night</span>
             </div>
             <div class="summary-item">
                 <span>Nights:</span>
-                <span> 4 </span>
+                <span> {{calculateNights()}} </span>
             </div>
             <div class="summary-item discount"  >
                 <span>Discount:</span>
@@ -31,11 +42,11 @@
             </div>
             <div class="summary-item total">
                 <span>Total:</span>
-                <span> 3454</span>
+                <span> {{calculateTotalPrice().toFixed(2)}}</span>
             </div>
         </div>
 
-        <button type="submit" class="booking-button" >
+        <button [class.disabled]="roomData.isBooked || bookingForm.invalid" type="submit" class="booking-button" >
             <i class="fas fa-calendar-check"></i>
             {{roomData && roomData.isBooked ? 'Room is Booked' : 'Confirm Booking'}}
         </button>

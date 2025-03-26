@@ -95,7 +95,7 @@
 
          </div>
 
-         <div class="booking-form-wrapper">
+         <div class="booking-form-wrapper" *ngIf="showBookingForm">
           <app-booking-form [roomData]="room"></app-booking-form>
          </div>
 

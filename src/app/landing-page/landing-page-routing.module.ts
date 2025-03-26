@@ -14,6 +14,7 @@ const routes: Routes = [
     {path:'room-details/:id', loadChildren:()=>import('./room-details/room-details.module').then(m=>m.RoomDetailsModule)  },
     {path:'reviews', loadChildren:()=>import('./reviews/reviews.module').then(m =>m.ReviewsModule)},
     {path:'profile' , loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
+    {path:'payment' , loadChildren:()=>import('./payment/payment.module').then(m=>m.PaymentModule)},
     {path:'**' , component: NotfoundComponent}
   ]},
 
