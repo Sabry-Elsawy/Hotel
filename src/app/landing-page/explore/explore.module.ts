@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { ExploreRoutingModule } from './explore-routing.module';
 import { ExploreComponent } from './explore.component';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from '../../shared/pipes/search.pipe';
 
 
 @NgModule({
   declarations: [
-    ExploreComponent
+    ExploreComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
-    ExploreRoutingModule
+    ExploreRoutingModule,
+    FormsModule
   ]
 })
 export class ExploreModule { }

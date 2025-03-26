@@ -13,6 +13,7 @@ import { FavoriteService } from '../services/favorite/favorite.service';
 export class ExploreComponent implements OnInit {
   tableDataRomms: IRoom[] = [];
   favoriteRooms:string[]=[];
+  searchTerm!:number;
   
   constructor(
     private _AdsUserService: AdsUserService,

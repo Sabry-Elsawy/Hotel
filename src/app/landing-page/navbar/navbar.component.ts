@@ -1,13 +1,19 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/services/auth.service';
+import { ProfileService } from '../services/profile/profile.service';
+import { IProfile } from '../../core/model/admin/profile';
  
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
-  constructor(private elementRef: ElementRef , private _AuthService:AuthService) {}
+export class NavbarComponent implements OnInit{
+  userId:string = localStorage.getItem('id') || '';
+  userInfo!:IProfile;
+  userImage:string='';
+  userName:string='';
+  constructor(private elementRef: ElementRef , private _AuthService:AuthService ,private _ProfileService:ProfileService) {}
 isOpen:boolean=false;
 isScrolled: boolean = false; // حالة التمرير
 toggleNavbar(){
@@ -43,5 +49,19 @@ toggleNavbar(){
 
     onLogout(){
       this._AuthService.myLogOut();
+    }
+
+ngOnInit(): void {
+  this.getUserInfo();
+}
+
+    getUserInfo(){
+      this._ProfileService.getCurrentUser(this.userId).subscribe({
+        next:(response)=>{
+          this.userInfo=response.data.user;
+          this.userImage=response.data.user.profileImage;
+          this.userName=response.data.user.userName;
+        }
+      })
     }
 }

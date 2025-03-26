@@ -19,7 +19,7 @@
     </div>
     <div class="search-input w-50">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" placeholder="Search by number of person">
+        <input [(ngModel)]="searchTerm" type="search" placeholder="Search by number of person">
     </div>
 </div>
 
@@ -40,7 +40,7 @@
 <section class="rooms mb-5">
     <div class="container">
         <div class="row g-3">
-            <div *ngFor="let room of tableDataRomms" class="col-md-6 col-lg-4 col-xl-3">
+            <div *ngFor="let room of tableDataRomms | search:searchTerm" class="col-md-6 col-lg-4 col-xl-3">
                 <div class="card w-100 ">
                     <div class="room-image w-100">
                         <img class="w-100" [src]="room.images[0]" alt="">

@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SearchPipe } from './pipes/search.pipe';
  
  
  
 @NgModule({
   declarations: [
     SharedComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
