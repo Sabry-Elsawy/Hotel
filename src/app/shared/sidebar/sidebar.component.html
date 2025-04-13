@@ -1,0 +1,117 @@
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <h6>Stay<span>cation.</span></h6>
+    </div>
+
+
+    <nav class="nav-menu">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="font-super-bold">General</span>
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a  >
+                            <i class="fas fa-th-large"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a  >
+                            <i class="fas fa-user"></i> Users
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="font-super-bold">Rooms Management</span>
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['rooms-management']">
+                            <i class="fas fa-door-open"></i> Rooms
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['rooms-management/manage-room']">
+                            <i class="fa-solid fa-plus"></i> Manage Room
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['rooms-management/facilities']">
+                            <i class="fas fa-bed"></i> Faciliies
+                        </a>
+                    </li>
+                    
+                </ul>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="font-super-bold">Ads & Bookings</span>
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['ads-booking']">
+                            <i class="fas fa-bullhorn"></i> ADS
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['ads-booking/booking']">
+                            <i class="fas fa-calendar-check"></i> Booking
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+
+<div class="profile-section">
+    <div class="profile-info" (click)="toggleProfile()"> 
+        <img src="../../../assets/images/InFrame_1708111423300.jpg" alt="Profile Picture" class="profile-picture">
+        <div class="profile-name ms-2">
+            <h6 class="user-name">Admin Name</h6>
+            <p class="user-email">ali23gamail.com</p>
+        </div>
+        <i class="fas fa-chevron-down chevron" [class.open]="isProfileOpen" ></i>
+    </div>
+
+    <ul class="profile-menu"  [class.open]="isProfileOpen" >
+        <li>
+            <a   >
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
+        </li>
+        <li>
+            <a   >
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+        </li>
+        <li class="cursor-pointer"  >
+            <a class="btn-logOut"  >
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+
+    <div class="feedback-link">
+        <a   >
+            <i class="fas fa-comment"></i>
+            Give us your feedback!
+        </a>
+    </div>
+  
+</div>
+
+ 
+</div>
+
+
+ 

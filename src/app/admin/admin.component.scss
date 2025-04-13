@@ -1,0 +1,38 @@
+
+
+ 
+.app-wrapper{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+.main-content{
+   // width: calc(100% - 300px);
+  // flex: 1;
+  width: 100%;
+    // display: flex;
+    // flex-direction: column;
+     background-color: #f8f9fa;
+}
+.content-wrapper{
+    margin-left: 300px;
+ //   padding: 30px;
+   // flex: 1;
+    overflow-y: auto;
+}
+
+
+@media (max-width: 768px) {
+  
+    .main-content {
+        width: 100%;
+    }
+    .app-wrapper {
+        flex-wrap: wrap;
+    }
+    .content-wrapper {
+        margin-left: 0;
+        
+    }
+    
+}

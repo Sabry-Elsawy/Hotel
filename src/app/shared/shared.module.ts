@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
  
  
  
@@ -12,6 +13,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
   declarations: [
     SharedComponent,
     NotfoundComponent,
+    SidebarComponent,
  
   ],
   imports: [
@@ -22,6 +24,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
   ],
   exports: [
     NotfoundComponent,
+    SidebarComponent
  
   ]
 })

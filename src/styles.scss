@@ -80,6 +80,10 @@ input[type="number"] {
 li{
     list-style: none;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
 
 @keyframes pulse-slow  {
   0%{

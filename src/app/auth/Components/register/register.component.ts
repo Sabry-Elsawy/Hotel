@@ -28,6 +28,8 @@ export class RegisterComponent {
         this.profileImage.set(reader.result as string);
       };
       reader.readAsDataURL(file);
+
+      
     }
   }
 
