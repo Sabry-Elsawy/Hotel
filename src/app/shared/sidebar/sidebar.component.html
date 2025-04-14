@@ -1,4 +1,6 @@
-<div class="sidebar">
+<div class="trancaction">
+
+<div class="sidebar" [class.open]="isSidebarOpen" >
     <div class="sidebar-logo">
         <h6>Stay<span>cation.</span></h6>
     </div>
@@ -114,4 +116,28 @@
 </div>
 
 
- 
+</div>
+
+
+ <!-- mobile nav -->
+
+<nav class="mobile-nav">
+    <div class="nav-links">
+    <a [routerLink]="['general/users']" class="nav-item"  >
+        <i class="fas fa-user"></i>
+        <span>Users</span>
+    </a>
+    <a [routerLink]="['rooms-management']" class="nav-item"  >
+        <i class="fas fa-door-open"></i>
+        <span>Rooms</span>
+    </a>
+    <a [routerLink]="['ads-booking/booking']" class="nav-item"  >
+        <i class="fas fa-calendar-check"></i>
+        <span>Booking</span>
+    </a>
+    <a class="nav-item" (click)="toggleSidebar()" >
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+    </a>
+</div>
+</nav>

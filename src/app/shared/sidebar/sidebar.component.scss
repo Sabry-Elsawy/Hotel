@@ -204,7 +204,7 @@
   }
 
   .feedback-link {
-    margin-top: 20px;
+    margin: 20px 0;
     padding-top: 20px;
     border-top: 1px solid #e0e0e0;
  
@@ -246,12 +246,79 @@
   .btn-logOut:hover i{
     color: white !important;
   }
-@media (max-width: 768px) {
-  
-  .sidebar{
-    position: absolute;
-    z-index: 400;
+
+// =======================================================================
+ 
+
+
+
+.mobile-nav{
+    color: black;
+    background-color: white;
+    position: fixed;
+    z-index: 30000;
+    bottom: 0px;
     left: 0;
-  }
-    
+    right: 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+ .nav-links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+   
+    padding: 10px 20px;
+    a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #666;
+        i{
+            color: var(--primary-color);
+        }
+    }
+    display: none;
+     
 }
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+// ==================================
+@media (max-width: 768px) {
+  .mobile-nav{
+    display: block;
+    
+  }
+  .trancaction{
+    transition: left 0.5s ease-in-out;
+  }
+    .sidebar{
+      position: absolute;
+      z-index: 400;
+      left: -350px;
+      animation: slideOut 0.5s ease-out;
+      transition: all 0.5s ease;
+       
+    }
+   
+    .open{
+        left: 0px;
+        animation: slideIn 0.5s ease-out;
+        transition: all 0.3s ease;
+    }
+      
+  }
