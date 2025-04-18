@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from '../../auth/services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+ 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -8,6 +10,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isProfileOpen:boolean = false;
   isSidebarOpen:boolean = false;
+  constructor(private _AuthService:AuthService, private _NgxSpinnerService:NgxSpinnerService){}
   toggleSidebar(){
     this.isSidebarOpen = !this.isSidebarOpen;
     if (this.isSidebarOpen) {
@@ -17,4 +20,9 @@ export class SidebarComponent {
   toggleProfile() {
     this.isProfileOpen = !this.isProfileOpen;
   }
+
+  logOut() {
+    this._AuthService.myLogOut();
+  }
+
 }

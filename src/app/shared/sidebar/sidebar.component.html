@@ -14,12 +14,12 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a  >
+                        <a routerLink="/admin/general/dashboard" routerLinkActive="active" >
                             <i class="fas fa-th-large"></i> Dashboard
                         </a>
                     </li>
                     <li>
-                        <a  >
+                        <a routerLink="/admin/general/users" routerLinkActive="active" >
                             <i class="fas fa-user"></i> Users
                         </a>
                     </li>
@@ -96,7 +96,7 @@
             </a>
         </li>
         <li class="cursor-pointer"  >
-            <a class="btn-logOut"  >
+            <a class="btn-logOut" (click)="logOut()" >
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>
@@ -123,15 +123,15 @@
 
 <nav class="mobile-nav">
     <div class="nav-links">
-    <a [routerLink]="['general/users']" class="nav-item"  >
+    <a  class="nav-item"  >
         <i class="fas fa-user"></i>
         <span>Users</span>
     </a>
-    <a [routerLink]="['rooms-management']" class="nav-item"  >
+    <a   class="nav-item"  >
         <i class="fas fa-door-open"></i>
         <span>Rooms</span>
     </a>
-    <a [routerLink]="['ads-booking/booking']" class="nav-item"  >
+    <a   class="nav-item"  >
         <i class="fas fa-calendar-check"></i>
         <span>Booking</span>
     </a>

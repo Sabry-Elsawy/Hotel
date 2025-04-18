@@ -1,0 +1,99 @@
+// users style
+.users{
+    padding: 1rem;
+    margin-right: .7rem;
+    background-color: #f8f9fa;
+    .filters-container{
+        .heading{
+            h1{
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                font-weight: 700;
+                color: var(--title-color);
+            }
+            .filter-input{
+                position: relative;
+                input{
+                    width: 100%;
+                    padding: .7rem 1.7rem;
+                    border: 1px solid var(--main-text-color);
+                    border-radius: 1.2rem;
+                    font-size: 1rem;
+                  &:focus {
+                      //  border-color: #3498db;
+                     //   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+                        outline: none;
+                      }
+                      
+                    &::placeholder {
+                        font-size: 16px;
+                        color: #95a5a6;
+                      }
+                      
+                }
+                i{
+                    color: var(--main-text-color);
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: .5rem;
+                }
+            }
+        }
+    }
+
+
+    .table-responsive{
+        .table{
+            thead{
+              
+                th{
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color:  #fff;
+                    padding: 1rem 0;
+                    background-color: var(--main-text-color);
+                    &:first-child{
+                        border-top-left-radius: 2rem;
+                    }
+                    &:last-child{
+                        border-top-right-radius: 2rem;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    
+                    td{
+                        font-size: 1rem;
+                        color: #666;
+                        padding: .7rem 0;
+                        text-align: center;
+                        vertical-align: middle;
+                     
+                        .image{
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 50%;
+                            border: 1px solid var(--main-text-color);
+                        }
+                        i{
+                            font-size: 1.2rem;
+                            color: var(--main-text-color);
+                            cursor: pointer;
+                            border: 1px solid var(--main-text-color);
+                            padding: .5rem;
+                            border-radius: 4px;
+                            &:hover{
+                                color: #fff;
+                                background-color: var(--main-text-color);
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+

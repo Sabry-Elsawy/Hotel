@@ -31,12 +31,13 @@ handleForm(data:FormGroup):void{
   //console.log(data.value);
   this._AuthService.onLogin(data.value).subscribe({
     next:(responce)=>{
-   //   console.log(responce);
+      //console.log(responce);
       this.roleUser=responce.data.user.role
       localStorage.setItem('token',  responce.data.token);
       localStorage.setItem('userName',  responce.data.user.userName);
       localStorage.setItem('role',  responce.data.user.role);
       localStorage.setItem('id', responce.data.user._id)
+      
 
     },
     error:(err)=>{

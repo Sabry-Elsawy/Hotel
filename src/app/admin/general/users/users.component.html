@@ -1,0 +1,87 @@
+<div class="users">
+    <div class="filters-container">
+        <div class="heading">
+            <h1>User Table Details</h1>
+            <div class="filter-input">
+                <i class="fa-brands fa-searchengin"></i>
+                <input type="search" placeholder="Search by name or email..."   />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead>
+                <tr class="text-center ">
+                    <th >Profile Image</th>
+                    <th >User Name</th>
+                    <th >Email</th>
+                    <th >Phone Number</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>
+                        <img class="image" [src]="user.profileImage" alt="">
+                    </td>
+                    <td>{{user.userName}}</td>
+                    <td> {{user.email}}</td>
+                    <td>{{user.phoneNumber}}</td>
+                    <td>
+                        <i class="fa-solid fa-eye"></i>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="pagination-container d-flex justify-content-center align-items-center my-4">
+    <div class="d-flex flex-column flex-sm-row align-items-center">
+        <div class="d-flex align-items-center mb-2 mb-sm-0">
+            <span class="me-2 small">Items per page:</span>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                    id="pageSizeDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ itemsPerPage }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="pageSizeDropdownMobile">
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(5)">5</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(10)">10</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(20)">20</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(50)">50</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <span class="mx-sm-4 small">{{ startItem }} – {{ endItem }} of {{ totalNumOfUsers }}</span>
+        <div class="pagination-arrows mt-2 mt-sm-0">
+            <button class="btn btn-sm btn-outline-secondary me-2" [disabled]="currentPage === 1" title="Go to previous page"
+                (click)="previousPage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === totalPages"
+                (click)="nextPage()" title="Go to next page">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+ 
