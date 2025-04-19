@@ -16,7 +16,6 @@ export class UsersComponent implements OnInit {
   selectedUser!: User;
   isLoading: boolean = false;
   showModal: boolean = false;
-
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalPages!: number;

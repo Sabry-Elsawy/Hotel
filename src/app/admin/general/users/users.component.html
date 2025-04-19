@@ -43,7 +43,30 @@
 
 
 
+<!-- display users on phone screen -->
 
+<div class="cards-phone">
+    <div  >
+        <div class="user-card" *ngFor="let user of users  ">
+            <div class="user-card-header d-flex align-items-center">
+                <img [src]="user.profileImage" alt="User Profile" class="user-avatar-sm rounded-circle me-3">
+                <span class="user-id">{{ user.userName }}</span>
+            </div>
+            <div class="user-card-body">
+                <div class="user-info">
+                    <p><i class="fas fa-user"></i> {{ user.userName }}</p>
+                    <p><i class="fas fa-envelope"></i> {{ user.email }}</p>
+                    <p><i class="fas fa-phone"></i> +20{{ user.phoneNumber }}</p>
+                </div>
+                <div class="user-actions">
+                    <button class="btn btn-sm btn-outline-primary me-2" (click)="getSpecificUserDetails(user._id)">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -137,3 +160,6 @@
     </div>
 </div>
  
+
+
+

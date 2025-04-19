@@ -201,3 +201,69 @@
     justify-content: flex-end;
     background-color: #f8f9fa;
   }
+
+
+
+//   display users on Phone screen
+
+.cards-phone{
+    padding: 30px;
+    display: none;
+    .user-card{
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+       // padding: 20px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        .user-card-header{
+            margin-bottom: 15px;
+            padding: 20px;
+            background-color: var(--main-text-color);
+            img{
+                width: 60px;
+                height: 60px;
+                border: 1px solid #fff;
+            }
+            span{
+                font-size: 1.2rem;
+                color: #fff;
+                font-weight: 400;
+            }
+        }
+        .user-card-body{
+            .user-info{
+                padding: 20px;
+
+                p{
+                    color: #666;
+                    i{
+                        font-size: 1.2rem;
+                        color: var(--main-text-color);
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .user-actions{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+@media (max-width: 868px) {
+    .cards-phone{
+        display: block;
+    }
+    .table-responsive{
+        display: none;
+    }
+    .pagination-container{
+        margin-bottom: 100px !important;
+        margin-top: 0px !important;
+    }
+}
