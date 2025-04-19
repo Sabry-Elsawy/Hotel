@@ -7,7 +7,7 @@ import { User } from '../../core/model/admin/user';
 export class SearchUserPipe implements PipeTransform {
 
   transform(users: User[], searchItem: string): User[] {
-    return users.filter((user)=>user.userName.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase()) || user.email.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase()) );
+    return users.filter((user)=>user.userName.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase()) || user.email.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase()));
   }
 
 }

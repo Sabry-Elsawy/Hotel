@@ -1,0 +1,177 @@
+<div class="rooms">
+    <div class="filters-container">
+        <div class="heading ">
+            <div class="d-flex justify-content-between align-items-center my-3">
+                <h1>Rooms Table Details</h1>
+                <button >Add Room</button>
+            </div>
+            <div class="filter-input">
+                <i class="fa-brands fa-searchengin"></i>
+                <input [(ngModel)]="searchTerm"  type="search" placeholder="Search for a room using Capacity..."   />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead>
+                <tr class="text-center ">
+                    <th >Room Image</th>
+                    <th >Room Number</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Capacity</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let room of rooms  | searchRoom:searchTerm" >
+                    <td>
+                        <img class="image" [src]="room.images[0]" alt="room image">
+                    </td>
+                    <td>{{room.roomNumber}}</td>
+                    <td> {{room.price}}</td>
+                    <td>{{room.discount}}</td>
+                    <td> {{room.capacity}}</td>
+                    <td >
+                        <i (click)="getRoomDetails(room._id)"  class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-pen-to-square mx-2"></i>
+                        <i (click)="deleteRoom(room._id)" class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- display rooms on phone screen -->
+
+<div class="cards-phone">
+    <div  >
+        <div class="rooms-card" *ngFor="let room of rooms | searchRoom:searchTerm" >
+            <div class="user-card-header d-flex align-items-center">
+                <img [src]="room.images[0]" alt="User Profile" class="user-avatar-sm rounded-circle me-3">
+                <span class="user-id">{{room.roomNumber}}</span>
+            </div>
+            <div class="user-card-body">
+                <div class="user-info">
+                    <p><i class="fa-solid fa-dollar-sign"></i>{{room.price}}</p>
+                    <p><i class="fa-solid fa-percent"></i> {{room.discount}}</p>
+                    <p><i class="fa-solid fa-users"></i>{{room.capacity}}</p>
+                    <p><i class="fa-solid fa-user"></i>{{room.createdBy.userName}}</p>
+                </div>
+                <div class="rooms-actions d-flex justify-content-between align-items-center">
+                    <button (click)="getRoomDetails(room._id)" class="btn btn-sm  view me-2"  >
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="btn btn-sm edit  me-2"  >
+                        <i class="fa-solid fa-pen-to-square "></i> Edit
+                    </button>
+                    <button (click)="deleteRoom(room._id)" class="btn btn-sm delete  me-2"  >
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="pagination-container d-flex justify-content-center align-items-center my-4">
+    <div class="d-flex flex-column flex-sm-row align-items-center">
+        <div class="d-flex align-items-center mb-2 mb-sm-0">
+            <span class="me-2 small">Items per page:</span>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                    id="pageSizeDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ itemsPerPage }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="pageSizeDropdownMobile">
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(5)">5</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(10)">10</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(20)">20</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(50)">50</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <span class="mx-sm-4 small">{{ startItem }} – {{ endItem }} of {{ totalNumOfUsers }}</span>
+        <div class="pagination-arrows mt-2 mt-sm-0">
+            <button class="btn btn-sm btn-outline-secondary me-2" [disabled]="currentPage === 1" title="Go to previous page"
+                (click)="previousPage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === totalPages"
+                (click)="nextPage()" title="Go to next page">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+ 
+
+
+
+<!-- user details -->
+
+
+<div class="custom-modal"  *ngIf="showModel"  >
+    <div class="modal-backdrop"  ></div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Room Details</h5>
+                <button (click)="closeModel()"   type="button" class="btn-close" title="Close"></button>
+            </div>
+            <div class="modal-body"  *ngIf="selectedRoom" >
+                <div class="text-center mb-4">
+                    <img [src]="selectedRoom.images[0]" alt="User Profile"
+                        class="user-modal-avatar rounded-circle">
+                    <h4 class="mt-3 font-simibold font-md"> {{selectedRoom.roomNumber}} </h4>
+                </div>
+                <div class="user-details mt-5">
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-id-card me-2"  ></i>Room ID:</span>
+                        <span class="detail-value">{{selectedRoom._id}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-dollar-sign me-2"></i>Price:</span>
+                        <span class="detail-value">{{selectedRoom.price}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-users me-2"></i>Capacity:</span>
+                        <span class="detail-value">{{selectedRoom.capacity}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-percent me-2"></i>Discount:</span>
+                        <span class="detail-value">{{selectedRoom.discount}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-user-tie me-2"></i>Created By:</span>
+                        <span class="detail-value"> {{selectedRoom.createdBy.userName}} </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModel()"  type="button" class="btn btn-danger" >Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+
+

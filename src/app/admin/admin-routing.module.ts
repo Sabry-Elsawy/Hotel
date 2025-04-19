@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', component: AdminComponent , children:[
     {path:'', redirectTo: 'general', pathMatch: 'full'},
     {path:'general', loadChildren:()=>import('./general/general.module').then(m=>m.GeneralModule)},
+    {path:'management' , loadChildren:()=>import('./management/management.module').then(m=>m.ManagementModule)}
   ] }
 ];
 

@@ -5,6 +5,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+//import { SearchRoomPipe } from './pipes/search-room.pipe';
 //import { SearchUserPipe } from './pipes/search-user.pipe';
  
  
@@ -15,6 +16,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SharedComponent,
     NotfoundComponent,
     SidebarComponent,
+ //   SearchRoomPipe,
   //  SearchUserPipe,
  
   ],
@@ -26,7 +28,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   exports: [
     NotfoundComponent,
-    SidebarComponent
+    SidebarComponent,
  
   ]
 })
