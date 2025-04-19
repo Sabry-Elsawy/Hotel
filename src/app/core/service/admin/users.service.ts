@@ -12,4 +12,7 @@ export class UsersService {
   getAllUsers(params: any): Observable<any> {
     return this._HttpClient.get('/admin/users', { params: params });
   }
+  getSpecificUserDetails(userId: string): Observable<any> {
+    return this._HttpClient.get(`/admin/users/${userId}`);
+  }
 }

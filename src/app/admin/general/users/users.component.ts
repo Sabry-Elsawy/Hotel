@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../../core/service/admin/users.service';
 import { OnInit } from '@angular/core';
 import { User } from '../../../core/model/admin/user';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +13,7 @@ export class UsersComponent implements OnInit {
 
   searchInput: string = '';
   users: User[] = [];
-  selectedUser!: any;
+  selectedUser!: User;
   isLoading: boolean = false;
   showModal: boolean = false;
 
@@ -24,7 +25,7 @@ export class UsersComponent implements OnInit {
   startItem: number = 1;
   endItem: number = 10;
 
-  constructor(private _usersService: UsersService) {}
+  constructor(private _usersService: UsersService , private _NgxSpinnerService:NgxSpinnerService) {}
 ngOnInit(): void {
   this.getALlUsers();
 }
@@ -33,7 +34,7 @@ getALlUsers(): void {
     size: this.itemsPerPage, // Number of items per page
     page: this.currentPage, // Current page number
   };
-
+this._NgxSpinnerService.show(); // Show spinner while loading data
   this._usersService.getAllUsers(params).subscribe({
     next:(response)=>{
     //  console.log(response);
@@ -44,12 +45,35 @@ getALlUsers(): void {
     },
     error:(err)=>{
       console.log(err);
-      
+      this._NgxSpinnerService.hide(); // Hide spinner on error
     },
     complete:()=>{
-
+this._NgxSpinnerService.hide(); // Hide spinner on complete
     }
   })
+}
+
+getSpecificUserDetails(userId: string): void {
+  this._NgxSpinnerService.show(); // Show spinner while loading data
+  this._usersService.getSpecificUserDetails(userId).subscribe({
+    next: (response) => {
+     // console.log(response);
+      
+      this.selectedUser = response.data.user;
+      this.showModal = true; // Show modal with user details
+    },
+    error: (err) => {
+      console.log(err);
+      this._NgxSpinnerService.hide(); // Hide spinner on error
+    },
+    complete: () => {
+      this._NgxSpinnerService.hide(); // Hide spinner on complete
+    }
+  })
+}
+
+closeModel(): void {
+  this.showModal = false; // Hide modal
 }
 
   calculatePagination(): void {

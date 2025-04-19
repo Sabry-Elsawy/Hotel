@@ -30,8 +30,8 @@
                     <td>{{user.userName}}</td>
                     <td> {{user.email}}</td>
                     <td>{{user.phoneNumber}}</td>
-                    <td>
-                        <i class="fa-solid fa-eye"></i>
+                    <td >
+                        <i (click)="getSpecificUserDetails(user._id)" class="fa-solid fa-eye"></i>
                     </td>
                 </tr>
             </tbody>
@@ -81,6 +81,58 @@
                 (click)="nextPage()" title="Go to next page">
                 <i class="fas fa-chevron-right"></i>
             </button>
+        </div>
+    </div>
+</div>
+ 
+
+
+
+
+
+<!-- user details -->
+
+
+<div class="custom-modal" *ngIf="showModal"  >
+    <div class="modal-backdrop"  ></div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">User Details</h5>
+                <button (click)="closeModel()" type="button" class="btn-close" title="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="selectedUser" >
+                <div class="text-center mb-4">
+                    <img [src]="selectedUser.profileImage" alt="User Profile"
+                        class="user-modal-avatar rounded-circle">
+                    <h4 class="mt-3 font-simibold font-md"> {{selectedUser.userName}} </h4>
+                </div>
+                <div class="user-details mt-5">
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-id-card me-2"></i>User ID:</span>
+                        <span class="detail-value"> {{selectedUser._id}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-envelope me-2"></i>Email:</span>
+                        <span class="detail-value">{{selectedUser.email}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-phone me-2"></i>Phone:</span>
+                        <span class="detail-value">+20{{selectedUser.phoneNumber}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-globe me-2"></i>Country:</span>
+                        <span class="detail-value">{{selectedUser.country}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-user-tie me-2"></i>Role:</span>
+                        <span class="detail-value">{{selectedUser.role}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModel()" type="button" class="btn btn-danger" >Close</button>
+            </div>
         </div>
     </div>
 </div>
