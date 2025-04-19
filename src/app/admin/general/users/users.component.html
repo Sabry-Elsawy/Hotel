@@ -4,7 +4,7 @@
             <h1>User Table Details</h1>
             <div class="filter-input">
                 <i class="fa-brands fa-searchengin"></i>
-                <input type="search" placeholder="Search by name or email..."   />
+                <input [(ngModel)]="searchInput" type="search" placeholder="Search by name or email..."   />
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of users">
+                <tr *ngFor="let user of users | searchUser:searchInput">
                     <td>
                         <img class="image" [src]="user.profileImage" alt="">
                     </td>
@@ -47,7 +47,7 @@
 
 <div class="cards-phone">
     <div  >
-        <div class="user-card" *ngFor="let user of users  ">
+        <div class="user-card" *ngFor="let user of users  | searchUser:searchInput ">
             <div class="user-card-header d-flex align-items-center">
                 <img [src]="user.profileImage" alt="User Profile" class="user-avatar-sm rounded-circle me-3">
                 <span class="user-id">{{ user.userName }}</span>

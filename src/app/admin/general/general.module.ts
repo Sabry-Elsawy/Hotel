@@ -4,16 +4,20 @@ import { CommonModule } from '@angular/common';
 import { GeneralRoutingModule } from './general-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
+import { FormsModule } from '@angular/forms';
+import { SearchUserPipe } from '../../shared/pipes/search-user.pipe';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    UsersComponent
+    UsersComponent,
+    SearchUserPipe
   ],
   imports: [
     CommonModule,
-    GeneralRoutingModule
+    GeneralRoutingModule,
+    FormsModule
   ]
 })
 export class GeneralModule { }

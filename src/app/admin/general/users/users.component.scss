@@ -255,6 +255,85 @@
 }
 
 
+.pagination-container {
+    margin-top: 25px;
+  }
+  
+  .dropdown-toggle {
+    min-width: 60px;
+    text-align: center;
+    background-color: #fff;
+    border-color: #4a6cf7;
+    color: #4a6cf7;
+  }
+  
+  .dropdown-toggle:hover, .dropdown-toggle:focus {
+    background-color: #4a6cf7;
+    color: #fff;
+  }
+  
+  .dropdown-item {
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f4ff;
+    color: #4a6cf7;
+  }
+  
+  .pagination-arrows button {
+    width: 40px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #4a6cf7;
+    color: #4a6cf7;
+    transition: all 0.2s ease;
+  }
+  
+  .pagination-arrows button:hover:not([disabled]) {
+    background-color: #4a6cf7;
+    color: #fff;
+  }
+  
+  .pagination-arrows button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 767.98px) {
+    .pagination-arrows button {
+      width: 34px;
+      height: 31px;
+    }
+  }
+  
+  /* Button styles */
+  .btn-outline-primary {
+    color: #3498db;
+    border-color: #3498db;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: #95a5a6;
+    border-color: #95a5a6;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #7f8c8d;
+    border-color: #7f8c8d;
+  }
+  
+
 @media (max-width: 868px) {
     .cards-phone{
         display: block;
