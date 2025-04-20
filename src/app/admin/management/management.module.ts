@@ -6,9 +6,11 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { ManageRoomComponent } from './manage-room/manage-room.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
 import { SearchRoomPipe } from '../../shared/pipes/search-room.pipe';
-import { FormsModule } from '@angular/forms';
- 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ManagementRoutingModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class ManagementModule { }

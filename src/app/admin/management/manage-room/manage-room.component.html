@@ -1,1 +1,76 @@
-<p>manage-room works!</p>
+ <div class="container-box ">
+    <div class="card">
+        <div class="heading">
+            <i class="fa-solid fa-circle-plus me-3"></i>
+            <h1>Add New Room</h1>
+        </div>
+
+
+        <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit(addRoomForm)" enctype="multipart/form-data" class="p-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="room-num"><i class="fa-solid fa-hashtag"></i> Room Number</label>
+                    <input formControlName="roomNumber" type="number" id="room-num" class="form-control" placeholder="Enter Room Number" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="price"><i class="fa-solid fa-dollar-sign"></i> Price per Night</label>
+                    <input formControlName="price" type="number" id="price" class="form-control" placeholder="Enter Price per Night" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="capacity"><i class="fa-solid fa-user"></i> Capacity</label>
+                    <input formControlName="capacity" type="number" id="capacity" class="form-control" placeholder="Enter Room Capacity" required>
+                </div>
+            </div>
+
+            <label for="Discount" class="mt-3"><i class="fa-solid fa-percent"></i> Discount</label>
+            <input formControlName="discount" type="number" id="Discount" class="form-control" placeholder="Enter Discount" required>
+
+            <label for="faciities" > <i class="fas fa-list me-2"></i> Facilities</label>
+
+           
+
+              <mat-form-field  class="d-block w-100  " appearance="outline">
+                <mat-label>Facilities</mat-label>
+                <mat-select  formControlName="facilities"  multiple>
+                  <mat-option *ngFor="let facility of AllFacilities"  [value]="facility._id">{{facility.name}}</mat-option>
+                </mat-select>
+              
+              </mat-form-field>
+
+
+
+              <label class="mt-3 d-block" for="room-image"><i class="fa-solid fa-image"></i> Room Images</label>
+
+ 
+
+
+<label  for="profile" class="upload-profile ">
+    <div class="frame" *ngIf="selectedFiles.length==0 ; else preview" >
+        <i class="fa-solid fa-cloud-arrow-up mb-2"></i>
+      <p class="mb-0 upload-text">Drag and drop images here or click to upload</p>
+    </div>
+  
+    <ng-template  #preview>
+      <div class=" row g-3 image">
+       <div class="col-md-3"  *ngFor="let img of images()">
+        <img [src]="img" alt="Profile preview" class="preview-image">
+       </div>
+        <!-- <i (click)="removeProfileImage($event)" class="fa-solid fa-xmark"></i> -->
+      </div>
+    </ng-template>
+  
+ 
+    <input   id="profile" class="d-none" type="file" accept="image/*" (change)="onFilesSelected($event)" multiple >
+  </label>            
+
+
+
+
+  <button class="w-100" type="submit"><i class="fas fa-save me-2"></i> Save Room</button>
+
+        </form>
+
+
+
+    </div>
+ </div>
