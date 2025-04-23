@@ -19,6 +19,12 @@ export class FacilitiesComponent implements OnInit {
   totalNumOfUsers: number = 0;
   startItem: number = 1;
   endItem: number = 10;
+  newNameFacility: string = ""; // New facility name for adding a facility
+  currentFacility:string = ""; // Current facility name for editing
+  showAddFacilityModel: boolean = false; // Flag to control the display of the add facility modal
+  flagEdit: boolean = false; // Flag to control the edit mode
+  nameFacilityEditing: string = ""; // Facility name for editing
+  currentFacilityId: string = ""; // Current facility ID for editing
 constructor(private _FacilitiesService:FacilitiesService , private _NgxSpinnerService:NgxSpinnerService){}
 
 ngOnInit(): void {
@@ -90,10 +96,77 @@ deleteFacility(facilityId:string){
   })
 }
 
+addNewFacility(){
+  this._NgxSpinnerService.show(); // Show loading spinner
+  this._FacilitiesService.addNewFacility(this.newNameFacility).subscribe({
+    next:(response)=>{
+   //   console.log(response);
+      this.getAllFacilities(); // Refresh the facilities list after adding a new facility
+      this.showAddFacilityModel = false; // Close the add facility modal
+    },
+    error:(error)=>{
+      console.log(error);
+      this._NgxSpinnerService.hide(); // Hide loading spinner on error
+    },
+    complete:()=>{
+      //console.log("completed")
+      this._NgxSpinnerService.hide(); // Hide loading spinner on completion
+    }
+  })
+}
 
+
+showEditingFacilitiesModel(id:string): void {
+   this._FacilitiesService.getFacilityById(id).subscribe({
+    next: (response) => {
+      this.currentFacility = response.data.facility.name; // Assign the selected facility data to the component property
+      this.newNameFacility = response.data.facility.name; // Assign the selected facility name to the editing property
+      this.currentFacilityId = response.data.facility._id; // Assign the selected facility ID to the editing property
+      this.showAddFacilityModel = true; // Show the modal for editing
+      this.flagEdit = true; // Set the edit flag to true
+    }
+  });
+}
+
+editOrAddFacility(): void {
+  if (this.flagEdit) {
+    this.editfacility(); // Call the edit facility method if in edit mode
+  } else {
+    this.addNewFacility(); // Call the add new facility method if not in edit mode
+  }
+}
+
+editfacility( ):void{
+  this._NgxSpinnerService.show(); // Show loading spinner
+  this._FacilitiesService.updateFacility(this.currentFacilityId , this.newNameFacility).subscribe({
+    next:(response)=>{
+   //   console.log(response);
+
+      this.getAllFacilities(); // Refresh the facilities list after editing
+      this.showAddFacilityModel = false; // Close the add facility modal
+      this.flagEdit = false; // Reset the edit flag
+    }
+    ,error:(error)=>{
+      console.log(error);
+      this._NgxSpinnerService.hide(); // Hide loading spinner on error
+    }
+    ,complete:()=>{
+      //console.log("completed")
+      this._NgxSpinnerService.hide(); // Hide loading spinner on completion
+    }
+  })
+}
+
+openFacilityModel(): void {
+  this.showAddFacilityModel = true; // Open the add facility modal
+}
 
 closeModel(): void {
   this.showModel = false; // Close the modal
+}
+closeFacilityModel(): void {
+  this.showAddFacilityModel = false; // Close the add facility modal
+  this.flagEdit = false; // Reset the edit flag
 }
 
 

@@ -382,6 +382,11 @@
     background-color: #7f8c8d;
     border-color: #7f8c8d;
   }
+  .facility-input:focus{
+outline: none;
+box-shadow: none;
+
+  }
   
 
 @media (max-width: 868px) {

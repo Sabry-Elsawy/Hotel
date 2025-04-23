@@ -18,4 +18,11 @@ export class FacilitiesService {
   deleteFacility(facilityId:string):Observable<any>{
     return this._HttpClient.delete(`/admin/room-facilities/${facilityId}`)
   }
+  addNewFacility(name:any):Observable<any>{
+    return this._HttpClient.post("/admin/room-facilities", {name:name})
+
+  }
+  updateFacility(facilityId:string, name:string):Observable<any>{
+    return this._HttpClient.put(`/admin/room-facilities/${facilityId}`, {name:name})
+  }
 }

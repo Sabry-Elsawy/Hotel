@@ -3,7 +3,7 @@
         <div class="heading ">
             <div class="d-flex justify-content-between align-items-center my-3">
                 <h1>Facilities Table Details</h1>
-                <button >Add New Facility</button>
+                <button (click)="openFacilityModel()" >Add New Facility</button>
             </div>
             <div class="filter-input">
                 <i class="fa-brands fa-searchengin"></i>
@@ -34,7 +34,7 @@
                     <td> {{facility.updatedAt}}</td>
                     <td >
                         <i  (click)="getFacilityById(facility._id)"  class="fa-solid fa-eye"></i>
-                        <i class="fa-solid fa-pen-to-square mx-2"></i>
+                        <i (click)="showEditingFacilitiesModel(facility._id)" class="fa-solid fa-pen-to-square mx-2"></i>
                         <i (click)="deleteFacility(facility._id)"  class="fa-solid fa-trash"></i>
                     </td>
                 </tr>
@@ -162,3 +162,24 @@
 
 
  
+
+
+<div class="custom-modal" *ngIf="showAddFacilityModel">
+    <div class="modal-backdrop" (click)="closeFacilityModel()"></div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="facility-details mt-5">
+                    <div class="detail-item d-flex justify-content-start align-items-center">
+                        <label class="font-md me-3" for="name">Name: </label>
+                        <input id="name"  [(ngModel)]="newNameFacility" type="text" class="form-control facility-input"   [placeholder]="flagEdit ? currentFacility : 'New Facility'" [title]="flagEdit ? 'Edit Facility Name' : 'Enter New Facility Name'">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success me-3"  (click)="editOrAddFacility()" >{{flagEdit?'Edit Facility' : 'Add Facility'}}</button>
+                <button type="button" class="btn btn-danger me-3" (click)="closeFacilityModel()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
