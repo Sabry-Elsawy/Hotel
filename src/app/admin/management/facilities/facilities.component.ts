@@ -9,6 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrl: './facilities.component.scss'
 })
 export class FacilitiesComponent implements OnInit {
+  searchTerm: string = ""; // Search term for filtering facilities
   AllFacilities:IFacility[] = []; // Array to hold all facilities
   selectedFacility!: IFacility  ; // Selected facility for editing
   showModel: boolean = false; // Flag to control the display of the modal
