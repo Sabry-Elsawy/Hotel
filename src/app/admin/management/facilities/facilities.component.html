@@ -1,1 +1,164 @@
-<p>facilities works!</p>
+<div class="rooms">
+    <div class="filters-container">
+        <div class="heading ">
+            <div class="d-flex justify-content-between align-items-center my-3">
+                <h1>Facilities Table Details</h1>
+                <button >Add New Facility</button>
+            </div>
+            <div class="filter-input">
+                <i class="fa-brands fa-searchengin"></i>
+                <input   type="search" placeholder="Search using facility name..."   />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead>
+                <tr class="text-center ">
+                    <th >Name</th>
+                    <th >Created By</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let facility of AllFacilities"   >
+                  
+                    <td>{{facility.name}}</td>
+                    <td> {{facility.createdBy.userName}}</td>
+                    <td>{{facility.createdAt}}</td>
+                    <td> {{facility.updatedAt}}</td>
+                    <td >
+                        <i  (click)="getFacilityById(facility._id)"  class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-pen-to-square mx-2"></i>
+                        <i   class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- display rooms on phone screen -->
+
+<div class="cards-phone">
+    <div  >
+        <div class="rooms-card" *ngFor="let facility of AllFacilities"  >
+          
+            <div class="user-card-body">
+                <div class="user-info">
+                    <p><i class="fas fa-building"></i>{{facility.name}}</p>
+                    <p><i class="fas fa-user"></i> {{facility.createdBy.userName}}</p>
+                    <p><i class="fas fa-calendar"></i>{{facility.createdAt}}</p>
+                    <p><i class="fas fa-calendar-alt"></i>{{facility.updatedAt}}</p>
+                </div>
+                <div class="rooms-actions d-flex justify-content-between align-items-center">
+                    <button (click)="getFacilityById(facility._id)"  class="btn btn-sm  view me-2"  >
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="btn btn-sm edit  me-2"  >
+                        <i class="fa-solid fa-pen-to-square "></i> Edit
+                    </button>
+                    <button   class="btn btn-sm delete  me-2"  >
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="pagination-container d-flex justify-content-center align-items-center my-4">
+    <div class="d-flex flex-column flex-sm-row align-items-center">
+        <div class="d-flex align-items-center mb-2 mb-sm-0">
+            <span class="me-2 small">Items per page:</span>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                    id="pageSizeDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ itemsPerPage }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="pageSizeDropdownMobile">
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(5)">5</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(10)">10</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(20)">20</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(50)">50</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <span class="mx-sm-4 small">{{ startItem }} – {{ endItem }} of {{ totalNumOfUsers }}</span>
+        <div class="pagination-arrows mt-2 mt-sm-0">
+            <button class="btn btn-sm btn-outline-secondary me-2" [disabled]="currentPage === 1" title="Go to previous page"
+                (click)="previousPage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === totalPages"
+                (click)="nextPage()" title="Go to next page">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- facility details -->
+
+
+<div class="custom-modal"  *ngIf="showModel"  >
+    <div class="modal-backdrop"  ></div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Facility Details</h5>
+                <button (click)="closeModel()"   type="button" class="btn-close" title="Close"></button>
+            </div>
+            <div class="modal-body"  *ngIf="selectedFacility"  >
+            
+                <div class="user-details mt-5">
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-building me-2"  ></i>Name:</span>
+                        <span class="detail-value">{{selectedFacility.name}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-user me-2"></i>Created By:</span>
+                        <span class="detail-value">{{selectedFacility.createdBy.userName}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-calendar me-2"></i>Created at:</span>
+                        <span class="detail-value">{{selectedFacility.createdAt}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-calendar-alt me-2"></i>Updated at:</span>
+                        <span class="detail-value">{{selectedFacility.updatedAt}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModel()"  type="button" class="btn btn-danger" >Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+
+
+ 

@@ -12,4 +12,7 @@ export class FacilitiesService {
   getAllFacilities(params:any):Observable<any>{
     return this._HttpClient.get("/admin/room-facilities", {params:params});
   }
+  getFacilityById(facilityId:string):Observable<any>{
+    return this._HttpClient.get(`/admin/room-facilities/${facilityId}`)
+  }
 }
