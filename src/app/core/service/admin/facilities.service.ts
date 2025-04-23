@@ -15,4 +15,7 @@ export class FacilitiesService {
   getFacilityById(facilityId:string):Observable<any>{
     return this._HttpClient.get(`/admin/room-facilities/${facilityId}`)
   }
+  deleteFacility(facilityId:string):Observable<any>{
+    return this._HttpClient.delete(`/admin/room-facilities/${facilityId}`)
+  }
 }

@@ -35,7 +35,7 @@
                     <td >
                         <i  (click)="getFacilityById(facility._id)"  class="fa-solid fa-eye"></i>
                         <i class="fa-solid fa-pen-to-square mx-2"></i>
-                        <i   class="fa-solid fa-trash"></i>
+                        <i (click)="deleteFacility(facility._id)"  class="fa-solid fa-trash"></i>
                     </td>
                 </tr>
             </tbody>
@@ -67,7 +67,7 @@
                     <button class="btn btn-sm edit  me-2"  >
                         <i class="fa-solid fa-pen-to-square "></i> Edit
                     </button>
-                    <button   class="btn btn-sm delete  me-2"  >
+                    <button (click)="deleteFacility(facility._id)"  class="btn btn-sm delete  me-2"  >
                         <i class="fa-solid fa-trash"></i> Delete
                     </button>
                 </div>

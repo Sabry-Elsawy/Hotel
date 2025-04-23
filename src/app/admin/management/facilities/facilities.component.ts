@@ -1,6 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { FacilitiesService } from '../../../core/service/admin/facilities.service';
 import { IFacility } from '../../../core/model/room';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-facilities',
@@ -18,7 +19,7 @@ export class FacilitiesComponent implements OnInit {
   totalNumOfUsers: number = 0;
   startItem: number = 1;
   endItem: number = 10;
-constructor(private _FacilitiesService:FacilitiesService){}
+constructor(private _FacilitiesService:FacilitiesService , private _NgxSpinnerService:NgxSpinnerService){}
 
 ngOnInit(): void {
   this.getAllFacilities(); // Fetch all facilities on component initialization
@@ -30,6 +31,7 @@ getAllFacilities(){
     size: this.itemsPerPage, // Number of items per page
     page: this.currentPage, // Current page number
   }
+  this._NgxSpinnerService.show(); // Show loading spinner
   this._FacilitiesService.getAllFacilities(params).subscribe({
     next:(response)=>{
       console.log(response);
@@ -41,14 +43,17 @@ getAllFacilities(){
     }
     ,error:(error)=>{
       console.log(error);
+      this._NgxSpinnerService.hide(); // Hide loading spinner on error
     },
     complete:()=>{
 //console.log("completed")
+      this._NgxSpinnerService.hide(); // Hide loading spinner on completion
     }
   })
 }
 
 getFacilityById(facilityId:string){
+  this._NgxSpinnerService.show(); // Show loading spinner
   this._FacilitiesService.getFacilityById(facilityId).subscribe({
     next:(response)=>{
       console.log(response);
@@ -57,13 +62,33 @@ getFacilityById(facilityId:string){
     },
     error:(error)=>{
       console.log(error);
+      this._NgxSpinnerService.hide(); // Hide loading spinner on error
     },
     complete:()=>{
       //console.log("completed")
+      this._NgxSpinnerService.hide(); // Hide loading spinner on completion
     }
   })
 }
 
+
+deleteFacility(facilityId:string){
+  this._NgxSpinnerService.show(); // Show loading spinner
+  this._FacilitiesService.deleteFacility(facilityId).subscribe({
+    next:(response)=>{
+      //console.log(response);
+      this.getAllFacilities(); // Refresh the facilities list after deletion
+    },
+    error:(error)=>{
+      console.log(error);
+      this._NgxSpinnerService.hide(); // Hide loading spinner on error
+    },
+    complete:()=>{
+      //console.log("completed")
+      this._NgxSpinnerService.hide(); // Hide loading spinner on completion
+    }
+  })
+}
 
 
 
