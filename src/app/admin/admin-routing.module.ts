@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: '', component: AdminComponent , children:[
     {path:'', redirectTo: 'general', pathMatch: 'full'},
     {path:'general', loadChildren:()=>import('./general/general.module').then(m=>m.GeneralModule)},
-    {path:'management' , loadChildren:()=>import('./management/management.module').then(m=>m.ManagementModule)}
+    {path:'management' , loadChildren:()=>import('./management/management.module').then(m=>m.ManagementModule)},
+    {path:'ads-Booking' , loadChildren:()=>import('./ads-booking/ads-booking.module').then(m=>m.AdsBookingModule)}
   ] }
 ];
 

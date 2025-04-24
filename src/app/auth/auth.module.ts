@@ -35,7 +35,7 @@ import { LandingPageModule } from "../landing-page/landing-page.module";
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule,
+ 
     LandingPageModule
 ]
 })
