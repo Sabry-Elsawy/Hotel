@@ -21,4 +21,7 @@ export class AdsService {
   addAds(data:any):Observable<any>{
     return this._HttpClient.post('/admin/ads',data);
   }
+  editAdds(id:string , discount:number , isActive:boolean):Observable<any>{
+    return this._HttpClient.put(`/admin/ads/${id}`,{discount:discount,isActive:isActive});
+  }
 }

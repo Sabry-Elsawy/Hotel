@@ -24,6 +24,10 @@ export class AdsComponent implements OnInit {
   endItem: number = 10;
   showModel:boolean=false;
   showModelAddAds:boolean=false;
+  showModelEditAds:boolean=false;
+  isActiveEditing:boolean=false;
+  discountEditing:number=0;
+  roomIdEditing:string='';
 
 
   constructor(private _AdsService:AdsService , private _NgxSpinnerService:NgxSpinnerService , private _RoomsService:RoomsService){}
@@ -124,6 +128,46 @@ getAdsById(id:string){
     }
   })
 }
+
+getAdsByIdForEdit(id:string){
+  this._NgxSpinnerService.show();
+  this._AdsService.getAdsById(id).subscribe({
+    next:(response)=>{
+   //   console.log(response);
+      this.selectedAds=response.data.ads; // Assign the selected ad to the variable
+      this.isActiveEditing=this.selectedAds.isActive; // Assign the isActive value for editing
+      this.discountEditing=this.selectedAds.room.discount; // Assign the discount value for editing
+      this.roomIdEditing=this.selectedAds._id; // Assign the room ID for editing
+      this.showModelEditAds=true; // Show the modal for editing
+    },
+    error:(error)=>{
+      console.log(error);
+      this._NgxSpinnerService.hide();
+    },
+    complete:()=>{
+      this._NgxSpinnerService.hide();
+    }
+  })
+}
+
+editAds(){
+  this._NgxSpinnerService.show();
+
+this._AdsService.editAdds(this.roomIdEditing , this.discountEditing , this.isActiveEditing).subscribe({
+  next:(response)=>{
+    console.log(response);
+    this.getAllAds(); // Refresh the list after editing
+    this.showModelEditAds=false; // Hide the modal after submission
+  },
+  error:(error)=>{
+    console.log(error);
+    this._NgxSpinnerService.hide();
+  },
+  complete:()=>{
+    this._NgxSpinnerService.hide();
+  }
+})
+}
   // Fetch all available rooms
   getAllRooms() {
     let params = {
@@ -149,6 +193,9 @@ closeModelAddAds(){
 }
 openModelAddAds(){
   this.showModelAddAds=true;
+}
+closeModelEditAds(){
+  this.showModelEditAds=false;
 }
 
   calculatePagination(): void {
