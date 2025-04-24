@@ -9,6 +9,7 @@ import { IAds } from '../../../core/model/ads';
 })
 export class AdsComponent implements OnInit {
   AllAds:IAds[] = [];
+  selectedAds!:IAds;
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalPages!: number;
@@ -16,6 +17,7 @@ export class AdsComponent implements OnInit {
   totalNumOfAds: number = 0;
   startItem: number = 1;
   endItem: number = 10;
+  showModel:boolean=false;
 
 
   constructor(private _AdsService:AdsService , private _NgxSpinnerService:NgxSpinnerService){}
@@ -66,7 +68,28 @@ deleteAds(id:string){
   })
 }
 
+getAdsById(id:string){
+  this._NgxSpinnerService.show();
+  this._AdsService.getAdsById(id).subscribe({
+    next:(response)=>{
+      //console.log(response);
+      
+      this.selectedAds=response.data.ads; // Assign the selected ad to the variable
+      this.showModel=true; // Show the modal
+    },
+    error:(error)=>{
+      console.log(error);
+      this._NgxSpinnerService.hide();
+    },
+    complete:()=>{
+      this._NgxSpinnerService.hide();
+    }
+  })
+}
 
+closeModel(){
+  this.showModel=false;
+}
 
 
   calculatePagination(): void {
