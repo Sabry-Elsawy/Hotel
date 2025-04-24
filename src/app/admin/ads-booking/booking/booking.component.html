@@ -1,1 +1,169 @@
-<p>booking works!</p>
+ 
+<div class="Booking">
+    <div class="filters-container">
+        <div class="heading ">
+            <div class="d-flex justify-content-between align-items-center my-3">
+                <h1>Ads Table Details</h1>
+            </div>
+            <div class="filter-input">
+                <i class="fa-brands fa-searchengin"></i>
+                <input    type="search" placeholder="Search for ads using active..."   />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead>
+                <tr class="text-center ">
+                    <th >Room Number</th>
+                    <th>Price</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let Booking of AllBooking"   >
+                   
+                    <td> {{Booking.room.roomNumber}}</td>
+                    <td>  {{Booking.totalPrice}} </td>
+                    <td> {{Booking.startDate |formatDate}} </td>
+                    <td>  {{Booking.endDate | formatDate }}</td>
+                    <td [ngClass]="Booking.status == 'pending'?'text-warning':'text-success'"><i class="fas me-1  "
+                        [ngClass]="Booking.status == 'pending'?'fa-hourglass-half':'fa-check-circle'"></i>  {{Booking.status}}</td>
+                    <td >
+                        <i   (click)="getBookingRoomById(Booking._id)"   class="fa-solid fa-eye me-2"></i>
+                        <i (click)="deleteBookingRoom(Booking._id)"   class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- display rooms on phone screen -->
+
+<div class="cards-phone">
+    <div  >
+        <div class="rooms-card"  *ngFor="let Booking of AllBooking"  >
+         
+            <div class="user-card-body">
+                <div class="user-info">
+                    <p><i class="fa-solid fa-user"></i>{{ Booking.user.userName}}</p>
+                    <p><i class="fa-solid fa-id-card"></i>{{Booking.room.roomNumber}}</p>
+                    <p><i class="fa-solid fa-dollar-sign"></i>{{Booking.totalPrice}}</p>
+                    <p><i class="fa-solid fa-calendar-days"></i> {{Booking.startDate |formatDate }}</p>
+                    <p><i class="fa-solid fa-calendar"></i>{{Booking.endDate |formatDate }}</p>
+                 
+                </div>
+                <div class="rooms-actions d-flex justify-content-end  align-items-center">
+                    <button (click)="getBookingRoomById(Booking._id)"   class="btn btn-sm  view me-2"  >
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                 
+                    <button    class="btn btn-sm delete  me-2"  >
+                        <i (click)="deleteBookingRoom(Booking._id)" class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="pagination-container d-flex justify-content-center align-items-center my-4">
+    <div class="d-flex flex-column flex-sm-row align-items-center">
+        <div class="d-flex align-items-center mb-2 mb-sm-0">
+            <span class="me-2 small">Items per page:</span>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                    id="pageSizeDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ itemsPerPage }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="pageSizeDropdownMobile">
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(5)">5</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(10)">10</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(20)">20</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(50)">50</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <span class="mx-sm-4 small">{{ startItem }} – {{ endItem }} of {{ totalNumOfAds }}</span>
+        <div class="pagination-arrows mt-2 mt-sm-0">
+            <button class="btn btn-sm btn-outline-secondary me-2" [disabled]="currentPage === 1" title="Go to previous page"
+                (click)="previousPage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === totalPages"
+                (click)="nextPage()" title="Go to next page">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+ 
+
+
+
+
+
+<!-- Booking details -->
+
+
+<div class="custom-modal"  *ngIf="showModel"  >
+    <div class="modal-backdrop"  ></div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Booking  Details</h5>
+                <button (click)="closeModel()"   type="button" class="btn-close" title="Close"></button>
+            </div>
+            <div class="modal-body"    >
+            
+                <div class="user-details mt-5">
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-user me-2"  ></i>User:</span>
+                        <span class="detail-value">{{selectedBooking.user.userName}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-id-card me-2"></i>Room no:</span>
+                        <span class="detail-value">{{selectedBooking.room.roomNumber}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-dollar-sign me-2"></i>Price:</span>
+                        <span class="detail-value">{{selectedBooking.totalPrice}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fas fa-solid fa-calendar-days me-2"></i>Start Date:</span>
+                        <span class="detail-value">{{selectedBooking.startDate|formatDate }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="fa-solid fa-calendar me-2"></i>End Date:</span>
+                        <span class="detail-value">{{selectedBooking.endDate |formatDate }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModel()"  type="button" class="btn btn-danger" >Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
