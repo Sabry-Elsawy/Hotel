@@ -18,4 +18,7 @@ export class AdsService {
   deleteAds(id:string):Observable<any>{
     return this._HttpClient.delete(`/admin/ads/${id}`);
   }
+  addAds(data:any):Observable<any>{
+    return this._HttpClient.post('/admin/ads',data);
+  }
 }

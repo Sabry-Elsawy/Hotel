@@ -2,6 +2,10 @@ import { Component ,OnInit} from '@angular/core';
 import { AdsService } from '../../../core/service/admin/ads.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IAds } from '../../../core/model/ads';
+import { RoomsService } from '../../../core/service/admin/rooms.service';
+import { IRoom } from '../../../core/model/room';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+ 
 @Component({
   selector: 'app-ads',
   templateUrl: './ads.component.html',
@@ -10,6 +14,7 @@ import { IAds } from '../../../core/model/ads';
 export class AdsComponent implements OnInit {
   AllAds:IAds[] = [];
   selectedAds!:IAds;
+  allRooms:IRoom[] = []; // Array to hold all available rooms
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalPages!: number;
@@ -18,12 +23,45 @@ export class AdsComponent implements OnInit {
   startItem: number = 1;
   endItem: number = 10;
   showModel:boolean=false;
+  showModelAddAds:boolean=false;
 
 
-  constructor(private _AdsService:AdsService , private _NgxSpinnerService:NgxSpinnerService){}
+  constructor(private _AdsService:AdsService , private _NgxSpinnerService:NgxSpinnerService , private _RoomsService:RoomsService){}
+
+
+  adsForm = new FormGroup({
+    room:new FormControl('', [Validators.required]),
+    discount:new FormControl('', [Validators.required]),
+    isActive:new FormControl('', [Validators.required]),
+  })
+
+  handleFormSubmit(data :FormGroup) {
+    if (this.adsForm.valid) {
+      this._NgxSpinnerService.show();
+
+   this._AdsService.addAds(data.value).subscribe({
+      next:(response)=>{
+     //   console.log(response);
+        this.adsForm.reset();
+        this.getAllAds(); // Refresh the list after adding a new ad
+        this.showModelAddAds=false; // Hide the modal after submission
+      }
+      ,error:(error)=>{
+        console.log(error);
+        this._NgxSpinnerService.hide();
+      }
+      ,complete:()=>{
+        this._NgxSpinnerService.hide();
+      }
+    })
+   
+  }
+}
+    
 
 ngOnInit(): void {
   this.getAllAds()
+  this.getAllRooms(); // Fetch all available rooms on component initialization
 }
 
   getAllAds(){
@@ -86,11 +124,32 @@ getAdsById(id:string){
     }
   })
 }
+  // Fetch all available rooms
+  getAllRooms() {
+    let params = {
+      size: 100,
+      page: 1
+    }
+    this._RoomsService.getAllRooms(params).subscribe({
+      next: (res) => {        
+        if (res.success) {          
+          this.allRooms = res.data.rooms
+        }
+      }, error: (err) => {
+        console.log(err);
+      }
+    })
+  }
 
 closeModel(){
   this.showModel=false;
 }
-
+closeModelAddAds(){
+  this.showModelAddAds=false;
+}
+openModelAddAds(){
+  this.showModelAddAds=true;
+}
 
   calculatePagination(): void {
     // Calculate total pages

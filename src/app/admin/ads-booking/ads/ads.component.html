@@ -4,7 +4,7 @@
         <div class="heading ">
             <div class="d-flex justify-content-between align-items-center my-3">
                 <h1>Ads Table Details</h1>
-                <button >Add Ads</button>
+                <button (click)="openModelAddAds()" >Add Ads</button>
             </div>
             <div class="filter-input">
                 <i class="fa-brands fa-searchengin"></i>
@@ -175,3 +175,44 @@
 </div>
  
 
+
+
+<!--Add ads   -->
+
+
+<div class="custom-modal"  *ngIf="showModelAddAds"  >
+    <div class="modal-backdrop"  ></div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add Ads  </h5>
+                <button (click)="closeModelAddAds()"   type="button" class="btn-close" title="Close"></button>
+            </div>
+            <div class="modal-body"    >
+           
+                <form [formGroup]="adsForm" (ngSubmit)="handleFormSubmit(adsForm)">
+                    <label for="room-num ">Room Number:</label>
+                    <select  formControlName="room" class="d-block w-100 form-control " id="room-num" title="Select a Room Number">
+                        <option value="" disabled selected hidden>-- Select a Room Number--</option>
+                        <option [value]="room._id" *ngFor="let room of allRooms" >{{room.roomNumber}}</option>
+                    </select>
+
+                    <label class="mt-3" for="Discount">Discount:</label>
+                    <input type="number" id="Discount" class="d-block w-100 form-control mb-3" formControlName="discount" placeholder="Enter Discount" />
+
+                    <label for="isActive">isActive:</label>
+                    <select class="d-block w-100 form-control" id="isActive"   formControlName="isActive">
+                        <option value="" disabled selected hidden>-- Select isActive --</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </form>
+                 
+            </div>
+            <div class="modal-footer">
+                <button (click)="handleFormSubmit(adsForm)" type="submit" class="btn btn-success me-3">Add</button>
+                <button (click)="closeModelAddAds()"  type="button" class="btn btn-danger" >Close</button>
+            </div>
+        </div>
+    </div>
+</div>

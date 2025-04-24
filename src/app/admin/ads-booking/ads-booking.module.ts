@@ -5,7 +5,8 @@ import { AdsBookingRoutingModule } from './ads-booking-routing.module';
 import { AdsComponent } from './ads/ads.component';
 import { BookingComponent } from './booking/booking.component';
 import { SharedModule } from '../../shared/shared.module';
- 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+  
  
 
 
@@ -18,7 +19,9 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     AdsBookingRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
  
   ]
 })
