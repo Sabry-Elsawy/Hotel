@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AdsBookingRoutingModule } from './ads-booking-routing.module';
 import { AdsComponent } from './ads/ads.component';
 import { BookingComponent } from './booking/booking.component';
-import { NotfoundComponent } from '../../shared/notfound/notfound.component';
+import { SharedModule } from '../../shared/shared.module';
+ 
  
 
 
@@ -12,11 +13,12 @@ import { NotfoundComponent } from '../../shared/notfound/notfound.component';
   declarations: [
     AdsComponent,
     BookingComponent,
-    NotfoundComponent
+ 
   ],
   imports: [
     CommonModule,
     AdsBookingRoutingModule,
+    SharedModule
  
   ]
 })
