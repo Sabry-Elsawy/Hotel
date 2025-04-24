@@ -6,7 +6,7 @@ import { NotfoundComponent } from '../../shared/notfound/notfound.component';
 
 const routes: Routes = [
   {path:'' , redirectTo:'ads' , pathMatch:'full'},
-  {path:'ads' ,component:AdsComponent , title:'Ads'},
+  {path:'ads' ,component:AdsComponent , title:'advertisements'},
   {path:'Booking' , component:BookingComponent , title:'Booking'},
   {path:'**' , component:NotfoundComponent , title:'Not Found'},
 ];

@@ -28,7 +28,7 @@
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span class="font-super-bold">Rooms Management</span>
+                    <span [routerLink]="['management']" class="font-super-bold">Rooms Management</span>
                 </a>
                 <ul class="submenu">
                     <li>
@@ -53,16 +53,16 @@
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span class="font-super-bold">Ads & Bookings</span>
+                    <span routerLink="ads-Booking"   class="font-super-bold">Ads & Bookings</span>
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['ads-booking']">
+                        <a [routerLink]="['ads-Booking/ads']"  routerLinkActive="active">
                             <i class="fas fa-bullhorn"></i> ADS
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['ads-booking/booking']">
+                        <a [routerLink]="['ads-Booking/Booking']"  routerLinkActive="active">
                             <i class="fas fa-calendar-check"></i> Booking
                         </a>
                     </li>

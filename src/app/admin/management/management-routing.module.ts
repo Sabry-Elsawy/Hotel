@@ -5,6 +5,7 @@ import { ManageRoomComponent } from './manage-room/manage-room.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
 
 const routes: Routes = [
+  {path: '' , redirectTo:'rooms' , pathMatch:'full'},
   {path: 'rooms' , component:RoomsComponent , title:'Rooms'},
   {path:'manage-room' , component:ManageRoomComponent , title:'Manage Room'},
   {path:'facilities' , component:FacilitiesComponent , title:'Facilities'}

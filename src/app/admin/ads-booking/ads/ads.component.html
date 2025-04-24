@@ -1,1 +1,125 @@
-<p>ads works!</p>
+ 
+<div class="Ads">
+    <div class="filters-container">
+        <div class="heading ">
+            <div class="d-flex justify-content-between align-items-center my-3">
+                <h1>Ads Table Details</h1>
+                <button >Add Ads</button>
+            </div>
+            <div class="filter-input">
+                <i class="fa-brands fa-searchengin"></i>
+                <input    type="search" placeholder="Search for ads using active..."   />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead>
+                <tr class="text-center ">
+                    <th >Room Image</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Capacity</th>
+                    <th>Active</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let ads of AllAds"  >
+                    <td>
+                        <img class="image" [src]="ads.room.images[0]" alt="ads image">
+                    </td>
+                    <td> {{ads.room.price}}</td>
+                    <td>  {{ads.room.discount}} </td>
+                    <td> {{ads.room.capacity}} </td>
+                    <td>  {{ads.isActive}}</td>
+                    <td >
+                        <i    class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-pen-to-square mx-2"></i>
+                        <i (click)="deleteAds(ads._id)"  class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- display rooms on phone screen -->
+
+<div class="cards-phone">
+    <div  >
+        <div class="rooms-card" *ngFor="let ads of AllAds"  >
+            <div class="user-card-header d-flex align-items-center">
+                <img [src]="ads.room.images[0]" alt="User Profile" class="user-avatar-sm rounded-circle me-3">
+                <span class="user-id">{{ads.room.roomNumber}}</span>
+            </div>
+            <div class="user-card-body">
+                <div class="user-info">
+                    <p><i class="fa-solid fa-dollar-sign"></i>Price: {{ads.room.price}}</p>
+                    <p><i class="fa-solid fa-percent"></i> Discount: {{ads.room.discount}}%</p>
+                    <p><i class="fa-solid fa-users"></i>Capacity: {{ads.room.capacity}}</p>
+                    <p><i class="fa-solid fa-user"></i>User: {{ads.createdBy.userName}}</p>
+                </div>
+                <div class="rooms-actions d-flex justify-content-between align-items-center">
+                    <button   class="btn btn-sm  view me-2"  >
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="btn btn-sm edit  me-2"  >
+                        <i class="fa-solid fa-pen-to-square "></i> Edit
+                    </button>
+                    <button   class="btn btn-sm delete  me-2"  >
+                        <i (click)="deleteAds(ads._id)" class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="pagination-container d-flex justify-content-center align-items-center my-4">
+    <div class="d-flex flex-column flex-sm-row align-items-center">
+        <div class="d-flex align-items-center mb-2 mb-sm-0">
+            <span class="me-2 small">Items per page:</span>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                    id="pageSizeDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ itemsPerPage }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="pageSizeDropdownMobile">
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(5)">5</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(10)">10</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(20)">20</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" (click)="changePageSize(50)">50</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <span class="mx-sm-4 small">{{ startItem }} – {{ endItem }} of {{ totalNumOfAds }}</span>
+        <div class="pagination-arrows mt-2 mt-sm-0">
+            <button class="btn btn-sm btn-outline-secondary me-2" [disabled]="currentPage === 1" title="Go to previous page"
+                (click)="previousPage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === totalPages"
+                (click)="nextPage()" title="Go to next page">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+ 
