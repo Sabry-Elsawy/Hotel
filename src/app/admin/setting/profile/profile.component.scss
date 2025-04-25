@@ -1,0 +1,144 @@
+  .profile-info, .activity-card, .stats-card, .actions-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .profile-image:hover, .profile-info:hover, .activity-card:hover, .stats-card:hover, .actions-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+.profile{
+    margin: 50px 30px;
+    .profile-image{
+        background-color: #fff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        padding:35px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .image{
+            img{
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                margin-bottom: 15px;
+                border: 1px solid var(--primary-color);
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    transform: scale(1.05);
+                }
+            }
+            i{
+                font-size: 20px;
+                cursor: pointer;
+                position: absolute;
+                background-color: #dc3545;
+                color: #fff;
+                border-radius: 50%;
+                 width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                bottom: 35px;
+                right: -5px;
+            }
+        }
+        h6{
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        p{
+            font-size: 14px;
+            color:  #666;
+            margin-bottom: 10px !important;
+        }
+        .buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            button{
+            
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+            
+            }
+            .edit-btn{
+                background-color: #198754 !important;
+                &:hover{
+                    background-color: #fff !important;
+                    color: #198754 !important;
+                    border: 1px solid #198754 !important;
+                }
+               }
+               .setting{
+                color: var(--primary-color);
+                background-color: #fff ;
+                border: 1px solid var(--primary-color) ;
+                &:hover{
+                    background-color: var(--primary-color) !important;
+                    color: #fff !important;
+                    border: 1px solid var(--primary-color) !important;
+                }
+               }
+        }
+       
+    }
+
+    .activity-card{
+        margin-top: 25px;
+        .fa-calendar-alt {
+            color: var(--secondary-color);
+        }
+       
+    }
+
+    .profile-info{
+        background-color: #fff;
+        padding: 20px;
+        .field-label{
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .field-value{
+            color: #666;
+        }
+        .role-badge{
+            background-color: #6f42c1;
+            font-size: .9rem;
+            padding: .5em 1em;
+            border-radius: 20px;
+        }
+        input{
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            width: 100%;
+            &:focus{
+                outline: none;
+                border-color: var(--primary-color);
+                box-shadow: none;
+            }
+        }
+      
+    }
+     .actions-card , .stats-card{
+        margin-top: 25px;
+     }
+}
