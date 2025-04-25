@@ -24,7 +24,7 @@ import { LandingPageModule } from "../landing-page/landing-page.module";
  
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ChangePasswordComponent,
+   ChangePasswordComponent,
   
   ],
   imports: [
@@ -37,6 +37,8 @@ import { LandingPageModule } from "../landing-page/landing-page.module";
     FormsModule,
     SharedModule,
     LandingPageModule
-]
+],
+ 
+ 
 })
 export class AuthModule { }

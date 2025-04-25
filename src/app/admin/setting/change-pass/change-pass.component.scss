@@ -1,0 +1,183 @@
+// Variables for colors and spacing
+$primary-blue: #1e3a8a;
+$light-gray: #f1f5f9;
+$pink: #f472b6;
+$white: #ffffff;
+$shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+ 
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+ .card{
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.1)  10px 10px 20px;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+ }
+
+.left-section {
+    background: $primary-blue;
+    color: $white;
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (max-width: 992px) {
+         display: none;
+    }
+
+    .icon {
+        font-size: 40px;
+        animation: bounce 1s infinite;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    ul {
+        list-style: none;
+        font-size: 14px;
+
+        li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+
+            &:before {
+                content: '✔';
+                position: absolute;
+                left: 0;
+                color: $white;
+            }
+        }
+    }
+
+ 
+}
+
+.right-section {
+    padding: 40px;
+    background: $white;
+
+    h2 {
+        font-size: 24px;
+        color: $primary-blue;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        position: relative;
+
+        .fa-lock{
+            position: absolute;
+            left: 10px;
+            top: 40px;
+            color: var(--main-text-color);
+        }
+        .see-pass{
+            position: absolute;
+            top: 40px;
+            right: 15px;
+            color: var(--text-color);
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            color: $primary-blue;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border 0.3s ease;
+
+            &:focus {
+                border-color: $primary-blue;
+                outline: none;
+            }
+        }
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: var(--secondary-color);
+        border: none;
+        border-radius: 5px;
+        color: $white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background 0.3s ease;
+
+        &:hover {
+            background: darken($pink, 10%);
+            transform: scale(1.05);
+        }
+        
+    }
+    .disabled{
+        background: $pink;
+        cursor: not-allowed;
+    }
+    button:disabled:hover, 
+button[disabled]:hover {
+ 
+  background-color: $pink !important;
+  cursor: not-allowed;
+ 
+}
+
+    @media (max-width: 768px) {
+        padding: 20px;
+    }
+}
+.error p{
+    color: red;
+    margin: 7px 0 !important;
+}
+// Animations
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

@@ -1,0 +1,61 @@
+<section class="py-5 mt-5">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="row">
+            <div class="left-section col-lg-6">
+                <div class="icon">🔒</div>
+                <h2>Secure Access</h2>
+                <p>Protect your account with a strong password and keep your data safe.</p>
+                <ul>
+                    <li>Regular password updates</li>
+                    <li>Use unique passwords</li>
+                    <li>Enable two-factor authentication</li>
+                </ul>
+            </div>
+            <div class="right-section col-lg-6">
+                <h2>Change Password</h2>
+                <p>Please enter your current password and choose a new password to update your account.</p>
+                <form [formGroup]="changePassword" (ngSubmit)="onSubmit(changePassword)">
+                    <div class="input-group">
+                        <label for="current-password">Current Password</label>
+                        <i class="fa-solid fa-lock"></i>
+                        <input formControlName="oldPassword" [type]="hideCurrentPassword?'password':'text'" id="current-password" placeholder="Current Password">
+                        <i class="fa-solid  see-pass" (click)="toggleSeeCurrentPass()" [class]="hideCurrentPassword?'fa-eye-slash':'fa-eye'"></i>
+                        <div class="error" *ngIf="changePassword.get('oldPassword')?.errors && changePassword.get('oldPassword')?.touched">
+                            <p *ngIf="changePassword.get('oldPassword')?.getError('required')">*Password is required</p>
+                            <p *ngIf="changePassword.get('oldPassword')?.getError('pattern')">*must include at least one lowercase letter, one uppercase letter, one digit, one special character</p>
+                          </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="new-password">New Password</label>
+                        <i class="fa-solid fa-lock"></i>
+                        <input formControlName="newPassword"  [type]="hidepass?'password':'text'" id="new-password" placeholder="New Password">
+                        <i class="fa-solid  see-pass" (click)="toggleSee()" [class]="hidepass?'fa-eye-slash':'fa-eye'"></i>
+                        <div class="error" *ngIf="changePassword.get('newPassword')?.errors && changePassword.get('newPassword')?.touched">
+                            <p *ngIf="changePassword.get('newPassword')?.getError('required')">*New Password is required</p>
+                            <p *ngIf="changePassword.get('newPassword')?.getError('pattern')">*must include at least one lowercase letter, one uppercase letter, one digit, one special character</p>
+                          </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <i class="fa-solid fa-lock"></i>
+                        <input formControlName="confirmPassword" [type]="hidePassword?'password':'text'" id="confirm-password" placeholder="Confirm New Password">
+                        <i class="fa-solid  see-pass" (click)="toggleSeeConfirm()" [class]="hidePassword?'fa-eye-slash':'fa-eye'"></i>
+                        <div class="error" *ngIf="changePassword.get('confirmPassword')?.errors && changePassword.get('confirmPassword')?.touched">
+                            <p *ngIf="changePassword.get('confirmPassword')?.getError('required')">*Password is required</p>
+                            <p *ngIf="changePassword.get('confirmPassword')?.getError('passwordMatch')">*Confirm password does not match password</p>
+                            <p *ngIf="changePassword.get('confirmPassword')?.getError('pattern')">*must include at least one lowercase letter, one uppercase letter, one digit, one special character</p>
+                          </div>
+                    </div>
+                    <button  [disabled]="changePassword.invalid" [class.disabled]="changePassword.invalid" type="submit">Change Password</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+ </section>
+
+
+
+
+ 
