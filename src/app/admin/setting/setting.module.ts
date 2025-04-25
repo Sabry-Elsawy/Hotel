@@ -6,6 +6,8 @@ import { ChangePassComponent } from './change-pass/change-pass.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DateandtimePipe } from '../../shared/pipes/dateandtime.pipe';
+ 
 //import { SharedModule } from '../../shared/shared.module';
  
  
@@ -16,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChangePassComponent,
     FeedbackComponent,
     ProfileComponent,
+    DateandtimePipe
     
  
   

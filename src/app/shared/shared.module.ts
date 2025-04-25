@@ -5,6 +5,8 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+//import { DatePipe } from './pipes/date.pipe';
+//import { DateandtimePipe } from './pipes/dateandtime.pipe';
 //import { FormatDatePipe } from './pipes/format-date.pipe';
 //import { SearchFacilityPipe } from './pipes/search-facility.pipe';
 //import { SearchRoomPipe } from './pipes/search-room.pipe';
@@ -18,6 +20,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SharedComponent,
     NotfoundComponent,
     SidebarComponent,
+  //  DatePipe,
+   // DateandtimePipe,
  //   FormatDatePipe,
   //  SearchFacilityPipe,
  //   SearchRoomPipe,
