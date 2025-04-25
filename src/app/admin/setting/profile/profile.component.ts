@@ -13,6 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ProfileComponent implements OnInit {
   isEditing:boolean = false;
   userInfo!:IProfile;
+  username:string=''
 
 cuurrentUserId:string=localStorage.getItem('id') || '';
 constructor(private _AuthService:AuthService , private _ProfileService:ProfileService ,private _NgxSpinnerService:NgxSpinnerService){}
@@ -41,11 +42,27 @@ getCurrentUser():void{
   })
 }
 
+formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
 logOut():void{
   this._AuthService.myLogOut();
 }
 
   toggleEdit(): void {
     this.isEditing = !this.isEditing;
+  }
+
+  saveChanges(): void {
+    // In a real app, this would save to the backend
+    this.isEditing = false;
+    // Show success message
+    alert('Profile updated successfully!');
   }
 }

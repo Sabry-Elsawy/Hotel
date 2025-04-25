@@ -2,6 +2,7 @@
 
 <div class="sidebar" [class.open]="isSidebarOpen" >
     <div class="sidebar-logo">
+        <img [src]="userInfo.profileImage" alt="logo">
         <h6>Stay<span>cation.</span></h6>
     </div>
 
@@ -74,10 +75,10 @@
 
 <div class="profile-section">
     <div class="profile-info" (click)="toggleProfile()"> 
-        <img src="../../../assets/images/InFrame_1708111423300.jpg" alt="Profile Picture" class="profile-picture">
+        <img [src]="userInfo?.profileImage" alt="Profile Picture" class="profile-picture">
         <div class="profile-name ms-2">
-            <h6 class="user-name">Admin Name</h6>
-            <p class="user-email">ali23gamail.com</p>
+            <h6 class="user-name">{{userInfo.userName}}</h6>
+            <p class="user-email">{{userInfo.email}}</p>
         </div>
         <i class="fas fa-chevron-down chevron" [class.open]="isProfileOpen" ></i>
     </div>
@@ -95,7 +96,7 @@
                 Settings
             </a>
         </li>
-        <li class="cursor-pointer"  >
+        <li   >
             <a class="btn-logOut" (click)="logOut()" >
                 <i class="fas fa-sign-out-alt"></i>
                 Logout

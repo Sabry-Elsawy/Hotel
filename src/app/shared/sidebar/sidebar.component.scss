@@ -40,6 +40,15 @@
     scrollbar-width: thin; 
     scrollbar-color: #888 #f1f1f1;
     .sidebar-logo{
+      padding-left: 15px;
+        display: flex;
+        align-items: center;
+      img{
+        width: 70px;
+        height: 70px;
+        padding-right: 10px;
+        animation: rotate 1s linear  ;
+      }
         h6{
             position: relative;
             text-align: center;
@@ -127,8 +136,8 @@
         align-items: center;
         justify-content: space-between;
         img{
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             transition: all .3s ease;
         }
         &:hover  img{
@@ -153,11 +162,13 @@
             margin-left: auto;
             font-size: 12px;
             transition: transform 0.3s ease;
+            cursor: pointer;
           
             &.open {
               transform: rotate(180deg);
             }
           }
+       
     }
 }
 
@@ -228,6 +239,7 @@
     }
   }
   .btn-logOut{
+    cursor:  pointer !important;
     width: 80% !important;
     color: rgba(255, 0, 0, 0.776) !important;
     background-color: transparent !important;
@@ -280,6 +292,16 @@
     }
     display: none;
      
+}
+
+@keyframes rotate {
+    0% {
+       transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  
 }
 
 @keyframes slideIn {

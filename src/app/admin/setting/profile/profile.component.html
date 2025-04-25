@@ -11,7 +11,7 @@
                 <p>{{userInfo.country}}</p>
 
                 <div class="buttons">
-                    <button class="edit-btn" type="button"><i class="fa-solid fa-pen-to-square me-2"></i>Edit Profile</button>
+                    <button (click)="toggleEdit()" class="edit-btn" type="button"><i class="fa-solid fa-pen-to-square me-2"></i>Edit Profile</button>
                     <button class="setting" type="button"><i class="fa-solid fa-gear me-2"></i>Settings</button>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         </li>
                         <li class="list-group-item d-flex   align-items-center p-3">
                             <i class="fas fa-calendar-alt fa-lg me-3" ></i>
-                            <p class="mb-0">Member since:   {{userInfo.createdAt }}  </p>
+                            <p class="mb-0">Member since:   {{userInfo.createdAt  }}  </p>
                         </li>
                         <li class="list-group-item d-flex   align-items-center p-3">
                             <i class="fas fa-clock fa-lg text-info me-3"></i>
@@ -61,7 +61,7 @@
                     <div class="col-sm-9">
                         <p class="text-muted mb-0 field-value" *ngIf="!isEditing"> {{userInfo.userName}} </p>
                         <!-- <label for="fullNameInput" class="visually-hidden">Full Name</label> -->
-                        <input *ngIf="isEditing" id="fullNameInput" type="text" class="form-control"   title="Full Name">
+                        <input *ngIf="isEditing" id="fullNameInput" type="text" class="form-control"  [(ngModel)]="userInfo.userName"   title="Full Name">
                     </div>
                 </div>
                 <hr>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="col-sm-9">
                         <p class="text-muted mb-0 field-value" *ngIf="!isEditing">  {{userInfo.email}}  </p>
-                        <input *ngIf="isEditing" type="email" class="form-control"  title="email">
+                        <input *ngIf="isEditing" type="email" class="form-control" [(ngModel)]="userInfo.email"   title="email">
                     </div>
                 </div>
                 <hr>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-sm-9">
                         <p class="text-muted mb-0 field-value" *ngIf="!isEditing">  {{userInfo.phoneNumber}}</p>
-                        <input *ngIf="isEditing" type="tel" class="form-control"  title="phone">
+                        <input *ngIf="isEditing" type="tel" class="form-control" [(ngModel)]="userInfo.phoneNumber"  title="phone">
                     </div>
                 </div>
                 <hr>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-sm-9">
                         <p class="text-muted mb-0 field-value" *ngIf="!isEditing"> {{userInfo.country}}  </p>
-                        <input *ngIf="isEditing" type="text" class="form-control" title="country">
+                        <input *ngIf="isEditing" type="text" class="form-control" [(ngModel)]="userInfo.country" title="country">
                     </div>
                 </div>
                 <hr>
@@ -107,8 +107,8 @@
                     </div>
                 </div>
                 <div *ngIf="isEditing" class="mt-4 text-end">
-                    <button class="btn btn-secondary me-2"  >Cancel</button>
-                    <button class="btn btn-success"  >Save Changes</button>
+                    <button class="btn btn-secondary me-2" (click)="toggleEdit()" >Cancel</button>
+                    <button class="btn btn-success" (click)="saveChanges()" >Save Changes</button>
                 </div>
 
             </div>
