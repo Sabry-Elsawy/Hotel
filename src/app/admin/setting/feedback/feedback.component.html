@@ -1,1 +1,60 @@
-<p>feedback works!</p>
+<div class="feedback-container">
+    <div class="card feedback-card" [class.submitted]="submitted">
+      <div class="card-header text-center py-4">
+        <h2 class="mb-0">
+          <i class="fas fa-comments me-2"></i>
+          Your Feedback Matters
+        </h2>
+      </div>
+      <div class="card-body">
+        <!-- Before Submission -->
+        <div *ngIf="!submitted" class="feedback-form fade-in">
+          <div class="rating-container text-center mb-4">
+            <h5 class="mb-3">How would you rate your experience?</h5>
+            <div class="stars">
+              <i *ngFor="let star of [1,2,3,4,5]" [class]="star <= rating ? 'fas' : 'far'" class="fa-star"
+                (click)="setRating(star)" (mouseenter)="hoverRating = star" (mouseleave)="hoverRating = 0"
+                [class.hovered]="star <= hoverRating" [class.selected]="star <= rating">
+              </i>
+            </div>
+            <small class="rating-text mt-2 d-block" [ngClass]="{'text-warning': rating > 0}">
+              {{ getRatingText() }}
+            </small>
+          </div>
+  
+          <div class="form-group mb-4">
+            <label for="feedbackText" class="form-label d-flex align-items-center">
+              <i class="fas fa-pencil-alt me-2"></i>
+              Share your thoughts with us:
+            </label>
+            <textarea id="feedbackText" class="form-control" rows="4" [(ngModel)]="feedback"
+              [class.is-invalid]="showError && !feedback.trim()" placeholder="Your feedback helps us improve...">
+              </textarea>
+            <div class="invalid-feedback" *ngIf="showError && !feedback.trim()">
+              Please provide your feedback
+            </div>
+            <small class="text-muted mt-2 d-block">
+              <i class="fas fa-info-circle me-1"></i>
+              Minimum 10 characters required
+            </small>
+          </div>
+  
+          <button class="btn btn-primary w-100 submit-btn" [disabled]="!isValidForm()" (click)="submitFeedback()">
+            <i class="fas fa-paper-plane me-2"></i>
+            Submit Feedback
+          </button>
+        </div>
+  
+        <!-- After Submission -->
+        <div *ngIf="submitted" class="thank-you-message text-center fade-in">
+          <i class="fas fa-check-circle success-icon mb-4"></i>
+          <h3>Thank You!</h3>
+          <p class="mb-4">Your feedback helps us improve our services.</p>
+          <button class="btn btn-outline-primary" (click)="resetForm()">
+            <i class="fas fa-redo me-2"></i>
+            Submit Another Feedback
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
