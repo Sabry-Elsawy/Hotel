@@ -76,12 +76,26 @@ onSubmit(data :FormGroup) {
 this._NgxSpinnerService.show();
 if (this.roomId) {
   this._ManageRommService.editRoom(this.roomId,myData).subscribe({
-
+    next:(response)=>{
+    //  console.log(response);
+      this.isEditRoom=false;
+      this._Router.navigate(['/admin/management/rooms'])
+      
+    },
+    error:(err)=>{
+      console.log(err);
+      this._NgxSpinnerService.hide();
+      
+    },
+    complete:()=>{
+      this._NgxSpinnerService.hide();
+    }
   })
 }
+else{
   this._ManageRommService.addRoom(myData).subscribe({
     next:(response)=>{
-      console.log(response);
+  //    console.log(response);
       this._Router.navigate(['/admin/management/rooms'])
       
     },
@@ -95,7 +109,7 @@ if (this.roomId) {
     }
   })
 
-
+}
   
 }
 
