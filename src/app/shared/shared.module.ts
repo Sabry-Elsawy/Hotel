@@ -5,6 +5,9 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { DashboardNavComponent } from './dashboard-nav/dashboard-nav.component';
+//import { SearchAdsPipe } from './pipes/search-ads.pipe';
+//import { SearchBookingPipe } from './pipes/search-booking.pipe';
 //import { DatePipe } from './pipes/date.pipe';
 //import { DateandtimePipe } from './pipes/dateandtime.pipe';
 //import { FormatDatePipe } from './pipes/format-date.pipe';
@@ -20,6 +23,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SharedComponent,
     NotfoundComponent,
     SidebarComponent,
+    DashboardNavComponent,
+  //  SearchAdsPipe,
+   // SearchBookingPipe,
   //  DatePipe,
    // DateandtimePipe,
  //   FormatDatePipe,
@@ -37,6 +43,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   exports: [
     NotfoundComponent,
     SidebarComponent,
+    DashboardNavComponent
  
   ]
 })

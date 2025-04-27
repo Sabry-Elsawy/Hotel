@@ -19,6 +19,7 @@ export class BookingComponent implements OnInit {
   startItem: number = 1;
   endItem: number = 10;
   showModel: boolean = false;
+  searchInput:string='';
 
   constructor(private _BookingService:BookingService , private _NgxSpinnerService:NgxSpinnerService){}
 ngOnInit(): void {

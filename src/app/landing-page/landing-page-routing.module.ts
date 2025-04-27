@@ -9,13 +9,13 @@ import { userGuard } from '../core/guards/user/user.guard';
 const routes: Routes = [
   { path: '', component: LandingPageComponent ,children:[
     {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path:'home' , component:HomeComponent,title:'Home'},
+    {path:'home' ,canActivate:[userGuard], component:HomeComponent,title:'Home'},
     {path:'explore' , canActivate:[userGuard], loadChildren:()=>import('./explore/explore.module').then(m=>m.ExploreModule),title:'explore'},
-    { path: 'favorite', loadChildren: () => import('./favorite/favorite.module').then(m => m.FavoriteModule),title:'favorite' },
-    {path:'room-details/:id', loadChildren:()=>import('./room-details/room-details.module').then(m=>m.RoomDetailsModule)  },
-    {path:'reviews', loadChildren:()=>import('./reviews/reviews.module').then(m =>m.ReviewsModule)},
-    {path:'profile' , loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
-    {path:'payment' , loadChildren:()=>import('./payment/payment.module').then(m=>m.PaymentModule)},
+    { path: 'favorite',canActivate:[userGuard], loadChildren: () => import('./favorite/favorite.module').then(m => m.FavoriteModule),title:'favorite' },
+    {path:'room-details/:id',canActivate:[userGuard], loadChildren:()=>import('./room-details/room-details.module').then(m=>m.RoomDetailsModule)  },
+    {path:'reviews',canActivate:[userGuard], loadChildren:()=>import('./reviews/reviews.module').then(m =>m.ReviewsModule)},
+    {path:'profile' ,canActivate:[userGuard], loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
+    {path:'payment' ,canActivate:[userGuard], loadChildren:()=>import('./payment/payment.module').then(m=>m.PaymentModule)},
     {path:'**' , component: NotfoundComponent}
   ]},
 

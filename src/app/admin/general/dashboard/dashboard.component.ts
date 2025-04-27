@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
 
   getDashboardData():void{
+    this._NgxSpinnerService.show();
     this._DashboardService.getDashboardData().subscribe({
       next:(response)=>{
         console.log(response);
@@ -49,10 +50,10 @@ export class DashboardComponent implements OnInit {
       },
       error:(err)=>{
         console.log(err);
-        
+        this._NgxSpinnerService.hide();
       },
       complete:()=>{
-
+        this._NgxSpinnerService.hide();
       }
     })
   }

@@ -7,7 +7,7 @@
             </div>
             <div class="filter-input">
                 <i class="fa-brands fa-searchengin"></i>
-                <input    type="search" placeholder="Search for ads using active..."   />
+                <input [(ngModel)]="searchInput"   type="search" placeholder="Search for a room using room number..."   />
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr  *ngFor="let Booking of AllBooking"   >
+                <tr  *ngFor="let Booking of AllBooking |searchBooking:searchInput"   >
                    
                     <td> {{Booking.room.roomNumber}}</td>
                     <td>  {{Booking.totalPrice}} </td>
@@ -53,7 +53,7 @@
 
 <div class="cards-phone">
     <div  >
-        <div class="rooms-card"  *ngFor="let Booking of AllBooking"  >
+        <div class="rooms-card"  *ngFor="let Booking of AllBooking|searchBooking:searchInput"  >
          
             <div class="user-card-body">
                 <div class="user-info">

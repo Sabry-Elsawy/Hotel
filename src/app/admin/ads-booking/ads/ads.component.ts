@@ -28,6 +28,7 @@ export class AdsComponent implements OnInit {
   isActiveEditing:boolean=false;
   discountEditing:number=0;
   roomIdEditing:string='';
+  searchInput:string='';
 
 
   constructor(private _AdsService:AdsService , private _NgxSpinnerService:NgxSpinnerService , private _RoomsService:RoomsService){}

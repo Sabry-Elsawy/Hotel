@@ -8,7 +8,7 @@
             </div>
             <div class="filter-input">
                 <i class="fa-brands fa-searchengin"></i>
-                <input    type="search" placeholder="Search for ads using active..."   />
+                <input [(ngModel)]="searchInput"   type="search" placeholder="Search for ads using active..."   />
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr  *ngFor="let ads of AllAds"  >
+                <tr  *ngFor="let ads of AllAds|searchAds:searchInput"  >
                     <td>
                         <img class="image" [src]="ads.room.images[0]" alt="ads image">
                     </td>
@@ -55,7 +55,7 @@
 
 <div class="cards-phone">
     <div  >
-        <div class="rooms-card" *ngFor="let ads of AllAds"  >
+        <div class="rooms-card" *ngFor="let ads of AllAds|searchAds:searchInput"  >
             <div class="user-card-header d-flex align-items-center">
                 <img [src]="ads.room.images[0]" alt="User Profile" class="user-avatar-sm rounded-circle me-3">
                 <span class="user-id">{{ads.room.roomNumber}}</span>

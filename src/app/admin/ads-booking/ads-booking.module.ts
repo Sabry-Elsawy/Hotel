@@ -7,6 +7,8 @@ import { BookingComponent } from './booking/booking.component';
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormatDatePipe } from '../../shared/pipes/format-date.pipe';
+import { SearchAdsPipe } from '../../shared/pipes/search-ads.pipe';
+import { SearchBookingPipe } from '../../shared/pipes/search-booking.pipe';
   
  
 
@@ -15,7 +17,9 @@ import { FormatDatePipe } from '../../shared/pipes/format-date.pipe';
   declarations: [
     AdsComponent,
     BookingComponent,
-    FormatDatePipe
+    FormatDatePipe,
+    SearchAdsPipe,
+    SearchBookingPipe
    
  
   ],
