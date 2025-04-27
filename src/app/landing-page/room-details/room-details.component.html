@@ -33,7 +33,7 @@
                       <img [src]="roomImages[selectedImageIndex]" class="main-room-image" alt="Room image">
                       <div class="facilities-name"  >
                         <i class="fas fa-tag me-2"></i>
-                        {{room.facilities[0].name}}
+                        {{room.facilities[0].name }}
                       </div>
                       <button (click)="moveGallary('next')" [disabled]="selectedImageIndex ===  roomImages.length - 1" class="gallery-nav next" title="Next Image">
                         <i class="fas fa-chevron-right"></i>

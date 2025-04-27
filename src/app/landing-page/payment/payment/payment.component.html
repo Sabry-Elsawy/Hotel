@@ -1,1 +1,34 @@
-<p class="h">payment works!</p>
+<section>
+    <div class="payment-container ">
+        <h2 class="payment-title">Complete Your Payment</h2>
+        
+        <div class="payment-form">
+          <div class="amount-display">
+            Payment Details
+          </div>
+          
+          <div class="card-container">
+            <form [formGroup]="stripeForm"  >
+                <ngx-stripe-card [options]="cardOptions"></ngx-stripe-card>
+              </form>
+            </div>
+        
+            <button (click)="createToken()" [disabled]="isProcessing">
+              <span class="loader" *ngIf="isProcessing"></span>
+              {{ isProcessing ? 'Processing...' : 'Pay Now' }}
+            </button>
+        
+            <div class="error-message" *ngIf="errorMessage">
+              {{ errorMessage }}
+            </div>
+        
+            <div class="success-message" *ngIf="paymentSuccess">
+              Payment processed successfully!
+            </div>
+          </div>
+      
+       
+        </div>
+      
+    
+</section>

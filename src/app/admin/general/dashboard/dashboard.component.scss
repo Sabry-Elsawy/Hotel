@@ -1,5 +1,91 @@
-.das{
- //   width: calc(100% - 300px);
-    height: 100vh;
-    background: tomato;
-}
+ .dashboard-container{
+    padding-right: 10px;
+    .counter-card{
+        overflow: hidden;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.03);
+        }
+        .card-body{
+            .card-header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                color: #fff;
+                font-size: 1.125rem;
+                font-weight: 500;
+                letter-spacing: -.025em;
+            }
+            .users{
+                background-color: rgb(59 130 246 );
+            }
+            .admin{
+                background-color: rgb(34 197 94 );
+            }
+            .pending{
+                background-color: rgb(245 158 11 );
+            }
+            .Completed{
+                background-color: rgb(168 85 247);
+            }
+            .card-content{
+                padding:10px 20px;
+                .counter{
+                    font-weight: 700;
+                    font-size: 1.875rem;
+                    line-height: 2.25rem;
+                }
+                .card-text{
+                    font-size: .9rem;
+                    line-height: 1.5rem;
+                    margin-bottom: 10px;
+                    color: #6b7280;
+                }
+            }
+        }
+    }
+    .by_chart {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        height: 100%;
+       // opacity: 0;
+        transform: scale(0.9);
+        animation: scaleIn 0.7s ease-in-out forwards;
+        animation-delay: 0.3s;
+    }
+    
+    .chart-container {
+        position: relative;
+        height: 300px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    h4 {
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        color: #152C5B;
+    }
+    
+ }
+
+
+

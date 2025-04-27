@@ -2,7 +2,7 @@
 
 <div class="sidebar" [class.open]="isSidebarOpen" >
     <div class="sidebar-logo">
-        <img [src]="userInfo.profileImage" alt="logo">
+        <img [src]="userInfo?.profileImage" alt="logo">
         <h6>Stay<span>cation.</span></h6>
     </div>
 
@@ -77,8 +77,8 @@
     <div class="profile-info" (click)="toggleProfile()"> 
         <img [src]="userInfo?.profileImage" alt="Profile Picture" class="profile-picture">
         <div class="profile-name ms-2">
-            <h6 class="user-name">{{userInfo.userName}}</h6>
-            <p class="user-email">{{userInfo.email}}</p>
+            <h6 class="user-name">{{userInfo?.userName}}</h6>
+            <p class="user-email">{{userInfo?.email}}</p>
         </div>
         <i class="fas fa-chevron-down chevron" [class.open]="isProfileOpen" ></i>
     </div>

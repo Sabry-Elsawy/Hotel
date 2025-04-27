@@ -110,3 +110,191 @@
    
 }
 
+.remove-icon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 1rem;
+    color: red;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+    
+    &:hover {
+      background-color: #f8d7da;
+    }
+  }
+  
+
+
+//   ===================================================
+
+  .image-preview-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+  
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+  
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  
+  
+  
+
+//   ================================================================
+
+ 
+  
+   
+  
+  .custom-dropzone {
+    min-height: 150px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 15px;
+  
+    @media (min-width: 768px) {
+      min-height: 200px;
+      padding: 20px;
+    }
+  
+    &:hover, &.dragover {
+      background: #ffffff;
+      border-color: #adb5bd;
+    }
+  
+    .file-input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+  
+   
+  
+    .upload-prompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+  
+      @media (min-width: 768px) {
+        min-height: 160px;
+      }
+  
+      i {
+        color: #6c757d;
+        font-size: 1.5rem;
+        
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
+      }
+  
+      p {
+        margin: 0;
+        color: #6c757d;
+        text-align: center;
+        font-size: 0.9rem;
+        
+        @media (min-width: 768px) {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  
+  .image-preview-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+  
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+  
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  
+  .image-preview {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .remove-btn {
+      position: absolute !important;
+      top: -25px;
+      right: 5px;
+      background: rgba(255, 255, 255, 0.9) !important;
+      border: none !important;
+      border-radius: 50% !important;
+      width: 24px !important;
+      height: 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1;
+      transition: all 0.2s ease;
+  
+      &:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.1);
+      }
+  
+      i {
+        font-size: 14px;
+        color: #dc3545;
+      }
+    }
+  }
+  
+  
+ 

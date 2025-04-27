@@ -7,7 +7,8 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 const routes: Routes = [
   {path: '' , redirectTo:'rooms' , pathMatch:'full'},
   {path: 'rooms' , component:RoomsComponent , title:'Rooms'},
-  {path:'manage-room' , component:ManageRoomComponent , title:'Manage Room'},
+  {path:'manage-room' , component:ManageRoomComponent , title:'Add Room'},
+  {path:'manage-room/:id' , component:ManageRoomComponent , title:'Edit Room'},
   {path:'facilities' , component:FacilitiesComponent , title:'Facilities'}
 ];
 

@@ -1,7 +1,5 @@
 import {   NgModule } from '@angular/core';
- 
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -13,6 +11,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { globalInterceptor } from './core/service/interceptor/global.interceptor';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxStripeModule } from 'ngx-stripe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatInputModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxStripeModule.forRoot('pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8')
     
   ],
   providers: [

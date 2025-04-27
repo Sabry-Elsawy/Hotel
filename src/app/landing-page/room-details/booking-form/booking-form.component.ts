@@ -43,7 +43,9 @@ onSubmit() {
 this._NgxSpinnerService.show();
     this._BookingService.startBooking(bookingData).subscribe({
       next:(response)=>{
-        this._Router.navigate(['/landing-page/payment/pay'])
+        console.log(response);
+        
+        this._Router.navigate(['/landing-page/payment/pay',response.data.booking._id])
       },
       error:(err)=>{
         console.log(err);

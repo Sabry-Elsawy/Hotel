@@ -5,7 +5,7 @@ import { NotfoundComponent } from '../../shared/notfound/notfound.component';
 
 const routes: Routes = [
   {path:'' , redirectTo:'pay' , pathMatch:'full'},
-  {path:'pay' ,component:PaymentComponent , title:'payment'},
+  {path:'pay/:id' ,component:PaymentComponent , title:'payment'},
   {path:'**' , component:NotfoundComponent , title:'Error 404'}
 ];
 

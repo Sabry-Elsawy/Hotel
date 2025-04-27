@@ -15,6 +15,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+ 
+
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -33,7 +35,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+ 
  
      
   ],

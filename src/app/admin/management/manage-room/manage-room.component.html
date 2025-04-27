@@ -2,7 +2,7 @@
     <div class="card">
         <div class="heading">
             <i class="fa-solid fa-circle-plus me-3"></i>
-            <h1>Add New Room</h1>
+            <h1>{{isEditRoom? 'Edit Room'  : 'Add New Room'}}</h1>
         </div>
 
 
@@ -25,7 +25,7 @@
             <label for="Discount" class="mt-3"><i class="fa-solid fa-percent"></i> Discount</label>
             <input formControlName="discount" type="number" id="Discount" class="form-control" placeholder="Enter Discount" required>
 
-            <label for="faciities" > <i class="fas fa-list me-2"></i> Facilities</label>
+            <label for="facilties" > <i class="fas fa-list me-2"></i> Facilities</label>
 
            
 
@@ -38,35 +38,35 @@
               </mat-form-field>
 
 
-
-              <label class="mt-3 d-block" for="room-image"><i class="fa-solid fa-image"></i> Room Images</label>
-
  
-
-
-<label  for="profile" class="upload-profile ">
-    <div class="frame" *ngIf="selectedFiles.length==0 ; else preview" >
-        <i class="fa-solid fa-cloud-arrow-up mb-2"></i>
-      <p class="mb-0 upload-text">Drag and drop images here or click to upload</p>
-    </div>
-  
-    <ng-template  #preview>
-      <div class=" row g-3 image">
-       <div class="col-md-3"  *ngFor="let img of images()">
-        <img [src]="img" alt="Profile preview" class="preview-image">
-       </div>
-        <!-- <i (click)="removeProfileImage($event)" class="fa-solid fa-xmark"></i> -->
+ 
+  <div class="form-group mb-3 width-input m-auto">
+    <label class="form-label">
+      <i class="fa fa-image"></i> Room Images
+    </label>
+    <div class="custom-dropzone" >
+      <input type="file" #fileInput (change)="onFileSelected($event)" multiple accept="image/*" class="file-input" title="Upload Room Images">
+      <div class="dropzone-content">
+        <div class="upload-prompt" *ngIf="previewUrls.length === 0">
+          <i class="fa fa-cloud-upload fa-2x mb-2"></i>
+          <p>Drag and drop images here or click to upload</p>
+        </div>
+        <div class="image-preview-container" *ngIf="previewUrls.length > 0">
+          <div class="image-preview" *ngFor="let url of previewUrls; let i = index">
+            <img [src]="url" alt="Preview">
+            <button type="button" class="remove-btn" (click)="onRemove(i)" title="Remove Image">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+        </div>
       </div>
-    </ng-template>
-  
- 
-    <input   id="profile" class="d-none" type="file" accept="image/*" (change)="onFilesSelected($event)" multiple >
-  </label>            
+    </div>
+  </div>
 
 
 
 
-  <button class="w-100" type="submit"><i class="fas fa-save me-2"></i> Save Room</button>
+  <button class="w-100" type="submit"><i class="fas fa-save me-2"></i> {{isEditRoom?'Edit':'Save'}} Room</button>
 
         </form>
 

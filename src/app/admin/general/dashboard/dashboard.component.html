@@ -1,3 +1,119 @@
-<div class="das">
-    <p>dashboard works!</p>
+ <section class="dashboard-container py-5">
+<div class="container-fluid ">
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+<div class="counter-card">
+    <div class="card-body">
+        <div class="card-header users">
+            <h5 class="card-title">Total Users</h5>
+            <i class="fa-solid fa-users"></i>
+        </div>
+        <div class="card-content">
+            <h2 class="counter">{{usersCount}}</h2>
+            <p class="card-text">Total registered users</p>
+        </div>
+    </div>
 </div>
+        </div>
+
+
+
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="counter-card">
+                <div class="card-body">
+                    <div class="card-header admin">
+                        <h5 class="card-title">Admin Count</h5>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="counter">{{ AdminCount }}</h2>
+                        <p class="card-text">Total registered admins</p>
+                    </div>
+                 
+                </div>
+            </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="counter-card">
+                            <div class="card-body">
+                                <div class="card-header pending">
+                                    <h5 class="card-title">Pending Bookings</h5>
+                                    <i class="fa-solid fa-hourglass-half"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="counter">{{ pendingBookings}}</h2>
+                                    <p class="card-text">Total pending bookings  </p>
+                                </div>
+                            </div>
+                        </div>
+                                </div>
+
+
+
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <div class="counter-card">
+                                        <div class="card-body">
+                                            <div class="card-header Completed">
+                                                <h5 class="card-title">Completed Bookings</h5>
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <div class="card-content">
+                                                <h2 class="counter">{{completedBookings}}</h2>
+                                                <p class="card-text">Total completed bookings  </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                            </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="row g-4 mt-5">
+        <div class="col-lg-6">
+            <div class="by_chart">
+                <h4 class="text-center mb-4">- Booking Status</h4>
+                <div class="chart-container">
+                    <canvas id="bookingChart"> </canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="by_chart">
+                <h4 class="text-center mb-4">- Users and Admins</h4>
+                <div class="chart-container">
+                    <canvas id="usersChart"> </canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row g-4 mt-4 mb-4">
+        <div class="col-12 col-lg-6">
+            <div class="by_chart">
+                <h4 class="text-center mb-4">- Facilities and Rooms</h4>
+                <div class="chart-container">
+                    <canvas id="facilitiesChart"> </canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="by_chart">
+                <h4 class="text-center mb-4">- Overall Statistics</h4>
+                <div class="chart-container">
+                    <canvas id="overallChart"> </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+ </section>
