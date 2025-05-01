@@ -41,7 +41,7 @@ submitForm():void{
     this._NgxSpinnerService.show();
      this._ReviewsService.setReview(this.formReview.value).subscribe({
       next:(response)=>{
-     //   console.log(response);
+        console.log(response);
      this._ToastrService.success(response.message, '', { toastClass: 'custom-toast toast-success' });
         this.restForm()
       },

@@ -37,6 +37,7 @@ export class FormCommentComponent implements OnInit{
       this._ReviewsService.addComment(this.commentForm.value).subscribe({
         next:(response)=>{
        //   console.log(response);
+       this.commentForm.reset();
        this._ToastrService.success(response.message, '', { toastClass: 'custom-toast toast-success' });
         },
         error:(err)=>{
