@@ -12,6 +12,10 @@
                     <p>Already have an account<br>You can <a routerLink="/Auth/login">Login here !</a></p>
                 </div>
 
+                <div *ngIf="errorMessage" class="error  ">
+                  <p>{{errorMessage}}</p>
+                </div>
+
 
                 <label  for="profile" class="upload-profile ">
                     <div class="frame" *ngIf="!profileImage(); else preview">
@@ -30,15 +34,38 @@
                     <input   id="profile" class="d-none" type="file" accept="image/*" (change)="onFileSelected($event)">
                   </label>            
 
-                  <mat-form-field appearance="outline" class="w-100 ">
-                    <mat-label>User name</mat-label>
-                    <input formControlName="userName"  type="text" matInput placeholder="Enter your user name">
-                  </mat-form-field>
-                  <div class="error" *ngIf="registerForm.get('userName')?.errors && registerForm.get('userName')?.touched">
-                    <p *ngIf="registerForm.get('userName')?.getError('required')">*User name is required</p>
-                    <p *ngIf="registerForm.get('userName')?.getError('minlength')">*User name minlength is 4</p>
-                    <p *ngIf="registerForm.get('userName')?.getError('maxlength')">*User name maxlength is 15</p>
-                  </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <mat-form-field appearance="outline" class="w-100 ">
+                  <mat-label>User name</mat-label>
+                  <input formControlName="userName"  type="text" matInput placeholder="Enter your user name">
+                </mat-form-field>
+                <div class="error" *ngIf="registerForm.get('userName')?.errors && registerForm.get('userName')?.touched">
+                  <p *ngIf="registerForm.get('userName')?.getError('required')">*User name is required</p>
+                  <p *ngIf="registerForm.get('userName')?.getError('minlength')">*User name minlength is 4</p>
+                  <p *ngIf="registerForm.get('userName')?.getError('maxlength')">*User name maxlength is 15</p>
+                </div>
+              
+              </div>
+
+
+
+              <div class="col-sm-6">
+                <mat-form-field appearance="outline" class="w-100 ">
+                  <mat-label>Role</mat-label>
+                  <mat-select formControlName="role">
+                    <mat-option value="user">User</mat-option>
+                    <mat-option value="admin">Admin</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="error" *ngIf="registerForm.get('role')?.errors && registerForm.get('role')?.touched">
+                  <p *ngIf="registerForm.get('role')?.getError('required')">*Role is required</p>
+                </div>
+              </div>
+
+
+
+            </div>
 
                   <mat-form-field appearance="outline" class="w-100 ">
                     <mat-label>Email</mat-label>
@@ -95,7 +122,7 @@
                     <p *ngIf="registerForm.get('confirmPassword')?.getError('passwordMatch')">*Confirm password does not match password</p>
                     <p *ngIf="registerForm.get('confirmPassword')?.getError('pattern')">*must include at least one lowercase letter, one uppercase letter, one digit, one special character</p>
                   </div>
-                  <button type="submit" class="btn btn-primary d-block">Sign up</button>
+                  <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary d-block">Sign up</button>
               </form>
             </div>
             <div class="col-lg-6 image-form rounded-5 ">

@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { IRoom } from '../../core/model/room';
 import { Location } from '@angular/common';
 import { FavoriteService } from '../services/favorite/favorite.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-explore',
@@ -19,7 +20,8 @@ export class ExploreComponent implements OnInit {
     private _AdsUserService: AdsUserService,
     private _NgxSpinnerService: NgxSpinnerService,
     private _Location: Location,
-    private _FavoriteService: FavoriteService
+    private _FavoriteService: FavoriteService,
+    private _ToastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -101,11 +103,13 @@ export class ExploreComponent implements OnInit {
   addtoFav(roomId: string) {
     this._FavoriteService.addRoomToFav(roomId).subscribe({
       next: (response) => {
-        console.log(response);
+        //console.log(response);
+        this._ToastrService.success(response.message, '', { toastClass: 'custom-toast toast-success' });
         this.loadFavorites(); 
       },
       error: (err) => {
         console.log(err);
+        this._ToastrService.error(err.error.message);
       },
       complete: () => {
         console.log('add to fav');
@@ -117,11 +121,13 @@ export class ExploreComponent implements OnInit {
   removeFromFav(roomId: string) {
     this._FavoriteService.removeFromFav(roomId).subscribe({
       next: (response) => {
-        console.log(response);
+       // console.log(response);
+       this._ToastrService.success(response.message, '', { toastClass: 'custom-toast toast-success' });
         this.loadFavorites();
       },
       error: (err) => {
         console.log(err);
+        this._ToastrService.error(err.error.message);
       },
       complete: () => {
         console.log('remove from fav');

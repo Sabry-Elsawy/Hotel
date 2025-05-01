@@ -12,7 +12,9 @@ import { globalInterceptor } from './core/service/interceptor/global.interceptor
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxStripeModule } from 'ngx-stripe';
+ 
 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,9 @@ import { NgxStripeModule } from 'ngx-stripe';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    NgxStripeModule.forRoot('pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8')
-    
+    NgxStripeModule.forRoot('pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8'),
+    ToastrModule.forRoot(), // ToastrModule added
+
   ],
   providers: [
     provideAnimationsAsync(),

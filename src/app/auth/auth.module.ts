@@ -15,6 +15,8 @@ import { NotfoundComponent } from '../shared/notfound/notfound.component';
 import { SharedModule } from '../shared/shared.module';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 import { LandingPageModule } from "../landing-page/landing-page.module";
+import {MatSelectModule} from '@angular/material/select';
+ 
   
    
 @NgModule({
@@ -36,7 +38,8 @@ import { LandingPageModule } from "../landing-page/landing-page.module";
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    LandingPageModule
+    LandingPageModule,
+    MatSelectModule
 ],
  
  

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FavoriteService } from '../services/favorite/favorite.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IRoom } from '../../core/model/room';
+import { ToastrService } from 'ngx-toastr';
  
 @Component({
   selector: 'app-favorite',
@@ -10,7 +11,7 @@ import { IRoom } from '../../core/model/room';
 })
 export class FavoriteComponent implements OnInit {
   allRoomFav:IRoom[]=[];
-constructor(private _FavoriteService:FavoriteService , private _NgxSpinnerService:NgxSpinnerService){}
+constructor(private _FavoriteService:FavoriteService , private _NgxSpinnerService:NgxSpinnerService, private _ToastrService:ToastrService){}
 ngOnInit(): void {
   this.getRoomFav()
  
@@ -43,10 +44,12 @@ removeFromFav(roomId:string){
     next:(response)=>{
       console.log(response);
      // this.allRoomFav=response.data.favoriteRoom.rooms
+     this._ToastrService.success(response.message, '', { toastClass: 'custom-toast toast-success' });
      this.getRoomFav()
     },
     error:(err)=>{
       console.log(err);
+      this._ToastrService.error(err.error.message);
       this._NgxSpinnerService.hide()
     },
     complete:()=>{

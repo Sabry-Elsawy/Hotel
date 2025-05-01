@@ -2,6 +2,7 @@ import { Component, Input, input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ReviewsService } from '../../services/reviews-service/reviews.service';
+import { ToastrService } from 'ngx-toastr';
  
 @Component({
   selector: 'app-form-review',
@@ -9,7 +10,7 @@ import { ReviewsService } from '../../services/reviews-service/reviews.service';
   styleUrl: './form-review.component.scss'
 })
 export class FormReviewComponent implements OnInit {
-  constructor(private _NgxSpinnerService:NgxSpinnerService , private _ReviewsService:ReviewsService){}
+  constructor(private _NgxSpinnerService:NgxSpinnerService , private _ReviewsService:ReviewsService , private _ToastrService:ToastrService){}
   @Input() roomId: string = '';
 stars:number[]=[1,2,3,4,5];
 userInput: string = '';  
@@ -41,11 +42,13 @@ submitForm():void{
      this._ReviewsService.setReview(this.formReview.value).subscribe({
       next:(response)=>{
      //   console.log(response);
+     this._ToastrService.success(response.message, '', { toastClass: 'custom-toast toast-success' });
         this.restForm()
       },
       error:(err)=>{
         console.log(err);
         this._NgxSpinnerService.hide();
+        this._ToastrService.error(err.error.message);
         this.restForm()
       },
       complete:()=>{

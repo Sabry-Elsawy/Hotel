@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../../auth/services/auth.service';
 import { RegxPassword } from '../../../auth/Components/login/login.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-change-pass',
@@ -10,7 +11,7 @@ import { RegxPassword } from '../../../auth/Components/login/login.component';
   styleUrl: './change-pass.component.scss'
 })
 export class ChangePassComponent {
- constructor(private _NgxSpinnerService:NgxSpinnerService , private _AuthService:AuthService){}
+ constructor(private _NgxSpinnerService:NgxSpinnerService , private _AuthService:AuthService ,private _ToastrService:ToastrService){}
 
   hidepass:boolean = true;
   hidePassword:boolean = true;
@@ -28,10 +29,12 @@ export class ChangePassComponent {
       this._AuthService.onUserChangePassword(data.value).subscribe({
         next:(response)=>{
          // console.log(response);
+         this._ToastrService.success( 'Password changed successfully' , '', { toastClass: 'custom-toast toast-success' });
           this.changePassword.reset();
         },
         error:(err)=>{
           console.log(err);
+          this._ToastrService.error(err.error.message);
           this._NgxSpinnerService.hide();
         },
         complete:()=>{

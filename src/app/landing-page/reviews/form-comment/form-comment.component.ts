@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReviewsService } from '../../services/reviews-service/reviews.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
   
 @Component({
   selector: 'app-form-comment',
@@ -9,7 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrl: './form-comment.component.scss'
 })
 export class FormCommentComponent implements OnInit{
-  constructor(private _ReviewsService:ReviewsService , private _NgxSpinnerService:NgxSpinnerService){}
+  constructor(private _ReviewsService:ReviewsService , private _NgxSpinnerService:NgxSpinnerService,private _ToastrService:ToastrService){}
 @Input() roomId:string='';
   stars:number[]=[1,2,3,4,5];
   reLoadingInput = document.querySelector('.reloading')
@@ -36,11 +37,12 @@ export class FormCommentComponent implements OnInit{
       this._ReviewsService.addComment(this.commentForm.value).subscribe({
         next:(response)=>{
        //   console.log(response);
-          
+       this._ToastrService.success(response.message, '', { toastClass: 'custom-toast toast-success' });
         },
         error:(err)=>{
           console.log(err);
           this._NgxSpinnerService.hide()
+          this._ToastrService.error(err.error.message);
         },
         complete:()=>{
         //  console.log("Done add comment");

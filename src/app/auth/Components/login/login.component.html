@@ -12,6 +12,9 @@
                     <p>If you don’t have an account register <br>You can <a routerLink="/Auth/register">Register here !</a></p>
                 </div>
 
+                <div *ngIf="errorMessage" class="error">
+                    <p>{{errorMessage}}</p>
+                </div>
 
                 <mat-form-field appearance="outline" class="w-100 my-2">
                     <mat-label>Email</mat-label>
@@ -38,7 +41,7 @@
 
                   <a class="forgot-pass text-dark " routerLink="/Auth/forgot-password"> Forgot Password ?</a>
 
-                  <button type="submit" class="btn btn-primary d-block">Login</button>
+                  <button type="submit" [disabled]="loginForm.invalid"class="btn btn-primary d-block">Login</button>
                   
               </form>
             </div>

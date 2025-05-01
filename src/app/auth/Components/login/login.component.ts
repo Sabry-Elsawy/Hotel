@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
  
 export const RegxPassword: RegExp = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -16,7 +17,8 @@ export class LoginComponent {
 hidepass:boolean = true;
 errorMessage:string = '';
 roleUser:string='';
-constructor(private _AuthService:AuthService, private _Router:Router , private _Spinner:NgxSpinnerService){
+name:string='';
+constructor(private _AuthService:AuthService, private _Router:Router , private _Spinner:NgxSpinnerService ,private _ToastrService:ToastrService){
  
 }
 
@@ -37,7 +39,7 @@ handleForm(data:FormGroup):void{
       localStorage.setItem('userName',  responce.data.user.userName);
       localStorage.setItem('role',  responce.data.user.role);
       localStorage.setItem('id', responce.data.user._id)
-      
+      this.name = responce.data.user.userName;
 
     },
     error:(err)=>{
@@ -47,6 +49,7 @@ handleForm(data:FormGroup):void{
     },
     complete:()=>{
     this._Spinner.hide();
+    this._ToastrService.success(`Welcome Back ${this.name}`, '', { toastClass: 'custom-toast toast-success' });
     //  console.log('complete');
     if (this.roleUser == 'admin') {
       this._Router.navigate(['/admin'])
@@ -55,6 +58,7 @@ handleForm(data:FormGroup):void{
     {
       this._Router.navigate(['/landing-page'])
     }
+ 
     }
   })
    

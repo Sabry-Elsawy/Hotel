@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../../../core/service/admin/booking.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IBooking } from '../../../core/model/admin/booking';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-booking',
@@ -21,7 +22,7 @@ export class BookingComponent implements OnInit {
   showModel: boolean = false;
   searchInput:string='';
 
-  constructor(private _BookingService:BookingService , private _NgxSpinnerService:NgxSpinnerService){}
+  constructor(private _BookingService:BookingService,private _ToastrService:ToastrService , private _NgxSpinnerService:NgxSpinnerService){}
 ngOnInit(): void {
   this.getAllBookingRooms();
 }
@@ -73,12 +74,14 @@ deleteBookingRoom(id: string): void {
   this._NgxSpinnerService.show();
   this._BookingService.deleteBookingRoom(id).subscribe({
     next:(response)=>{
-      console.log(response);
+     // console.log(response);
+     this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
       this.getAllBookingRooms();
       
     },
     error:(err)=>{
       console.log(err);
+      this._ToastrService.error(err.error.message);
       this._NgxSpinnerService.hide();
       
     },

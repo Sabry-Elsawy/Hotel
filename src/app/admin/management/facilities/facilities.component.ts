@@ -2,6 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { FacilitiesService } from '../../../core/service/admin/facilities.service';
 import { IFacility } from '../../../core/model/room';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-facilities',
@@ -26,7 +27,7 @@ export class FacilitiesComponent implements OnInit {
   flagEdit: boolean = false; // Flag to control the edit mode
   nameFacilityEditing: string = ""; // Facility name for editing
   currentFacilityId: string = ""; // Current facility ID for editing
-constructor(private _FacilitiesService:FacilitiesService , private _NgxSpinnerService:NgxSpinnerService){}
+constructor(private _FacilitiesService:FacilitiesService ,private _ToastrService:ToastrService, private _NgxSpinnerService:NgxSpinnerService){}
 
 ngOnInit(): void {
   this.getAllFacilities(); // Fetch all facilities on component initialization
@@ -84,10 +85,12 @@ deleteFacility(facilityId:string){
   this._FacilitiesService.deleteFacility(facilityId).subscribe({
     next:(response)=>{
       //console.log(response);
+      this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
       this.getAllFacilities(); // Refresh the facilities list after deletion
     },
     error:(error)=>{
       console.log(error);
+      this._ToastrService.error(error.error.message);
       this._NgxSpinnerService.hide(); // Hide loading spinner on error
     },
     complete:()=>{
@@ -102,11 +105,13 @@ addNewFacility(){
   this._FacilitiesService.addNewFacility(this.newNameFacility).subscribe({
     next:(response)=>{
    //   console.log(response);
+   this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
       this.getAllFacilities(); // Refresh the facilities list after adding a new facility
       this.showAddFacilityModel = false; // Close the add facility modal
     },
     error:(error)=>{
       console.log(error);
+      this._ToastrService.error(error.error.message);
       this._NgxSpinnerService.hide(); // Hide loading spinner on error
     },
     complete:()=>{
@@ -142,13 +147,14 @@ editfacility( ):void{
   this._FacilitiesService.updateFacility(this.currentFacilityId , this.newNameFacility).subscribe({
     next:(response)=>{
    //   console.log(response);
-
+   this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
       this.getAllFacilities(); // Refresh the facilities list after editing
       this.showAddFacilityModel = false; // Close the add facility modal
       this.flagEdit = false; // Reset the edit flag
     }
     ,error:(error)=>{
       console.log(error);
+      this._ToastrService.error(error.error.message);
       this._NgxSpinnerService.hide(); // Hide loading spinner on error
     }
     ,complete:()=>{

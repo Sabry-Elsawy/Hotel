@@ -5,7 +5,8 @@ import { IAds } from '../../../core/model/ads';
 import { RoomsService } from '../../../core/service/admin/rooms.service';
 import { IRoom } from '../../../core/model/room';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
- 
+import { ToastrService } from 'ngx-toastr';
+  
 @Component({
   selector: 'app-ads',
   templateUrl: './ads.component.html',
@@ -31,7 +32,7 @@ export class AdsComponent implements OnInit {
   searchInput:string='';
 
 
-  constructor(private _AdsService:AdsService , private _NgxSpinnerService:NgxSpinnerService , private _RoomsService:RoomsService){}
+  constructor(private _AdsService:AdsService ,private _ToastrService:ToastrService, private _NgxSpinnerService:NgxSpinnerService , private _RoomsService:RoomsService){}
 
 
   adsForm = new FormGroup({
@@ -47,12 +48,14 @@ export class AdsComponent implements OnInit {
    this._AdsService.addAds(data.value).subscribe({
       next:(response)=>{
      //   console.log(response);
+     this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
         this.adsForm.reset();
         this.getAllAds(); // Refresh the list after adding a new ad
         this.showModelAddAds=false; // Hide the modal after submission
       }
       ,error:(error)=>{
         console.log(error);
+        this._ToastrService.error(error.error.message);
         this._NgxSpinnerService.hide();
       }
       ,complete:()=>{
@@ -99,10 +102,12 @@ deleteAds(id:string){
   this._AdsService.deleteAds(id).subscribe({
     next:(response)=>{
     //  console.log(response);
+    this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
       this.getAllAds(); // Refresh the list after deletion
     }
     ,error:(error)=>{
       console.log(error);
+      this._ToastrService.error(error.error.message);
       this._NgxSpinnerService.hide();
     }
     ,complete:()=>{
@@ -156,12 +161,14 @@ editAds(){
 
 this._AdsService.editAdds(this.roomIdEditing , this.discountEditing , this.isActiveEditing).subscribe({
   next:(response)=>{
-    console.log(response);
+   // console.log(response);
+    this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
     this.getAllAds(); // Refresh the list after editing
     this.showModelEditAds=false; // Hide the modal after submission
   },
   error:(error)=>{
     console.log(error);
+    this._ToastrService.error(error.error.message);
     this._NgxSpinnerService.hide();
   },
   complete:()=>{

@@ -38,11 +38,14 @@
        }
  
 .upload-profile{
-   
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
+    cursor: pointer;
     .upload-icon {
         font-size: 18px;
         color: var(--main-text-color);

@@ -29,7 +29,7 @@
                     <div class="room-image w-100">
                         <img class="w-100" [src]="room.images[0]" alt="roomImg">
                         <a (click)="removeFromFav(room._id)"  class="remove-fav"><i class="fa-solid fa-heart"></i></a>
-                        <a class="room-details"><i class="fa-solid fa-eye"></i></a>
+                        <a [routerLink]="['/landing-page/room-details',room._id]" class="room-details"><i class="fa-solid fa-eye"></i></a>
                         <span class="room-number">{{room.roomNumber}}</span>
                     </div>
                     <div class="details">

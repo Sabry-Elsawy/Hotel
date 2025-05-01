@@ -13,6 +13,7 @@ import { RegxPassword } from '../login/login.component';
 export class ResetPasswordComponent {
 hidepass:boolean=true;
 hidePassword:boolean=true;
+errorMassage:string='';
 constructor(private  _Spinner:NgxSpinnerService,private _Router:Router , private _AuthService:AuthService) { }
 
 
@@ -35,7 +36,7 @@ onSubmitResetPasswordForm(data:FormGroup){
     error:(err)=>{
       console.log(err);
       this._Spinner.hide();
-      
+      this.errorMassage=err.error.message;
     },
     complete:()=>{
       this._Spinner.hide();

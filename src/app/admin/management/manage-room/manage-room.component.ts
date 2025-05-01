@@ -6,6 +6,7 @@ import { ManageRommService } from '../../../core/service/admin/manage-romm.servi
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoomsService } from '../../../core/service/admin/rooms.service';
+import { ToastrService } from 'ngx-toastr';
  
 @Component({
   selector: 'app-manage-room',
@@ -25,7 +26,7 @@ export class ManageRoomComponent implements OnInit {
 
 
 
- constructor(private _RoomsService:RoomsService,private _FacilitiesService: FacilitiesService,private _ActivatedRoute:ActivatedRoute,private _Router:Router , private _ManageRommService:ManageRommService , private _NgxSpinnerService:NgxSpinnerService) {
+ constructor(private _RoomsService:RoomsService,private _ToastrService:ToastrService,private _FacilitiesService: FacilitiesService,private _ActivatedRoute:ActivatedRoute,private _Router:Router , private _ManageRommService:ManageRommService , private _NgxSpinnerService:NgxSpinnerService) {
    _ActivatedRoute.paramMap.subscribe((params) => this.roomId = params.get('id') || '')
   if (this.roomId) {
     this.getRoomById(this.roomId);
@@ -73,17 +74,20 @@ onSubmit(data :FormGroup) {
       myData.append('imgs' , file ,file.name)
     }
   }
+ 
 this._NgxSpinnerService.show();
 if (this.roomId) {
   this._ManageRommService.editRoom(this.roomId,myData).subscribe({
     next:(response)=>{
     //  console.log(response);
+    this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
       this.isEditRoom=false;
       this._Router.navigate(['/admin/management/rooms'])
       
     },
     error:(err)=>{
       console.log(err);
+      this._ToastrService.error(err.error.message);
       this._NgxSpinnerService.hide();
       
     },
@@ -96,11 +100,13 @@ else{
   this._ManageRommService.addRoom(myData).subscribe({
     next:(response)=>{
   //    console.log(response);
+  this._ToastrService.success(response.message , '', { toastClass: 'custom-toast toast-success' });
       this._Router.navigate(['/admin/management/rooms'])
       
     },
     error:(err)=>{
       console.log(err);
+      this._ToastrService.error(err.error.message);
       this._NgxSpinnerService.hide();
     },
     complete:()=>{

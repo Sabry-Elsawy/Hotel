@@ -17,6 +17,7 @@ export class RegisterComponent {
   hidePassword:boolean = true;
   selectedFile: File | null = null; 
   profileImage = signal<string | null>(null);
+  errorMessage:string='';
   constructor(private _AuthService:AuthService , private _Router:Router , private _Spinner:NgxSpinnerService){}
   onFileSelected(e: Event) {
     const file = (e.target as HTMLInputElement).files?.[0];
@@ -40,7 +41,7 @@ export class RegisterComponent {
     phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(RegxPhoneNumber)]),
     password: new FormControl(null, [Validators.required,Validators.pattern(RegxPassword)]),
     confirmPassword: new FormControl(null, [Validators.required,Validators.pattern(RegxPassword)]),
-    role: new FormControl('user', [Validators.required]),
+    role: new FormControl(null, [Validators.required]),
     profileImage: new FormControl('',),
   },{validators : this.confirmPassword});
 
@@ -67,6 +68,7 @@ export class RegisterComponent {
       error:(err)=>{
         console.log(err);
         this._Spinner.hide();
+        this.errorMessage=err.error.message;
       },
       complete:()=>{
         this._Spinner.hide();
