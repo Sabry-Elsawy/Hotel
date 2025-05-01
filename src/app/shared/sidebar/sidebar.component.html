@@ -15,12 +15,12 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a routerLink="/admin/general/dashboard" routerLinkActive="active" >
+                        <a (click)="toggleSidebar()" routerLink="/admin/general/dashboard" routerLinkActive="active" >
                             <i class="fas fa-th-large"></i> Dashboard
                         </a>
                     </li>
                     <li>
-                        <a routerLink="/admin/general/users" routerLinkActive="active" >
+                        <a (click)="toggleSidebar()" routerLink="/admin/general/users" routerLinkActive="active" >
                             <i class="fas fa-user"></i> Users
                         </a>
                     </li>
@@ -29,21 +29,21 @@
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span [routerLink]="['management']" class="font-super-bold">Rooms Management</span>
+                    <span  class="font-super-bold">Rooms Management</span>
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a routerLink="management/rooms" routerLinkActive="active">
+                        <a (click)="toggleSidebar()" routerLink="management/rooms" routerLinkActive="active">
                             <i class="fas fa-door-open"></i> Rooms
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['management/manage-room']" routerLinkActive="active">
+                        <a (click)="toggleSidebar()" [routerLink]="['management/manage-room']" routerLinkActive="active">
                             <i class="fa-solid fa-plus"></i> Manage Room
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['management/facilities']" routerLinkActive="active">
+                        <a (click)="toggleSidebar()" [routerLink]="['management/facilities']" routerLinkActive="active">
                             <i class="fas fa-bed"></i> Faciliies
                         </a>
                     </li>
@@ -54,16 +54,16 @@
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span routerLink="ads-Booking"   class="font-super-bold">Ads & Bookings</span>
+                    <span     class="font-super-bold">Ads & Bookings</span>
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['ads-Booking/ads']"  routerLinkActive="active">
+                        <a (click)="toggleSidebar()" [routerLink]="['ads-Booking/ads']"  routerLinkActive="active">
                             <i class="fas fa-bullhorn"></i> ADS
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['ads-Booking/Booking']"  routerLinkActive="active">
+                        <a (click)="toggleSidebar()" [routerLink]="['ads-Booking/Booking']"  routerLinkActive="active">
                             <i class="fas fa-calendar-check"></i> Booking
                         </a>
                     </li>
@@ -85,19 +85,19 @@
 
     <ul class="profile-menu"  [class.open]="isProfileOpen" >
         <li>
-            <a  routerLink="setting/profile" >
+            <a (click)="toggleSidebar()"  routerLink="setting/profile" >
                 <i class="fas fa-user"></i>
                 Profile
             </a>
         </li>
         <li>
-            <a  routerLink="setting/settings" >
+            <a (click)="toggleSidebar()"  routerLink="setting/settings" >
                 <i class="fas fa-cog"></i>
                 Settings
             </a>
         </li>
         <li   >
-            <a class="btn-logOut" (click)="logOut()" >
+            <a  class="btn-logOut" (click)="logOut()" >
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>
@@ -105,7 +105,7 @@
     </ul>
 
     <div class="feedback-link">
-        <a routerLink="setting/feedback"  >
+        <a (click)="toggleSidebar()" routerLink="setting/feedback"  >
             <i class="fas fa-comment"></i>
             Give us your feedback!
         </a>
