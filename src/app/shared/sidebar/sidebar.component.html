@@ -124,15 +124,15 @@
 
 <nav class="mobile-nav">
     <div class="nav-links">
-    <a  class="nav-item"  >
+    <a routerLink="/admin/general/users" class="nav-item"  >
         <i class="fas fa-user"></i>
         <span>Users</span>
     </a>
-    <a   class="nav-item"  >
+    <a routerLink="management/rooms"  class="nav-item"  >
         <i class="fas fa-door-open"></i>
         <span>Rooms</span>
     </a>
-    <a   class="nav-item"  >
+    <a [routerLink]="['ads-Booking/Booking']"   class="nav-item"  >
         <i class="fas fa-calendar-check"></i>
         <span>Booking</span>
     </a>
