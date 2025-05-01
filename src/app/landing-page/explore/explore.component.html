@@ -35,9 +35,13 @@
 </section>
 
  
+<section class="noRoom mb-5" *ngIf="!tableDataRomms || (tableDataRomms |search:searchTerm).length<=0">
+<h3>Sorry, There are no rooms available at the moment</h3>
+</section>
 
 
-<section class="rooms mb-5">
+
+<section class="rooms mb-5" *ngIf="tableDataRomms">
     <div class="container">
         <div class="row g-3">
             <div *ngFor="let room of tableDataRomms | search:searchTerm" class="col-md-6 col-lg-4 col-xl-3">
@@ -82,7 +86,7 @@
             </div>
         </div>
 
-        <div class="pagination-container d-flex justify-content-center align-items-center mt-5 flex-wrap">
+        <div   class="pagination-container d-flex justify-content-center align-items-center mt-5 flex-wrap">
             <div class="d-flex align-items-center flex-wrap gap-2">
                 <div class="d-flex align-items-center">
                     <span class="me-2">Items per page:</span>

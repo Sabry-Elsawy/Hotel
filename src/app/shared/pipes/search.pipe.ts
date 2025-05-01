@@ -10,6 +10,7 @@ export class SearchPipe implements PipeTransform {
     if (!rooms || !searchInput) {
       return rooms;
     }
+    
 
     return rooms.filter(room=> room.capacity == searchInput)
   }
