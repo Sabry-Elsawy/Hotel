@@ -5,6 +5,7 @@ import { StripeService } from 'ngx-stripe';
 import { StripeCardComponent } from 'ngx-stripe'; // Import StripeCardComponent
 import { StripeCardElementOptions } from '@stripe/stripe-js';
 import { PaymentService } from '../../services/payment/payment.service';
+import { ToastrService } from 'ngx-toastr';
    
 @Component({
   selector: 'app-payment',
@@ -45,7 +46,7 @@ export class PaymentComponent implements OnInit {
     private _StripeService: StripeService,
     private _Router: Router,
     private _ActivatedRoute: ActivatedRoute,
- 
+    private _ToastrService:ToastrService,
     private fb: FormBuilder,
     private _PaymentService: PaymentService
   ) {
@@ -80,10 +81,11 @@ export class PaymentComponent implements OnInit {
             if (res.success) {
             
               
-           
+              this._ToastrService.success(res.message , '', { toastClass: 'custom-toast toast-success' });
               this._Router.navigate(['/landing-page'])
             }
           }, error: (err) => {
+            this._ToastrService.error(err.error.message);
             console.log(err);
          
           }
